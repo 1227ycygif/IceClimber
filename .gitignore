@@ -416,3 +416,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+FrameWork/resource/Sound/Casual_over.wav
+FrameWork/resource/Sound/Casual_Theme.wav
+FrameWork/resource/Sound/Casual_Theme2.wav
+FrameWork/resource/Sound/bgm1.wav
