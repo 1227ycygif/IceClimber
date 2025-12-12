@@ -1,15 +1,16 @@
 #pragma once
-
 #include "Include.h"
 
 Sprite g_Load;
 
 Sprite::Sprite(void)
 {
+
 }
 
 Sprite::~Sprite(void)
 {
+
 }
 bool Sprite::Create(const char* filename, bool bUseTransparency, D3DCOLOR TransparencyColor)
 {
@@ -20,9 +21,14 @@ bool Sprite::Create(const char* filename, bool bUseTransparency, D3DCOLOR Transp
 	HRESULT hr = E_FAIL ;
 
 	D3DCOLOR transparencycolor;
-	if( bUseTransparency )	transparencycolor = TransparencyColor | 0xff000000;
-	else					transparencycolor = 0;
-	
+	if (bUseTransparency)
+	{
+		transparencycolor = TransparencyColor | 0xff000000;
+	}
+	else
+	{
+		transparencycolor = 0;
+	}
 	hr = D3DXCreateTextureFromFileEx(dv_font.Device9 ,
 		filename , imagesinfo.Width , imagesinfo.Height , 1 , 0 , 	D3DFMT_UNKNOWN , D3DPOOL_MANAGED,
 		D3DX_DEFAULT, 	D3DX_DEFAULT, transparencycolor,	&imagesinfo , 	NULL, 	&Texture ) ; 
@@ -30,7 +36,8 @@ bool Sprite::Create(const char* filename, bool bUseTransparency, D3DCOLOR Transp
 	return TRUE;
 }
 
-void Sprite::Draw(float x, float y)		// 화면의 x, y 에 출력해라.
+// 화면의 x, y 에 출력해라.
+void Sprite::Draw(float x, float y)		
 {
 	D3DXVECTOR3 pos;
 	pos.x = x;
@@ -38,15 +45,16 @@ void Sprite::Draw(float x, float y)		// 화면의 x, y 에 출력해라.
 	pos.z = 1.0f;
 
 	dv_font.Sprite->Begin( D3DXSPRITE_ALPHABLEND ) ;
-
 	dv_font.Sprite->Draw( Texture ,NULL ,	NULL , &pos , color ) ;
-
 	dv_font.Sprite->End() ;
 }
 
-void Sprite::Render( float x , float y , float radian, float sx, float sy) // 회전, 확대 출력
-{																	   // sx -1 : 좌우반전, sy -1 = 상하반전
-	RECT Rect ;														   // sx 0 : 없어짐, 1 : 그대로, 2 : x축으로 2배 확대
+// 회전, 확대 출력
+// sx -1 : 좌우 반전, sy -1 = 상하 반전
+// sx 0 : 없어짐, 1 : 그대로, 2 : x축으로 2배 확대
+void Sprite::Render( float x , float y , float radian, float sx, float sy) 
+{																	   
+	RECT Rect ;														   
 	ID3DXSprite* pSprite ;
 
 	pSprite = dv_font.Sprite ;
@@ -74,9 +82,6 @@ void Sprite::Render( float x , float y , float radian, float sx, float sy) // 회
 	D3DXMatrixIdentity( &identity ) ;
 	pSprite->SetTransform( &identity ) ;
 }
-
-
-
 
 void Sprite::SetColor( int r, int g , int b , int a )
 {

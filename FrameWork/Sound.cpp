@@ -2,21 +2,19 @@
 
 Sound sound;
 
-
-
 Sound::Sound(void)
 {
-	//g_pSoundManager = NULL; 사용 안했다
+
 }
 
 Sound::~Sound(void)
 {
+
 }
 
 void Sound::Init()
 {
 	g_pSoundManager->Create(&m_Bk1, (LPWSTR)L"./resource/Sound/bgm1.wav", 0, GUID_NULL);
-	//g_pSoundManager->Create(&m_Loadbg, (LPWSTR)L"./resource/Sound/loading.wav", 0, GUID_NULL);
 	g_pSoundManager->Create(&m_Gamebg, (LPWSTR)L"./resource/Sound/Casual_Theme.wav", 0, GUID_NULL);
 	g_pSoundManager->Create(&m_Menubg, (LPWSTR)L"./resource/Sound/Casual_Theme2.wav", 0, GUID_NULL);
 	g_pSoundManager->Create(&m_overbg, (LPWSTR)L"./resource/Sound/Casual_over.wav", 0, GUID_NULL);

@@ -3,6 +3,7 @@
 
 class Game : public Chap
 {
+
 public:
 	Game();
 	~Game();
@@ -10,7 +11,6 @@ public:
 	virtual void Init();
 	virtual void Update(double frame);
 	virtual void Draw();
-
 	virtual void OnMessage(MSG* msg);
 };
 

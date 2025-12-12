@@ -1,6 +1,7 @@
 class CMng
 {
 public:
+
 	CMng();
 	~CMng();
 

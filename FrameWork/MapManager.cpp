@@ -1,7 +1,6 @@
 #pragma once
 #include"Include.h"
 
-
 MapManager mapManager;
 /*
 기능 :		생성자
@@ -9,10 +8,12 @@ MapManager mapManager;
 */
 MapManager::MapManager()
 {
+
 }
+
 /*
 기능 :		소멸자
-특이사항 :	생성된 블럭매니저, 몬스터, 플레이어 객체 모두 해제
+특이사항 :	생성된 블록매니저, 몬스터, 플레이어 객체 모두 해제
 */
 MapManager::~MapManager()
 {
@@ -29,7 +30,7 @@ MapManager::~MapManager()
 기능 :		초기화
 매개변수 :	없음
 반환 :		없음
-특이사항 :	몬스터 객체 생성, 블럭매니저 객체 생성 및 초기화, 플레이어 객체 생성 및 초기화
+특이사항 :	몬스터 객체 생성, 블록매니저 객체 생성 및 초기화, 플레이어 객체 생성 및 초기화
 */
 void MapManager::Init()
 {
@@ -38,6 +39,7 @@ void MapManager::Init()
 	floor_skip_2 = 5;
 	floorY = 0;
 	floor_move = false;
+
 	for (int i = 0; i < 6; i++)
 	{
 		seal[i] = new Monster;
@@ -55,21 +57,12 @@ void MapManager::Init()
 기능 :		업데이트
 매개변수 :	없음
 반환 :		없음
-특이사항 :	몬스터 객체 업데이트 호출, 블럭매니저 객체 업데이트 호출, 플레이어 객체 업데이트 호출
+특이사항 :	몬스터 객체 업데이트 호출, 블록매니저 객체 업데이트 호출, 플레이어 객체 업데이트 호출
 */
 void MapManager::Update()
 {
-	if (playdata.winner == 0) {	// 플레이어가 위너가 결정되면 더이상 변경안함
-		if (cha->getDead())
-		{
-			playdata.winner = PLAYER2;
-		}
-		else if (cha2->getDead())
-		{
-			playdata.winner = PLAYER1;
-		}
-	}
-	if (!floor_move)			// 맵이동중이 아닐때만 업데이트(이동중 조작불가)
+	// 맵 이동 중이 아닐 때만 업데이트(이동 중 조작 불가)
+	if (!floor_move) 
 	{
 		for (int i = 0; i < 6; i++)
 		{
@@ -85,7 +78,7 @@ void MapManager::Update()
 기능 :		드로우
 매개변수 :	없음
 반환 :		없음
-특이사항 :	맵이동중엔 드로우말고 Floor함수 호출
+특이사항 :	맵 이동 중엔 드로우말고 Floor함수 호출
 */
 void MapManager::Draw()
 {
@@ -96,9 +89,11 @@ void MapManager::Draw()
 			seal[i]->Floor(floorY);
 			blockMap[i]->Floor(floorY);
 		}
+
 		cha->Floor(floorY);
 		cha2->Floor(floorY);
 		floorY += 4;
+
 		if (floorY > 204)
 		{
 			floorY = 0;
@@ -113,9 +108,9 @@ void MapManager::Draw()
 			blockMap[i]->Draw();
 		}
 		cha->Draw();
-		cha->DrawCollider(); // ◆ 
+		cha->DrawCollider(); 
 		cha2->Draw();
-		cha2->DrawCollider(); // ◆ 
+		cha2->DrawCollider(); 
 	}
 }
 
@@ -127,7 +122,8 @@ void MapManager::Draw()
 */
 void MapManager::Collision()
 {
-	if (!floor_move)		//  맵이동 중에는 충돌하지않음
+	//  맵 이동 중에는 충돌하지 않음 
+	if (!floor_move)		
 	{
 		Col ch_temp = cha->getCol_temp();
 		Col ch = cha->getCol();
@@ -135,82 +131,106 @@ void MapManager::Collision()
 		Col ch2 = cha2->getCol();
 
 		//1p
-		// 떨어지는중
+		// 떨어지는 중
 		if (!cha->getJump_state())
 		{
 			int check = cha->Collision_V(ch2.chx, ch2.chX, ch2.chy, ch2.chY);
-			if (check == UP || check == 6)											// 2p의 윗부분에 충돌
+			// 2p의 윗 부분에 충돌
+			if (check == UP || check == 6)						
 			{
-				cha->setFloor_collision_temp(true);									// 상태 변환
-				cha->setExtra_fall_y(abs(ch2.chy - ch.chY));						// 여분 계산
+				// 상태 변환
+				cha->setFloor_collision_temp(true);	
+				// 여분 계산
+				cha->setExtra_fall_y(abs(ch2.chy - ch.chY));	
 			}
 		}
 		// 점프 중	
 		else								
 		{
-			if (cha->Collision_V(ch2.chx, ch2.chX, ch2.chy, ch2.chY) == DOWN)		// 2p의 아래부분에 충돌
+			// 2p의 아랫 부분에 충돌
+			if (cha->Collision_V(ch2.chx, ch2.chX, ch2.chy, ch2.chY) == DOWN)	
 			{
-				cha->setJump_collision_temp(true);									// 상태 변환
-				cha->setExtra_jump_y(-abs(ch2.chY - ch.chy));						// 여분 계산
+				// 상태 변환
+				cha->setJump_collision_temp(true);				
+				// 여분 계산 
+				cha->setExtra_jump_y(-abs(ch2.chY - ch.chy));	
 			}
 		}
-		// 우로 이동중
+
+		// 우로 이동 중
 		if (cha->getMove_state_r())
 		{
 			int check = cha->Collision_H(ch2.chx - 14, ch2.chX, ch2.chy, ch2.chY);
-			if (check == LEFT || check == 6)										// 2p의 왼쪽부분에 충돌
+
+			// 2p의 왼쪽 부분에 충돌
+			if (check == LEFT || check == 6)									
 			{
-				cha->setMove_collision_r(true);										// 상태변환
+				// 상태 변환
+				cha->setMove_collision_r(true);	
 			}
 		}
-		// 좌로 이동중
+
+		// 좌로 이동 중
 		if (cha->getMove_state_l())
 		{
 			int check = cha->Collision_H(ch2.chx, ch2.chX + 14, ch2.chy, ch2.chY);
-			if (check == RIGHT || check == 6)										// 2p의 오른쪽부분에 충돌
+
+			// 2p의 오른쪽 부분에 충돌
+			if (check == RIGHT || check == 6)					
 			{
-				cha->setMove_collision_l(true);										// 상태변환
+				// 상태 변환
+				cha->setMove_collision_l(true);					
 			}
 		}
+
 		//2p
-		// 떨어지는중
+		// 떨어지는 중
 		if (!cha2->getJump_state())
 		{
 			int check = cha2->Collision_V(ch.chx, ch.chX, ch.chy - 10, ch.chY);
-			if (check == UP || check == 6)											// 1p의 윗부분에 충돌
+
+			// 1p의 윗 부분에 충돌
+			if (check == UP || check == 6)											
 			{
-				cha2->setFloor_collision_temp(true);								// 상태 변환
-				cha2->setExtra_fall_y(abs(ch.chy - ch2.chY));						// 여분 계산
+				cha2->setFloor_collision_temp(true);				// 상태 변환
+				cha2->setExtra_fall_y(abs(ch.chy - ch2.chY));		// 여분 계산
 			}
 		}
 		// 점프 중
 		else									
 		{
-			if (cha2->Collision_V(ch.chx, ch.chX, ch.chy, ch.chY + 10) == DOWN)		// 1p의 아래부분에 충돌
+			// 1p의 아랫 부분에 충돌
+			if (cha2->Collision_V(ch.chx, ch.chX, ch.chy, ch.chY + 10) == DOWN)		
 			{
-				cha2->setJump_collision_temp(true);									// 상태 변환
-				cha2->setExtra_jump_y(-abs(ch.chY - ch2.chy));						// 여분 계산
+				cha2->setJump_collision_temp(true);					// 상태 변환
+				cha2->setExtra_jump_y(-abs(ch.chY - ch2.chy));		// 여분 계산
 			}
 		}
 
-		// 우로 이동중
+		// 우로 이동 중
 		if (cha2->getMove_state_r())
 		{
 			int check = cha2->Collision_H(ch.chx - 14, ch.chX, ch.chy, ch.chY);
-			if (check == LEFT || check == 6)										// 1p의 왼쪽부분에 충돌
+		
+			// 1p의 왼쪽 부분에 충돌
+			if (check == LEFT || check == 6)										
 			{
-				cha2->setMove_collision_r(true);									// 상태 변환
+				cha2->setMove_collision_r(true);					// 상태 변환
 			}
 		}
-		// 좌로 이동중
+
+		// 좌로 이동 중
 		if (cha2->getMove_state_l())
 		{
 			int check = cha2->Collision_H(ch.chx, ch.chX + 14, ch.chy, ch.chY);
-			if (check == RIGHT || check == 6)										// 1p의 오른쪽부분에 충돌
+
+			// 1p의 오른쪽 부분에 충돌
+			if (check == RIGHT || check == 6)			
 			{
-				cha2->setMove_collision_l(true);									// 상태 변환
+				cha2->setMove_collision_l(true);					// 상태 변환
 			}
 		}
+
 		// 몬스터와 플레이어 간 충돌
 		for (int i = 0; i < 6; i++)
 		{
@@ -224,12 +244,14 @@ void MapManager::Collision()
 					playdata.winner = PLAYER2;
 				break;
 			}
+
 			if (cha2->Collision_mon(seal[i]->getMonx(), seal[i]->getMonX(), seal[i]->getMony(), seal[i]->getMonY()) == 1)
 			{
 				if (playdata.winner == 0)
 					playdata.winner = PLAYER1;
 				break;
 			}
+
 			// 공격 처리도 동일
 			if (cha->getAttack_state())
 			{
@@ -239,6 +261,7 @@ void MapManager::Collision()
 					continue;
 				}
 			}
+
 			if (cha2->getAttack_state())
 			{
 				if (seal[i]->Collision_attacked(cha2->getCol().chx, cha2->getCol().chX, cha2->getCol().chy, cha2->getCol().chY, cha2->getPos()) == 1)
@@ -248,28 +271,41 @@ void MapManager::Collision()
 				}
 			}
 		}
-		// 블럭과 오브젝트의 충돌
+
+		// 블록과 오브젝트의 충돌
 		for (int i = 0; i < 6; i++)
 		{
-			if (i == floor_move_now)							// 맵이동이 일어날수있는 층만 따로 처리
+			// 맵 이동이 일어날 수 있는 층만 따로 처리
+			if (i == floor_move_now)							
 			{
-				if (blockMap[i]->Collision3(cha, cha2))			// 캐릭터가 착지 하면
+				// 캐릭터가 착지하면
+				if (blockMap[i]->Collision3(cha, cha2))			
 				{
-					floor_move = true;							// 층에 한번이라도 바닥착지하면 층이동 가능
+					// 층에 한 번이라도 바닥 착지하면 층 이동 가능
+					floor_move = true;							
 					floor_move_now = (floor_move_now + 1) % 6;
 					floor_skip_1 = (floor_skip_1 + 1) % 6;
 					floor_skip_2 = (floor_skip_2 + 1) % 6;
 				}
 			}
 			else
-				blockMap[i]->Collision(cha, cha2);				// 나머지층은 기본 충돌
-			blockMap[i]->Collision_seal(seal[i]);				// 모든층과 몬스터의 충돌
+			{
+				// 나머지 층은 기본 충돌
+				blockMap[i]->Collision(cha, cha2);		
+				// 모든 층과 몬스터의 충돌
+				blockMap[i]->Collision_seal(seal[i]);			
+			}
 		}
-		if (floor_move)											// 층이동이 된 경우 한번만 실행됨
+
+		// 층 이동이 된 경우 한 번만 실행됨
+		if (floor_move)											
 		{
-			delete seal[(floor_skip_1 + 5) % 6];				// 맨밑층의 몬스터을 지움
-			seal[(floor_skip_1 + 5) % 6] = new Monster;			// 새로 객체생성
-			blockMap[(floor_skip_1 + 5) % 6]->Reset(seal[(floor_skip_1 + 5) % 6]);		// 맨밑층을 맨위로 리셋
+			// 맨 밑층의 몬스터를 지움
+			delete seal[(floor_skip_1 + 5) % 6];	
+			// 새로 객체 생성
+			seal[(floor_skip_1 + 5) % 6] = new Monster;			
+			// 맨 밑층을 맨 위로 리셋
+			blockMap[(floor_skip_1 + 5) % 6]->Reset(seal[(floor_skip_1 + 5) % 6]); 
 		}
 	}
 }

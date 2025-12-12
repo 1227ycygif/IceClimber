@@ -1,13 +1,14 @@
 #pragma once
-
 #include "Include.h"
 
 Game::Game()
 {
+
 }
 
 Game::~Game()
 {
+
 }
 
 void Game::Init()

@@ -23,25 +23,30 @@ void Menu::Init()
 
 	// 로비화면에 필요한 이미지들
 	char FileName[256];
-	sprintf_s(FileName, "./resource/Img/town/bg_town.png");
-	background.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
+	sprintf_s(FileName, "./resource/Img/town/bg_town.png"); 
+	// 메뉴창 
+	background.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0)); 
 
-	sprintf_s(FileName, "./resource/Img/UI/bubble_bg.png");
-	mback.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));			// 메뉴창
+	sprintf_s(FileName, "./resource/Img/UI/bubble_bg.png"); 
+	mback.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));	
 	for (int i = 0; i < 2; i++) 
 	{
-		sprintf_s(FileName, "./resource/Img/UI/hammer_%d.png", i + 1);
-		hammer[i].Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));	// 메뉴선택 망치이미지
+		sprintf_s(FileName, "./resource/Img/UI/hammer_%d.png", i + 1); 
+		// 메뉴 선택 망치 이미지
+		hammer[i].Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));	
 	}
 	sprintf_s(FileName, "./resource/Img/UI/ranking_.png");
-	rback.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));			// 랭킹창
+	// 랭킹창
+	rback.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));			
 
 	sprintf_s(FileName, "./resource/Img/UI/name_bg.png");
-	nameback.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));		// 이름 생성창
+	// 이름 생성창
+	nameback.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));		
 	for (int i = 0; i < 29; i++) 
 	{
 		sprintf_s(FileName, "./resource/Img/alp/ranking_%02d.png",i+1);
-		alp[i].Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));		//알파벳 이미지
+		//알파벳 이미지
+		alp[i].Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));		
 	}
 
 	// 로비에서 캐릭터 이미지
@@ -63,7 +68,7 @@ void Menu::Init()
 
 void Menu::Update(double frame)
 {
-	// 메뉴선택 망치 스프라이트
+	// 메뉴 선택 망치 스프라이트
 	if (GetTickCount() - HamTime > 250) 
 	{
 		count++;
@@ -73,7 +78,7 @@ void Menu::Update(double frame)
 		}
 		HamTime = GetTickCount();
 	}
-	// 두 캐릭터가 왼쪽 끝으로 가면 게임시작, 이름 생성했는지도 확인
+	// 두 캐릭터가 왼쪽 끝으로 가면 게임 시작, 이름 생성했는지도 확인
 	if (cha1X < 10 && cha2X < 10
 			&& playdata.namecheck1 == true && playdata.namecheck2 == true) 
 	{
@@ -89,11 +94,12 @@ void Menu::Update(double frame)
 
 void Menu::Draw()
 {
-	background.Render(0, 0, 0, 1, 1); //이미지출력
+	// 이미지출력
+	background.Render(0, 0, 0, 1, 1); 
 	dv_font.DrawString("1P : 방향_W,A,S,D/ 점프_W/ 공격_S/ 선택_SPACE", 0, 0);
 	dv_font.DrawString("2P : 방향_방향키/ 점프_↑/ 공격_↓/ 선택_ENTER", 0, 50);
 
-	// 1player 좌우이동
+	// 1player 좌우 이동
 	if (KeyDown('A') && !nameset2 && !Mwind && !Rwind) 
 	{
 		if (GetTickCount() - KeyTime > 10) 
@@ -236,7 +242,8 @@ void Menu::Draw()
 				if (GetTickCount() - KeyTime3 > 300) 
 				{
 					sound.Select2->Play(0, NULL);
-					nameset1 = true;				// 1p 이름생성
+					// 1p 이름 생성
+					nameset1 = true;				
 					KeyTime3 = GetTickCount();
 				}
 				Mwind = false;
@@ -246,7 +253,8 @@ void Menu::Draw()
 				if (GetTickCount() - KeyTime3 > 200) 
 				{
 					sound.Select2->Play(0, NULL);
-					Rwind = true;					// 랭킹확인
+					// 랭킹 확인
+					Rwind = true;					
 					KeyTime3 = GetTickCount();
 				}
 				Mwind = false;
@@ -289,7 +297,8 @@ void Menu::Draw()
 				if (GetTickCount() - KeyTime4 > 200) 
 				{
 					sound.Select2->Play(0, NULL);
-					nameset2 = true;				// 2p 이름생성
+					// 2p 이름 생성
+					nameset2 = true;				
 					KeyTime4 = GetTickCount();
 				}
 				Mwind = false;
@@ -299,7 +308,8 @@ void Menu::Draw()
 				if (GetTickCount() - KeyTime4 > 200) 
 				{
 					sound.Select2->Play(0, NULL);
-					Rwind = true;					// 랭킹확인
+					// 랭킹 확인
+					Rwind = true;					
 					KeyTime4 = GetTickCount();
 				}
 				Mwind = false;
@@ -314,22 +324,26 @@ void Menu::Draw()
 		nameback.Render(240, 200, 0, 1, 1);
 
 		if (cnt == 0) 
-		{									//첫번째 이니셜
+		{								
+			// 첫 번째 이니셜
 			alp[index].Render(x, 370, 0, 1, 1);
 		}
 		else if (cnt == 1) 
-		{								//두번째 이니셜
+		{				
+			// 두 번째 이니셜
 			alp[playdata.p1_name[0]].Render(x, 370, 0, 1, 1);
 			alp[index].Render(x + 80, 370, 0, 1, 1);
 		}
 		else if (cnt == 2) 
-		{									//세번째 이니셜
+		{			
+			// 세 번째 이니셜
 			alp[playdata.p1_name[0]].Render(x, 370, 0, 1, 1);
 			alp[playdata.p1_name[1]].Render(x + 80, 370, 0, 1, 1);
 			alp[index].Render(x + 160, 370, 0, 1, 1);
 		}
 		else if (cnt == 3 ) 
-		{									//전체 확인
+		{			
+			// 전체 확인
 			alp[playdata.p1_name[0]].Render(x, 370, 0, 1, 1);
 			alp[playdata.p1_name[1]].Render(x + 80, 370, 0, 1, 1);
 			alp[playdata.p1_name[2]].Render(x + 160, 370, 0, 1, 1);
@@ -337,7 +351,7 @@ void Menu::Draw()
 
 		if (KeyDown('W')) 
 		{		
-			//이니셜 설정 오름차순 이동
+			// 이니셜 설정 오름차순 이동
 			if (GetTickCount() - KeyTime > 200)	
 			{
 				index < 28 ? index++ : index = 0;
@@ -347,7 +361,7 @@ void Menu::Draw()
 
 		if (KeyDown('S')) 
 		{		
-			//이니셜 설정 내림차순 이동
+			// 이니셜 설정 내림차순 이동
 			if (GetTickCount() - KeyTime > 200) 
 			{
 				index > 0 ? index-- : index = 28;
@@ -379,7 +393,7 @@ void Menu::Draw()
 		}
 	}
 
-	//2p name
+	// 2p name
 	if (nameset2 == true) 
 	{
 		int x = 370;

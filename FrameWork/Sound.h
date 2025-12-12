@@ -7,10 +7,8 @@ public:
 	Sound(void);
 	~Sound(void);
 
-	
 CSoundManager* g_pSoundManager;
 CSound*		m_Bk1;
-//CSound*		m_Loadbg;
 CSound*		m_Gamebg;
 CSound*		m_Menubg;
 CSound*		m_overbg;
@@ -27,12 +25,7 @@ CSound*		Select2;
 CSound*		Select3;
 
 int m_Select;
-
-	
-
-	void Init();
-	
-	
+void Init();
 };
 
 extern Sound sound;

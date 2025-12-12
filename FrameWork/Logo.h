@@ -4,11 +4,11 @@
 class Logo : public Chap
 {
 public:
+
 	Logo();
 	~Logo();
 
 	HWND hWnd;
-
 	Sprite loadimg;
 
 	float alpha;
@@ -16,10 +16,7 @@ public:
 	virtual void Init();
 	virtual void Update(double frame);
 	virtual void Draw();
-
 	virtual void OnMessage(MSG* msg);
-
-	
 };
 
 #endif

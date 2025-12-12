@@ -10,13 +10,10 @@ public:
 	Sprite background;
 	Sprite p1;
 	Sprite p2;
-	/*Sprite win;
-	Sprite lose;*/
 
 	virtual void Init();
 	virtual void Update(double frame);
 	virtual void Draw();
-
 	virtual void OnMessage(MSG* msg);
 };
 

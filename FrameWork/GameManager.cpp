@@ -8,24 +8,16 @@ GameManager::GameManager(void)
 	GameTime = GetTickCount();
 	m_GameSpeed = 1;
 	m_Pause = false;
-
-	//m_SysTem.m_Save1 = 100;
-	//m_SysTem.m_Save2 = 200;
-	//Save();
-
 	m_GameStart = true;
 }
 
 GameManager::~GameManager(void)
 {
+
 }
 
 void GameManager::Init()
 {
-	//Menuimg[0].Create("./resource/Effect/menu/1.png",false,D3DCOLOR_XRGB(0,0,0));
-	//Menuimg[1].Create("./resource/Effect/menu/2.png",false,D3DCOLOR_XRGB(0,0,0));
-
-
 	char seps[] = ",\n";
 	char *token;
 
@@ -40,26 +32,22 @@ void GameManager::Init()
 	}
 	
 	fread(&m_SysTem,sizeof(SysTem),1,fp);
-
 	fclose(fp);
 	
 }
 
-// ◆ 디버그 박스 키 설정 
+// 디버그 박스 키 설정 
 void GameManager::Update()
 {
 	static bool prevB = false;
-	bool nowB = (GetAsyncKeyState('B') & 0x8000); // B키 한 번 눌렀을 때만 반응
+	// B키 한 번 눌렀을 때만 반응
+	bool nowB = (GetAsyncKeyState('B') & 0x8000); 
 	
 		if (nowB && !prevB)
 		{
 			m_bShowCollider = !m_bShowCollider;
 		}
 		prevB = nowB;
-		
-		//m_bShowCollider = !m_bShowCollider;
-		
-	//if(게임 종료시) g_Mng.n_Chap = OVER; 
 }
 void GameManager::Save()
 {
@@ -74,18 +62,14 @@ void GameManager::Save()
 
 void GameManager::Delete()
 {
-//	sound.g_pSoundManager->drr  
 
 }
- 
 
-
-
-void GameManager::GameReset(void)  // 여기는 게임상 첨에 한번만  초기화되는 부분만 넣어줌.
+// 여기는 게임상 처음에 한 번만 초기화되는 부분만 넣어줌.
+void GameManager::GameReset(void)  
 {
 
 }
-
 
 /*
 □ GameManager::Draw 역할 □ 
@@ -106,14 +90,5 @@ void GameManager::GameReset(void)  // 여기는 게임상 첨에 한번만  초기화되는 부분
 */
 void GameManager::Draw()
 {
-
-	//if(m_Alpha == 0) { Menuimg[0].SetColor(255,255, 255, 255);  Menuimg[1].SetColor(255,255, 255, 255);}
-	//if(m_Alpha == 1) { Menuimg[0].SetColor(255,255,255,0); Menuimg[1].SetColor(255,255,255,0); }
-	
-
-	//map.numimg[5].Draw(50, 53);
-	//map.numimg[0].Draw(65, 53);
-	//map.numimg[0].Draw(80, 53);
-	//map.numimg[0].Draw(95, 53);
 	
 }

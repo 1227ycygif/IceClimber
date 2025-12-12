@@ -1,6 +1,8 @@
 #pragma once
 #include "Include.h"
-class BlockManager;  // BlockManager*만 쓸 때 forward 선언
+
+// BlockManager*만 쓸 때 forward 선언
+class BlockManager;  
 // 만약 BlockManager의 함수/멤버까지 쓰면 반드시 #include "BlockManager.h"로 바꿀 것
 
 /*
@@ -16,8 +18,8 @@ class BlockManager;  // BlockManager*만 쓸 때 forward 선언
 
 			멤버변수 get,set
 
-			몬스터의 방향전환 충돌
-			몬스터의 바닥파괴 충돌
+			몬스터의 방향 전환 충돌
+			몬스터의 바닥 파괴 충돌
 			몬스터가 캐릭터에게 충돌
 
 			층이동
@@ -25,68 +27,88 @@ class BlockManager;  // BlockManager*만 쓸 때 forward 선언
 
 enum MonsterState
 {
-	MON_IDLE, //동굴 대기
-	MON_SEARCH, //탐색
-	MON_RETURN, //동굴로 복귀
-	MON_BRING, //고드름 들고 이동
-	MON_PLACE //블럭 설치
+	// 동굴 대기
+	MON_IDLE, 
+	// 탐색
+	MON_SEARCH, 
+	// 동굴로 복귀
+	MON_RETURN, 
+	// 고드름 들고 이동
+	MON_BRING, 
+	// 블록 설치
+	MON_PLACE 
 
 };
 
 const int MAX_MONSTER = 6;
 
-// ◆ 길찾기 알고리즘
+// 길찾기 알고리즘
 struct BFSNode 
 {
-	int x, prev; // x : mapX 좌표, prev : 어디서 왔는지
+	// x : mapX 좌표, prev : 어디서 왔는지
+	int x, prev; 
 };
 
 class Monster
 {
-	int						monKind;			// 해당 박스 객체의 종류
-	int						mapX;				// 맵의 x좌표
-	int						mapY;				// 맵의 y좌표
-	double					scale;				// 렌더링 스케일
-	int						pos;				// 향하는 방향
-	int						move_x;				// 좌 우 이동
-	bool					create;				// 맵생성시 생성될지 안될지
-	bool					onoff;				// 죽었니 살았니
-	bool					boom;				// 터짐
+	// 해당 박스 객체의 종류
+	int	monKind;
+	// 맵의 x좌표
+	int	mapX;	
+	// 맵의 y좌표
+	int	mapY;	
+	// 렌더링 스케일
+	double	scale;	
+	// 향하는 방향
+	int	pos;	
+	// 좌 우 이동
+	int	move_x;	
+	// 맵 생성 시 생성될 지 안 될지
+	bool create;	
+	// 죽었니 살았니
+	bool onoff;	
+	// 터짐
+	bool boom;	
+
+	// 충돌 범위 
+	// blockx : 좌, blockX : 우, blocky : 상 , blockY : 하
+	int	monx, mony, monX, monY;		
 
 
-	int						monx, mony, monX, monY;		// 충돌범위 blockx:좌, blockX:우, blocky:상 , blockY:하
-
-
-	//방향전환
-	bool					col_front_turn, col_down_turn;								// 앞부분 충돌, 앞 바닥부분 충돌
+	// 방향전환
+	// 앞 부분 충돌, 앞 바닥 부분 충돌
+	bool col_front_turn, col_down_turn;	
 	//바닥
-	bool					col_floor;													// 바닥 사라짐 수직 충돌방향							
-	//1p
-	bool					col_h_Up, col_h_Down, col_h_Left, col_h_Right;				// 1플레이어 망치 수평 충돌방향																		
-	//2p
-	bool					col_h_Up2, col_h_Down2, col_h_Left2, col_h_Right2;			// 2플레이어 망치 수평 충돌방향
+	// 바닥 사라짐 수직 충돌 방향	
+	bool col_floor;																			
+	// 1p
+	// 1플레이어 망치 수평 충돌 방향
+	bool col_h_Up, col_h_Down, col_h_Left, col_h_Right;																						
+	// 2p
+	// 2플레이어 망치 수평 충돌 방향
+	bool col_h_Up2, col_h_Down2, col_h_Left2, col_h_Right2;			
 
-	BlockManager* blockMgr;//자기 층의 블럭매니저
-	int state;//MonsterState
+	// 자기 층의 블록매니저
+	BlockManager* blockMgr;
+	// MonsterState
+	int state;
 	bool hasIcicle;
-	int targetX, targetY; //블록 생성 목표 좌표
+	//블록 생성 목표 좌표
+	int targetX, targetY; 
 	
-	// ◆
 	int monsterCount;
 	Monster* monsterList[MAX_MONSTER];
 
-	// ◆
 	Sprite sprite;
 	float x, y;
 
 	int lastPlacedX = -1;
 	int lastPlacedY = -1;
-
-	int caveX; // ◆ MON_SEARCH
-
+	// MON_SEARCH
+	int caveX; 
 	int nextX;
-	bool blocked; // ◆ MON_BRING
-
+	// MON_BRING
+	bool blocked; 
 
 public:
 
@@ -94,9 +116,12 @@ public:
 
 	~Monster(void);
 
-	DWORD MonMoveTime, MonCountTime, AttCountTime, RezCountTime;				// 몬스터 이동및 스프라이트 시간
-	Sprite seal_walk[3],attackEffect[3], bird_fly[2], bird_attacked,icicle;	// 몬스터 스프라이트
-	int m_count, a_count;														// 몬스터 스프라이트 인덱스
+	// 몬스터 이동 및 스프라이트 시간
+	DWORD MonMoveTime, MonCountTime, AttCountTime, RezCountTime;				
+	// 몬스터 스프라이트
+	Sprite seal_walk[3],attackEffect[3], bird_fly[2], bird_attacked,icicle;	
+	// 몬스터 스프라이트 인덱스
+	int m_count, a_count;														
 
 	void Init(int monKind, int mapY, double scale, bool start);
 	void Update();
@@ -126,5 +151,5 @@ public:
 	int getLastPlacedY() const { return lastPlacedY; }
 
 	void Floor(int floorY);
-	void DrawCollider(); // ◆ 디버그 박스 그리기
+	void DrawCollider(); // 디버그 박스 
 };

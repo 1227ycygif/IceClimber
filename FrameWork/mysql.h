@@ -21,7 +21,7 @@ public:
 	Mysql();
 	~Mysql();
 
-	// MYSQL 구조체 변수 (Logo 챕터에서 1 단계 테스트 접속 확인을 위함...)
+	// MySQL 구조체 변수 (Logo 챕터에서 1 단계 테스트 접속 확인을 위함...)
 	MYSQL mysql;
 
 	// MYSQL 연결 및 구동 변수
@@ -41,14 +41,13 @@ public:
 	char last2[10];
 	char score2[200];
 
-	
 	char query[255];
 
-	 //MYSQL 상태 변수
+    // MySQL 상태 변수
 	char state[256];
 	bool mysql_Success;
 
-	// MYSQL 결과 확인 변수
+	// MySQL 결과 확인 변수
 	Rank ranking[8];
 
 	void Init();

@@ -8,13 +8,17 @@ Map map;
 */
 Map::Map()
 {
+
 }
+
 /*
 기능 :		소멸자
 */
 Map::~Map()
 {
+
 }
+
 /*
 기능 :		초기화
 매개변수 :	없음
@@ -28,6 +32,7 @@ void Map::Init()
 	background.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
 	
 }
+
 /*
 기능 :		업데이트
 매개변수 :	없음
@@ -36,7 +41,9 @@ void Map::Init()
 */
 void Map::Update(double frame)
 {
+
 }
+
 /*
 기능 :		드로우
 매개변수 :	몬스터 종류(아직 1종류밖에...), 맵 y좌표, 렌더링 스케일, 맵생성시 몬스터 생성여부

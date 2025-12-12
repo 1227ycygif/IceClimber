@@ -15,11 +15,11 @@ class Map
 {
 
 public :
+
 	Map();
 	~Map();
 
 	Sprite background;
-
 
 	void Init();
 	void Update(double frame);

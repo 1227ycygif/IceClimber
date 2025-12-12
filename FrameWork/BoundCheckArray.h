@@ -1,7 +1,7 @@
 #pragma once
 
 /*
-용도 :		배열 클래스템플릿
+용도 :		배열 클래스 템플릿
 맴버 변수 :	T 타입 포인터
 			동적할당 길이
 맴버 함수 :	생성자
@@ -12,10 +12,12 @@
 			[]연산자 const 오버로딩
 			get-동적할당 길이
 */
+
 template<typename T>
 class BoundCheckArray
 {
 private:
+
 	T * pAcc;
 	int acclen;
 
@@ -50,14 +52,15 @@ inline BoundCheckArray<T>::~BoundCheckArray() { delete[] pAcc; }
 
 /*
 기능 :		객체포인터 객체에 대한 []연산자 오버로딩
-매개변수 :	[]연잔자 인덱스값
+매개변수 :	[]연산자 인덱스값
 반환 :		객체포인터의 래퍼런스
-특이사항 :	리턴값으로 조작가능
+특이사항 :	리턴 값으로 조작 가능
 */
 template<typename T>
 inline T & BoundCheckArray<T>::operator[](int idx)
 {
-	if (idx < 0 || idx >= acclen)								// 범위 초과 시
+	// 범위 초과 시
+	if (idx < 0 || idx >= acclen)								
 	{
 		exit(1);
 	}
@@ -66,14 +69,15 @@ inline T & BoundCheckArray<T>::operator[](int idx)
 
 /*
 기능 :		객체포인터 객체에 대한 []연산자 오버로딩 (상수화)
-매개변수 :	[]연잔자 인덱스값
-반환 :		계좌객체포인터
-특이사항 :	리턴값으로 조작불가능
+매개변수 :	[]연산자 인덱스값
+반환 :		계좌 객체포인터
+특이사항 :	리턴값으로 조작 불가능
 */
 template<typename T>
 inline T  BoundCheckArray<T>::operator[](int idx) const
 {
-	if (idx < 0 || idx >= acclen)								// 범위 초과 시
+	// 범위 초과 시
+	if (idx < 0 || idx >= acclen)								
 	{
 		exit(1);
 	}

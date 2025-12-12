@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Include.h"
 
 Logo::Logo()
@@ -37,7 +36,6 @@ void Logo::Init()
 	}
 
 }
-
 
 void Logo::Update(double frame)
 {

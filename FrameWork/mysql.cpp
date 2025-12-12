@@ -75,13 +75,14 @@ void Mysql::save()
 	//// 다음 mysql_query() 함수로 MYSQL 구조체를 통한 쿼리문 전송
 	//query_start = mysql_query(connection, query);
 
-
-	if (query_start != 0) // 전송 실패시
+	// 전송 실패시
+	if (query_start != 0) 
 	{
 		sprintf_s(state, "Mysql query error : %s", mysql_error(&conn));
 		sql.mysql_Success = false;
 	}
-	else // 성공시
+	// 성공 시
+	else 
 	{
 		mysql_Success = true;
 	}
