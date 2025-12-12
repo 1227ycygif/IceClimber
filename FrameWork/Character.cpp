@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 #include"Include.h"
 
 /*
-±â´É :		»ı¼ºÀÚ
+ê¸°ëŠ¥ :		ìƒì„±ì
 */
 Character::Character()
 {
@@ -10,7 +10,7 @@ Character::Character()
 }
 
 /*
-±â´É :		¼Ò¸êÀÚ
+ê¸°ëŠ¥ :		ì†Œë©¸ì
 */
 Character::~Character()
 {
@@ -18,10 +18,10 @@ Character::~Character()
 }
 
 /*
-±â´É :		ÃÊ±âÈ­
-¸Å°³º¯¼ö :	¸Ê xÁÂÇ¥, ¸Ê yÁÂÇ¥, ·»´õ¸µ ½ºÄÉÀÏ, ÇÃ·¹ÀÌ¾î ¹øÈ£
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	°¢Á¾ º¯¼ö ÃÊ±âÈ­ ¹× ½ºÆ®¶óÀÌÇÁ ÀÌ¹ÌÁö ¿¬°á
+ê¸°ëŠ¥ :		ì´ˆê¸°í™”
+ë§¤ê°œë³€ìˆ˜ :	ë§µ xì¢Œí‘œ, ë§µ yì¢Œí‘œ, ë Œë”ë§ ìŠ¤ì¼€ì¼, í”Œë ˆì´ì–´ ë²ˆí˜¸
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ê°ì¢… ë³€ìˆ˜ ì´ˆê¸°í™” ë° ìŠ¤íŠ¸ë¼ì´í”„ ì´ë¯¸ì§€ ì—°ê²°
 */
 void Character::Init(int mapchX, int mapchY, double scale, int player)
 {
@@ -30,7 +30,7 @@ void Character::Init(int mapchX, int mapchY, double scale, int player)
 	this->mapchX = mapchX;
 	this->mapchY = mapchY;
 
-	// ÀÌµ¿
+	// ì´ë™
 	pos = RIGHT;				
 	move_x = 0;
 	move_collision_l = false;
@@ -40,45 +40,45 @@ void Character::Init(int mapchX, int mapchY, double scale, int player)
 	move_state_l = false;
 	move_state_r = false;
 
-	// ÀÚµ¿ ÀÌµ¿
+	// ìë™ ì´ë™
 	automove_state = false;
 	automove_able = true;
 
-	// Áß·Â
+	// ì¤‘ë ¥
 	now_fall_speed = 0;				
 	fall_state = true;				
 	fall_able = false;
 	floor_collision = false;
 	floor_collision_temp = false;
 
-	// Á¡ÇÁ
+	// ì í”„
 	jump_state = false;
 	jump_able = true;
 	jump_collision = false;
 	jump_collision_temp = false;
 	jump_speed = 0;
 
-	// ¸ó½ºÅÍ
+	// ëª¬ìŠ¤í„°
 	col_mon = false;
 	dead = false;
 	gameover_y = -80;
 
-	// °ø°İ
+	// ê³µê²©
 	attack_state = false;
 
-	// ½ºÆ®¶óÀÌÇÁ ½Ã°£
+	// ìŠ¤íŠ¸ë¼ì´í”„ ì‹œê°„
 	StandCountTime = GetTickCount();
 
-	// Ãæµ¹ ¹üÀ§
-	col.chx = (mapchX * 40) - 14;		// ÁÂ
-	col.chX = (mapchX * 40) + 14;		// ¿ì
-	col.chy = (mapchY * 34) - 80;		// »ó
-	col.chY = (mapchY * 34);			// ÇÏ
+	// ì¶©ëŒ ë²”ìœ„
+	col.chx = (mapchX * 40) - 14;		// ì¢Œ
+	col.chX = (mapchX * 40) + 14;		// ìš°
+	col.chy = (mapchY * 34) - 80;		// ìƒ
+	col.chY = (mapchY * 34);			// í•˜
 
-	col_temp.chx = col.chx;				// ÁÂ
-	col_temp.chX = col.chX;				// ¿ì
-	col_temp.chy = col.chy;				// »ó
-	col_temp.chY = col.chY;				// ÇÏ
+	col_temp.chx = col.chx;				// ì¢Œ
+	col_temp.chX = col.chX;				// ìš°
+	col_temp.chy = col.chy;				// ìƒ
+	col_temp.chY = col.chY;				// í•˜
 
 	char FileName[256];
 
@@ -112,10 +112,10 @@ void Character::Init(int mapchX, int mapchY, double scale, int player)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ Ãæµ¹ ¹üÀ§ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ Ãæµ¹ ¹üÀ§ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì¶©ëŒ ë²”ìœ„ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì¶©ëŒ ë²”ìœ„ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const Col Character::getCol()
 {
@@ -124,10 +124,10 @@ const Col Character::getCol()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÓ½Ã Ãæµ¹ ¹üÀ§ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ÀÓ½Ã Ãæµ¹ ¹üÀ§ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì„ì‹œ ì¶©ëŒ ë²”ìœ„ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì„ì‹œ ì¶©ëŒ ë²”ìœ„ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const Col Character::getCol_temp()
 {
@@ -136,10 +136,10 @@ const Col Character::getCol_temp()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¹æÇâ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ¹æÇâ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ë°©í–¥ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ë°©í–¥ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Character::getPos()
 {
@@ -147,10 +147,10 @@ const int Character::getPos()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÌµ¿ »óÅÂ ÁÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ÀÌµ¿ »óÅÂ ÁÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì´ë™ ìƒíƒœ ì¢Œ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì´ë™ ìƒíƒœ ì¢Œ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getMove_state_l()
 {
@@ -158,10 +158,10 @@ const bool Character::getMove_state_l()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÌµ¿ »óÅÂ ¿ì ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ÀÌµ¿ »óÅÂ ¿ì (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì´ë™ ìƒíƒœ ìš° ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì´ë™ ìƒíƒœ ìš° (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getMove_state_r()
 {
@@ -169,10 +169,10 @@ const bool Character::getMove_state_r()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÌµ¿ »óÅÂ ÁÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì´ë™ ìƒíƒœ ì¢Œ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setMove_collision_l(bool state)
 {
@@ -180,10 +180,10 @@ void Character::setMove_collision_l(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÌµ¿ »óÅÂ ¿ì º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì´ë™ ìƒíƒœ ìš° ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setMove_collision_r(bool state)
 {
@@ -191,10 +191,10 @@ void Character::setMove_collision_r(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÁÂ ¿ì ÀÌµ¿·® º¯È¯
-¸Å°³º¯¼ö :	ÀÌµ¿·®
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¸Ê ³¡±îÁö ÀÌµ¿ ½Ã ¹İ´ëÂÊÀ¸·Î ÀÌµ¿
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì¢Œ ìš° ì´ë™ëŸ‰ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì´ë™ëŸ‰
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ë§µ ëê¹Œì§€ ì´ë™ ì‹œ ë°˜ëŒ€ìª½ìœ¼ë¡œ ì´ë™
 */
 void Character::setMove_x(int move)
 {
@@ -223,10 +223,10 @@ void Character::setMove_x(int move)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÚµ¿ ÀÌµ¿ »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìë™ ì´ë™ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setAutomove_state(bool state)
 {
@@ -234,10 +234,10 @@ void Character::setAutomove_state(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÚµ¿ ÀÌµ¿ »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ÀÚµ¿ ÀÌµ¿ »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìë™ ì´ë™ ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ìë™ ì´ë™ ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getAutomove_state()
 {
@@ -245,10 +245,10 @@ const bool Character::getAutomove_state()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÚµ¿ ÀÌµ¿ °¡´É »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìë™ ì´ë™ ê°€ëŠ¥ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setAutomove_able(bool state)
 {
@@ -256,10 +256,10 @@ void Character::setAutomove_able(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÚµ¿ ÀÌµ¿ °¡´É »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ÀÚµ¿ ÀÌµ¿ °¡´É »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìë™ ì´ë™ ê°€ëŠ¥ ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ìë™ ì´ë™ ê°€ëŠ¥ ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getAutomove_able()
 {
@@ -267,10 +267,10 @@ const bool Character::getAutomove_able()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¹Ù´Ú Ãæµ¹ »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ë°”ë‹¥ ì¶©ëŒ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setFloor_collision(bool state)
 {
@@ -278,10 +278,10 @@ void Character::setFloor_collision(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¹Ù´Ú Ãæµ¹ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ¹Ù´Ú Ãæµ¹ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ë°”ë‹¥ ì¶©ëŒ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ë°”ë‹¥ ì¶©ëŒ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getFloor_collision()
 {
@@ -289,10 +289,10 @@ const bool Character::getFloor_collision()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÓ½Ã ¹Ù´Ú Ãæµ¹ »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì„ì‹œ ë°”ë‹¥ ì¶©ëŒ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setFloor_collision_temp(bool state)
 {
@@ -300,10 +300,10 @@ void Character::setFloor_collision_temp(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÓ½Ã ¹Ù´Ú Ãæµ¹ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ÀÓ½Ã ¹Ù´Ú Ãæµ¹ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì„ì‹œ ë°”ë‹¥ ì¶©ëŒ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì„ì‹œ ë°”ë‹¥ ì¶©ëŒ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getFloor_collision_temp()
 {
@@ -311,10 +311,10 @@ const bool Character::getFloor_collision_temp()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¶³¾îÁö´Â »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ¶³¾îÁö´Â »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ë–¨ì–´ì§€ëŠ” ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ë–¨ì–´ì§€ëŠ” ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getFall_state()
 {
@@ -322,10 +322,10 @@ const bool Character::getFall_state()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¶³¾îÁü »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ë–¨ì–´ì§ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setFall_state(bool state)
 {
@@ -333,10 +333,10 @@ void Character::setFall_state(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¶³¾îÁü °¡´É »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ ¶³¾îÁü °¡´É »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ë–¨ì–´ì§ ê°€ëŠ¥ ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ë–¨ì–´ì§ ê°€ëŠ¥ ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getFall_able()
 {
@@ -344,10 +344,10 @@ const bool Character::getFall_able()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¶³¾îÁü °¡´É »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ë–¨ì–´ì§ ê°€ëŠ¥ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setFall_able(bool state)
 {
@@ -355,10 +355,10 @@ void Character::setFall_able(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ Á¡ÇÁ Ãæµ¹ »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì í”„ ì¶©ëŒ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setJump_collision(bool state)
 {
@@ -366,10 +366,10 @@ void Character::setJump_collision(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ Á¡ÇÁ Ãæµ¹ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ Á¡ÇÁ Ãæµ¹ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì í”„ ì¶©ëŒ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì í”„ ì¶©ëŒ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getJump_collision()
 {
@@ -377,10 +377,10 @@ const bool Character::getJump_collision()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ÀÓ½Ã Á¡ÇÁ Ãæµ¹ »óÅÂ º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì„ì‹œ ì í”„ ì¶©ëŒ ìƒíƒœ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setJump_collision_temp(bool state)
 {
@@ -388,10 +388,10 @@ void Character::setJump_collision_temp(bool state)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ Á¡ÇÁ »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ Á¡ÇÁ »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì í”„ ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì í”„ ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getJump_state()
 {
@@ -399,10 +399,10 @@ const bool Character::getJump_state()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ Á¡ÇÁ °¡´É »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ Á¡ÇÁ °¡´É »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì í”„ ê°€ëŠ¥ ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì í”„ ê°€ëŠ¥ ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getJump_able()
 {
@@ -410,10 +410,10 @@ const bool Character::getJump_able()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¿©ºĞÀÇ ¶³¾îÁü ÀÌµ¿·® º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì—¬ë¶„ì˜ ë–¨ì–´ì§ ì´ë™ëŸ‰ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setExtra_fall_y(int a)
 {
@@ -421,40 +421,40 @@ void Character::setExtra_fall_y(int a)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ ¿©ºĞÀÇ Á¡ÇÁ ÀÌµ¿·® º¯È¯
-¸Å°³º¯¼ö :	»óÅÂ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì—¬ë¶„ì˜ ì í”„ ì´ë™ëŸ‰ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	ìƒíƒœ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::setExtra_jump_y(int a)
 {
 	extra_jump_y = a;
 }
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ °ø°İ »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ °ø°İ »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ê³µê²© ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ê³µê²© ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getAttack_state()
 {
 	return attack_state;
 }
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ Á×À½ »óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍÀÇ Á×À½ »óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ì£½ìŒ ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„°ì˜ ì£½ìŒ ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Character::getDead()
 {
 	return dead;
 }
 /*
-±â´É :		Ä³¸¯ÅÍ ÇÃ·¹ÀÌ¾î ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		Ä³¸¯ÅÍ ÇÃ·¹ÀÌ¾î ¹İÈ¯(»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„° í”Œë ˆì´ì–´ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ìºë¦­í„° í”Œë ˆì´ì–´ ë°˜í™˜(ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Character::getPlayer()
 {
@@ -462,15 +462,15 @@ const int Character::getPlayer()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍ °£ÀÇ ¼öÁ÷ ¹æÇâ Ãæµ¹ ÆÇÁ¤
-¸Å°³º¯¼ö :	´Ù¸¥ Ä³¸¯ÅÍÀÇ Ãæµ¹ ¹üÀ§
-¹İÈ¯ :		Ãæµ¹ÀÇ Á¾·ù / ºñÃæµ¹ - 8 / »óÇÏÁÂ¿ì¿¡ À§Ä¡ - 7 / °©ÀÛ½º·± Ãæµ¹ - 6 
-						/ ÁÂÃø¿¡¼­ Ãæµ¹ - 0 / ¿ìÃø¿¡¼­ Ãæµ¹ - 1 / À§¿¡¼­ Ãæµ¹ - 2 / ¾Æ·¡¿¡¼­ Ãæµ¹ - 3
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„° ê°„ì˜ ìˆ˜ì§ ë°©í–¥ ì¶©ëŒ íŒì •
+ë§¤ê°œë³€ìˆ˜ :	ë‹¤ë¥¸ ìºë¦­í„°ì˜ ì¶©ëŒ ë²”ìœ„
+ë°˜í™˜ :		ì¶©ëŒì˜ ì¢…ë¥˜ / ë¹„ì¶©ëŒ - 8 / ìƒí•˜ì¢Œìš°ì— ìœ„ì¹˜ - 7 / ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒ - 6 
+						/ ì¢Œì¸¡ì—ì„œ ì¶©ëŒ - 0 / ìš°ì¸¡ì—ì„œ ì¶©ëŒ - 1 / ìœ„ì—ì„œ ì¶©ëŒ - 2 / ì•„ë˜ì—ì„œ ì¶©ëŒ - 3
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 int Character::Collision_V(int chx, int chX, int chy, int chY)
 {
-	// ºí·ÏÀÇ ¿ŞÂÊ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ì™¼ìª½ ë°©í–¥ì¸ ê²½ìš°
 	if (col_temp.chX < chx && ((col_temp.chy > chy && col_temp.chy < chY) || (col_temp.chY > chy && col_temp.chY < chY)))		
 	{
 		col_v_Left = true;
@@ -480,7 +480,7 @@ int Character::Collision_V(int chx, int chX, int chy, int chY)
 		col_v_Down = false;
 		return 7;
 	}
-	// ºí·ÏÀÇ ¿À¸¥ÂÊ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ì˜¤ë¥¸ìª½ ë°©í–¥ì¸ ê²½ìš°
 	else if (col_temp.chx > chX && ((col_temp.chy > chy && col_temp.chy < chY) || (col_temp.chY > chy && col_temp.chY < chY)))	
 	{
 		col_v_Right = true;
@@ -490,7 +490,7 @@ int Character::Collision_V(int chx, int chX, int chy, int chY)
 		col_v_Down = false;
 		return 7;
 	}
-	// ºí·ÏÀÇ À§ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ìœ„ ë°©í–¥ì¸ ê²½ìš°
 	else if (col_temp.chY < chy && ((col_temp.chx > chx && col_temp.chx < chX) || (col_temp.chX > chx && col_temp.chX < chX)))	
 	{
 		col_v_Up = true;
@@ -500,7 +500,7 @@ int Character::Collision_V(int chx, int chX, int chy, int chY)
 		col_v_Down = false;
 		return 7;
 	}
-	// ºí·ÏÀÇ ¾Æ·¡ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ì•„ë˜ ë°©í–¥ì¸ ê²½ìš°
 	else if (col_temp.chy > chY && ((col_temp.chx > chx && col_temp.chx < chX) || (col_temp.chX > chx && col_temp.chX < chX)))	
 	{
 		col_v_Down = true;
@@ -510,7 +510,7 @@ int Character::Collision_V(int chx, int chX, int chy, int chY)
 		col_v_Up = false;
 		return 7;
 	}
-	// ºí·Ï°ú Ãæµ¹ÇÑ °æ¿ì
+	// ë¸”ë¡ê³¼ ì¶©ëŒí•œ ê²½ìš°
 	else if (((col_temp.chx >= chx && col_temp.chx <= chX) || (col_temp.chX >= chx && col_temp.chX <= chX)) &&					
 		((col_temp.chy >= chy && col_temp.chy <= chY) || (col_temp.chY >= chy && col_temp.chY <= chY)))
 	{
@@ -536,11 +536,11 @@ int Character::Collision_V(int chx, int chX, int chy, int chY)
 		}
 		else
 		{
-			// °©ÀÛ½º·± Ãæµ¹ÀÏ ¶§
+			// ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒì¼ ë•Œ
 			return 6;
 		}																	
 	}
-	// ¾Æ¹«°Íµµ ¾Æ´Ò ¶§
+	// ì•„ë¬´ê²ƒë„ ì•„ë‹ ë•Œ
 	else																							
 	{
 		col_v_Down = false;
@@ -552,18 +552,18 @@ int Character::Collision_V(int chx, int chX, int chy, int chY)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍ °£ÀÇ ¼öÆò ¹æÇâ Ãæµ¹ ÆÇÁ¤
-¸Å°³º¯¼ö :	´Ù¸¥ Ä³¸¯ÅÍÀÇ Ãæµ¹ ¹üÀ§
-¹İÈ¯ :		Ãæµ¹ÀÇ Á¾·ù / ºñÃæµ¹ - 8 / »óÇÏÁÂ¿ì¿¡ À§Ä¡ - 7 / °©ÀÛ½º·± Ãæµ¹ - 6 
-						/ ÁÂÃø¿¡¼­ Ãæµ¹ - 0 / ¿ìÃø¿¡¼­ Ãæµ¹ - 1 / À§¿¡¼­ Ãæµ¹ - 2 / ¾Æ·¡¿¡¼­ Ãæµ¹ - 3
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„° ê°„ì˜ ìˆ˜í‰ ë°©í–¥ ì¶©ëŒ íŒì •
+ë§¤ê°œë³€ìˆ˜ :	ë‹¤ë¥¸ ìºë¦­í„°ì˜ ì¶©ëŒ ë²”ìœ„
+ë°˜í™˜ :		ì¶©ëŒì˜ ì¢…ë¥˜ / ë¹„ì¶©ëŒ - 8 / ìƒí•˜ì¢Œìš°ì— ìœ„ì¹˜ - 7 / ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒ - 6 
+						/ ì¢Œì¸¡ì—ì„œ ì¶©ëŒ - 0 / ìš°ì¸¡ì—ì„œ ì¶©ëŒ - 1 / ìœ„ì—ì„œ ì¶©ëŒ - 2 / ì•„ë˜ì—ì„œ ì¶©ëŒ - 3
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 int Character::Collision_H(int chx, int chX, int chy, int chY)
 {
 	col.chy++;
 	col.chY--;
 
-	// ºí·ÏÀÇ ¿ŞÂÊ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ì™¼ìª½ ë°©í–¥ì¸ ê²½ìš°
 	if (col.chX < chx && ((col.chy > chy && col.chy < chY) || (col.chY > chy && col.chY < chY)))		
 	{
 		col_h_Left = true;
@@ -574,7 +574,7 @@ int Character::Collision_H(int chx, int chX, int chy, int chY)
 		col.chY++;
 		return 7;
 	}
-	// ºí·ÏÀÇ ¿À¸¥ÂÊ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ì˜¤ë¥¸ìª½ ë°©í–¥ì¸ ê²½ìš°
 	else if (col.chx > chX && ((col.chy > chy && col.chy < chY) || (col.chY > chy && col.chY < chY)))	
 	{
 		col_h_Right = true;
@@ -585,7 +585,7 @@ int Character::Collision_H(int chx, int chX, int chy, int chY)
 		col.chY++;
 		return 7;
 	}
-	// ºí·ÏÀÇ À§ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ìœ„ ë°©í–¥ì¸ ê²½ìš°
 	else if (col.chY < chy && ((col.chx > chx && col.chx < chX) || (col.chX > chx && col.chX < chX)))	
 	{
 		col_h_Up = true;
@@ -596,7 +596,7 @@ int Character::Collision_H(int chx, int chX, int chy, int chY)
 		col.chY++;
 		return 7;
 	}
-	// ºí·ÏÀÇ ¾Æ·¡ ¹æÇâÀÎ °æ¿ì
+	// ë¸”ë¡ì˜ ì•„ë˜ ë°©í–¥ì¸ ê²½ìš°
 	else if (col.chy > chY && ((col.chx > chx && col.chx < chX) || (col.chX > chx && col.chX < chX)))	
 	{
 		col_h_Down = true;
@@ -607,7 +607,7 @@ int Character::Collision_H(int chx, int chX, int chy, int chY)
 		col.chY++;
 		return 7;
 	}
-	// ºí·Ï°ú Ãæµ¹ÇÑ °æ¿ì
+	// ë¸”ë¡ê³¼ ì¶©ëŒí•œ ê²½ìš°
 	else if (((col.chx >= chx && col.chx <= chX) || (col.chX >= chx && col.chX <= chX)) &&				
 		((col.chy >= chy && col.chy <= chY) || (col.chY >= chy && col.chY <= chY)))
 	{
@@ -643,11 +643,11 @@ int Character::Collision_H(int chx, int chX, int chy, int chY)
 		{
 			col.chy--;
 			col.chY++;
-			// °©ÀÛ½º·± Ãæµ¹ÀÏ ¶§
+			// ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒì¼ ë•Œ
 			return 6;																				
 		}
 	}
-	// ¾Æ¹«°Íµµ ¾Æ´Ò ¶§
+	// ì•„ë¬´ê²ƒë„ ì•„ë‹ ë•Œ
 	else																							
 	{
 		col_h_Down = false;
@@ -661,14 +661,14 @@ int Character::Collision_H(int chx, int chX, int chy, int chY)
 	}
 }
 /*
-±â´É :		Ä³¸¯ÅÍ¿Í ¸ó½ºÅÍ °£ÀÇ Ãæµ¹ ÆÇÁ¤
-¸Å°³º¯¼ö :	¸ó½ºÅÍÀÇ Ãæµ¹ ¹üÀ§
-¹İÈ¯ :		Ãæµ¹ÀÇ Á¾·ù / ºñÃæµ¹ - 0 / Ãæµ¹ - 1
-Æ¯ÀÌ»çÇ× :	¸ó½ºÅÍ°¡ °¡·ÁÁ® ÀÖÀ» °æ¿ì Ãæµ¹ ¾È ÇÔ
+ê¸°ëŠ¥ :		ìºë¦­í„°ì™€ ëª¬ìŠ¤í„° ê°„ì˜ ì¶©ëŒ íŒì •
+ë§¤ê°œë³€ìˆ˜ :	ëª¬ìŠ¤í„°ì˜ ì¶©ëŒ ë²”ìœ„
+ë°˜í™˜ :		ì¶©ëŒì˜ ì¢…ë¥˜ / ë¹„ì¶©ëŒ - 0 / ì¶©ëŒ - 1
+íŠ¹ì´ì‚¬í•­ :	ëª¬ìŠ¤í„°ê°€ ê°€ë ¤ì ¸ ìˆì„ ê²½ìš° ì¶©ëŒ ì•ˆ í•¨
 */
 int Character::Collision_mon(int monx, int monX, int mony, int monY)
 {
-	// ¸ó½ºÅÍ°¡ ¼ûÀ¸¸é Ãæµ¹ ¾È ÇÔ
+	// ëª¬ìŠ¤í„°ê°€ ìˆ¨ìœ¼ë©´ ì¶©ëŒ ì•ˆ í•¨
 	if ((mapchX * 40) + (move_x) < 220 || (mapchX * 40) + (move_x) > 1060)
 	{
 		return 0;
@@ -676,19 +676,19 @@ int Character::Collision_mon(int monx, int monX, int mony, int monY)
 
 	if (!col_mon)
 	{
-		// ¸ó½ºÅÍ¿Í Ãæµ¹ÇÑ °æ¿ì
+		// ëª¬ìŠ¤í„°ì™€ ì¶©ëŒí•œ ê²½ìš°
 		if (((col.chx >= monx && col.chx <= monX) || (col.chX >= monx && col.chX <= monX)) &&		
 			((col.chy >= mony && col.chy <= monY) || (col.chY >= mony && col.chY <= monY)))
 		{
-			// Á×À½ »ç¿îµå
+			// ì£½ìŒ ì‚¬ìš´ë“œ
 			sound.m_Death->Play(0, NULL);			
-			// ¸ó½ºÅÍ Ãæµ¹ »óÅÂ ÀüÈ¯	
+			// ëª¬ìŠ¤í„° ì¶©ëŒ ìƒíƒœ ì „í™˜	
 			col_mon = true;																		
-			// Á×À½ »óÅÂ ÀüÈ¯
+			// ì£½ìŒ ìƒíƒœ ì „í™˜
 			dead = false;							
-			// Á×À½ ½ºÇÁ¶óÀÌÆ® ½Ã°£ °è»ê ½ÃÀÛ
+			// ì£½ìŒ ìŠ¤í”„ë¼ì´íŠ¸ ì‹œê°„ ê³„ì‚° ì‹œì‘
 			DeadCountTime = GetTickCount();			
-			// ´ÙÀ½ ¾À ½Ã°£ °è»ê ½ÃÀÛ
+			// ë‹¤ìŒ ì”¬ ì‹œê°„ ê³„ì‚° ì‹œì‘
 			EndCountTime = GetTickCount();			
 			return 1;
 		}
@@ -697,14 +697,14 @@ int Character::Collision_mon(int monx, int monX, int mony, int monY)
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ »óÅÂ¿Í ½Ã°£, Å° ÀÔ·Â¿¡ µû¸¥ ¸â¹öº¯¼ö Á¶ÀÛ
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	Ä³¸¯ÅÍÀÇ ÀÌµ¿·®, ½ºÇÁ¶óÀÌÆ® ÀÎµ¦½º¸¦ º¯È¯
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìƒíƒœì™€ ì‹œê°„, í‚¤ ì…ë ¥ì— ë”°ë¥¸ ë©¤ë²„ë³€ìˆ˜ ì¡°ì‘
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ìºë¦­í„°ì˜ ì´ë™ëŸ‰, ìŠ¤í”„ë¼ì´íŠ¸ ì¸ë±ìŠ¤ë¥¼ ë³€í™˜
 */
 void Character::Update()
 {
-	// ¸ÊÀÇ ¹Ù´Ú¿¡ Ãæµ¹ ½Ã Á×À½ Ã³¸®
+	// ë§µì˜ ë°”ë‹¥ì— ì¶©ëŒ ì‹œ ì£½ìŒ ì²˜ë¦¬
 	if (!col_mon && col.chy > 768)
 	{
 		sound.m_Death->Play(0, NULL);
@@ -715,7 +715,7 @@ void Character::Update()
 		EndCountTime = GetTickCount();
 	}
 
-	// ¸ó½ºÅÍ Ãæµ¹ ½Ã Á×À½ Ã³¸®
+	// ëª¬ìŠ¤í„° ì¶©ëŒ ì‹œ ì£½ìŒ ì²˜ë¦¬
 	if (col_mon)
 	{
 		attack_state = false;
@@ -735,7 +735,7 @@ void Character::Update()
 			g_Mng.chap[g_Mng.n_Chap]->Init();
 		}
 
-		// ½ºÇÁ¶óÀÌÆ®
+		// ìŠ¤í”„ë¼ì´íŠ¸
 		if (GetTickCount() - DeadCountTime > 200 && dead)
 		{
 			d_count++;
@@ -748,10 +748,10 @@ void Character::Update()
 			DeadCountTime = GetTickCount();
 		}
 	}
-	// ¸ó½ºÅÍ ºñÃæµ¹ ½Ã ÀÔ·Â¿¡ µû¸¥ Á¶ÀÛ
+	// ëª¬ìŠ¤í„° ë¹„ì¶©ëŒ ì‹œ ì…ë ¥ì— ë”°ë¥¸ ì¡°ì‘
 	else
 	{
-		// ±âº» ½ºÇÁ¶óÀÌÆ®
+		// ê¸°ë³¸ ìŠ¤í”„ë¼ì´íŠ¸
 		if (GetTickCount() - StandCountTime > 800)
 		{
 			s_count++;
@@ -762,65 +762,65 @@ void Character::Update()
 			}
 			StandCountTime = GetTickCount();
 		}
-		// Æò»ó½Ã = ¶³¾îÁö´Â »óÅÂ
+		// í‰ìƒì‹œ = ë–¨ì–´ì§€ëŠ” ìƒíƒœ
 		if (!jump_state)
 		{
-			if (!floor_collision_temp)		// ¹Ù´Ú Ãæµ¹µµ ¾Æ´Ï°í ÀÓ½Ã ¹Ù´Ú Ãæµ¹µµ ¾Æ´Ò ¶§
+			if (!floor_collision_temp)		// ë°”ë‹¥ ì¶©ëŒë„ ì•„ë‹ˆê³  ì„ì‹œ ë°”ë‹¥ ì¶©ëŒë„ ì•„ë‹ ë•Œ
 			{
 				if (now_fall_speed < max_fall_speed)
 				{
 					now_fall_speed += gravity;
 				}
-				// ÀÌÀü »óÅÂ ÀúÀå
+				// ì´ì „ ìƒíƒœ ì €ì¥
 				move_y = move_y_temp;
 				col.chy = col_temp.chy;
 				col.chY = col_temp.chY;
 
-				// ÀÓ½Ã ÀÌµ¿
+				// ì„ì‹œ ì´ë™
 				move_y_temp += now_fall_speed;
 				col_temp.chy += now_fall_speed;
 				col_temp.chY += now_fall_speed;
 				attack_state = false;
 				jump_able = false;
 			}
-			// ÀÓ½Ã ¹Ù´Ú Ãæµ¹ ÇßÀ» ¶§
+			// ì„ì‹œ ë°”ë‹¥ ì¶©ëŒ í–ˆì„ ë•Œ
 			else if (floor_collision_temp)	
 			{
-				// ¿©ºĞ¸¸Å­ Àû¿ë
+				// ì—¬ë¶„ë§Œí¼ ì ìš©
 				move_y += extra_fall_Y;
 				col.chy += extra_fall_Y;
 				col.chY += extra_fall_Y;
 
-				// ÀÓ½Ã À§Ä¡µµ Àû¿ë
+				// ì„ì‹œ ìœ„ì¹˜ë„ ì ìš©
 				move_y_temp = move_y;
 				col_temp.chy = col.chy;
 				col_temp.chY = col.chY;
 
-				// ÃÊ±âÈ­
+				// ì´ˆê¸°í™”
 				now_fall_speed = 0;
 				extra_fall_Y = 0;
 
-				// »óÅÂ º¯È¯
-				// ÀÏ´Ü ÇÑ¹ø ¹Ù´Ú¿¡ ÂøÁöÇÏ¸é Á¡ÇÁ °¡´É »óÅÂ
+				// ìƒíƒœ ë³€í™˜
+				// ì¼ë‹¨ í•œë²ˆ ë°”ë‹¥ì— ì°©ì§€í•˜ë©´ ì í”„ ê°€ëŠ¥ ìƒíƒœ
 				jump_able = true;						
-				// ¹Ù´Ú ÀÓ½Ã Ãæµ¹À» ²ô¸é ´Ù½Ã Ãæµ¹ °Ë»ç°¡ °¡´É
+				// ë°”ë‹¥ ì„ì‹œ ì¶©ëŒì„ ë„ë©´ ë‹¤ì‹œ ì¶©ëŒ ê²€ì‚¬ê°€ ê°€ëŠ¥
 				floor_collision_temp = false;			
 			}
 		}
-		// ÇÃ·¹ÀÌ¾î 1ÀÏ°æ¿ì
+		// í”Œë ˆì´ì–´ 1ì¼ê²½ìš°
 		if (player == PLAYER1)
 		{	
-			// °ø°İ ½Ã º¯¼ö Á¶ÀÛ
+			// ê³µê²© ì‹œ ë³€ìˆ˜ ì¡°ì‘
 			if (KeyUp('S'))
 			{
-				// »óÅÂ ÀüÈ¯
+				// ìƒíƒœ ì „í™˜
 				attack_state = false;
 			}
 
-			// ¹Ù´Ú¿¡ ÀÖ´Â »óÅÂ¿¡¼­
+			// ë°”ë‹¥ì— ìˆëŠ” ìƒíƒœì—ì„œ
 			if (KeyDown('S') && jump_able)				
 			{
-				// °ø°İ ½ºÇÁ¶óÀÌÆ®
+				// ê³µê²© ìŠ¤í”„ë¼ì´íŠ¸
 				if (GetTickCount() - AttackCountTime > 200)
 				{
 					a_count++;
@@ -830,55 +830,55 @@ void Character::Update()
 					}
 					AttackCountTime = GetTickCount();
 				}
-				// »óÅÂ ÀüÈ¯
+				// ìƒíƒœ ì „í™˜
 				attack_state = true;
 			}
-			// Á¡ÇÁ ½Ã º¯¼ö Á¶ÀÛ
+			// ì í”„ ì‹œ ë³€ìˆ˜ ì¡°ì‘
 			if (KeyUp('W'))
 			{
 				Wkey_check = false;
 			}
 
-			// WÅ° ´Ù¿î Áß && Á¡ÇÁ°¡ °¡´ÉÇÒ ¶§ && ÀÌÀü¿¡ W Å°°¡ ´­¸° Àû ¾øÀ¸¸é
+			// Wí‚¤ ë‹¤ìš´ ì¤‘ && ì í”„ê°€ ê°€ëŠ¥í•  ë•Œ && ì´ì „ì— W í‚¤ê°€ ëˆŒë¦° ì  ì—†ìœ¼ë©´
 			if (KeyDown('W') && jump_able && !Wkey_check)		
 			{
 				sound.m_Jump->Play(0, NULL);
 				JumpCountTime = GetTickCount();
 				j_count = 0;
 
-				// »óÅÂ ÀüÈ¯
-				// W Å°°¡ ´­·È´ø ÀûÀÌ ÀÖ´Ù
+				// ìƒíƒœ ì „í™˜
+				// W í‚¤ê°€ ëˆŒë ¸ë˜ ì ì´ ìˆë‹¤
 				Wkey_check = true;								
-				// ´õÀÌ»ó Á¡ÇÁ´Â ºÒ°¡´ÉÇÏ´Ù
+				// ë”ì´ìƒ ì í”„ëŠ” ë¶ˆê°€ëŠ¥í•˜ë‹¤
 				jump_able = false;								
-				// Á¡ÇÁ »óÅÂ·Î ÀüÈ¯
+				// ì í”„ ìƒíƒœë¡œ ì „í™˜
 				jump_state = true;								
 				attack_state = false;
 				
-				// ÃÊ±âÈ­
+				// ì´ˆê¸°í™”
 				jump_speed = -22;
 			}
 
-			// Á¡ÇÁ ½ºÇÁ¶óÀÌÆ®
-			// ÀÏÁ¤ ½Ã°£ Áö³ª¸é º¯È­
+			// ì í”„ ìŠ¤í”„ë¼ì´íŠ¸
+			// ì¼ì • ì‹œê°„ ì§€ë‚˜ë©´ ë³€í™”
 			if (GetTickCount() - JumpCountTime > 75 && jump_state)		
 			{
 				j_count = 1;
 			}
 
-			// ¿ì·Î ÀÌµ¿ ½Ã º¯¼ö Á¶ÀÛ
-			// Å°°¡ ¿Ã¶ó°¬À»¶§
+			// ìš°ë¡œ ì´ë™ ì‹œ ë³€ìˆ˜ ì¡°ì‘
+			// í‚¤ê°€ ì˜¬ë¼ê°”ì„ë•Œ
 			if (KeyUp('D') && !attack_state)							
 			{
-				// »óÅÂº¯È¯
-				// ¿ì·Î ÀÌµ¿ Å°°¡ ¾È ´­¸²
+				// ìƒíƒœë³€í™˜
+				// ìš°ë¡œ ì´ë™ í‚¤ê°€ ì•ˆ ëˆŒë¦¼
 				move_state_r = false;									
 			}
 
-			// Å°°¡ ´­¸®°í ¿òÁ÷ÀÏ ¼ö ÀÖÀ» ¶§
+			// í‚¤ê°€ ëˆŒë¦¬ê³  ì›€ì§ì¼ ìˆ˜ ìˆì„ ë•Œ
 			if (KeyDown('D') && !attack_state)							
 			{
-				// ÀÌµ¿ ½ºÇÁ¶óÀÌÆ®
+				// ì´ë™ ìŠ¤í”„ë¼ì´íŠ¸
 				if (GetTickCount() - RunCountTime > 100)
 				{
 					r_count++;
@@ -889,11 +889,11 @@ void Character::Update()
 					RunCountTime = GetTickCount();
 				}
 
-				// »óÅÂº¯È¯
+				// ìƒíƒœë³€í™˜
 				move_state_r = true;					
 				pos = RIGHT;
 
-				// ÀÌµ¿·®
+				// ì´ë™ëŸ‰
 				int move = 4;
 				if (move_collision_r)
 				{
@@ -916,18 +916,18 @@ void Character::Update()
 				}
 			}
 
-			// ÁÂ·Î ÀÌµ¿ ½Ã º¯¼ö Á¶ÀÛ
-			// Å°°¡ ¿Ã¶ó°¬À» ¶§
+			// ì¢Œë¡œ ì´ë™ ì‹œ ë³€ìˆ˜ ì¡°ì‘
+			// í‚¤ê°€ ì˜¬ë¼ê°”ì„ ë•Œ
 			if (KeyUp('A') && !attack_state)					
 			{
-				// »óÅÂ º¯È¯
-				// ¿ì·Î ÀÌµ¿ Å°°¡ ¾È ´­¸²
+				// ìƒíƒœ ë³€í™˜
+				// ìš°ë¡œ ì´ë™ í‚¤ê°€ ì•ˆ ëˆŒë¦¼
 				move_state_l = false;							
 			}
 
 			if (KeyDown('A') && !attack_state)
 			{
-				// ½ºÇÁ¶óÀÌÆ®
+				// ìŠ¤í”„ë¼ì´íŠ¸
 				if (GetTickCount() - RunCountTime > 100)
 				{
 					r_count++;
@@ -938,11 +938,11 @@ void Character::Update()
 					RunCountTime = GetTickCount();
 				}
 
-				// »óÅÂ º¯È¯
+				// ìƒíƒœ ë³€í™˜
 				move_state_l = true;					
 				pos = LEFT;
 
-				// ÀÌµ¿·®
+				// ì´ë™ëŸ‰
 				int move = -4;
 				if (move_collision_l)
 				{
@@ -965,14 +965,14 @@ void Character::Update()
 				}
 			}
 		}
-		// ÇÃ·¹ÀÌ¾î2ÀÏ °æ¿ì
+		// í”Œë ˆì´ì–´2ì¼ ê²½ìš°
 		else
 		{
-			// °ø°İ ½Ã º¯¼ö Á¶ÀÛ
-			// ¹Ù´Ú¿¡ ÀÖ´Â »óÅÂ¿¡¼­
+			// ê³µê²© ì‹œ ë³€ìˆ˜ ì¡°ì‘
+			// ë°”ë‹¥ì— ìˆëŠ” ìƒíƒœì—ì„œ
 			if (KeyDown(VK_DOWN) && jump_able)				
 			{
-				// °ø°İ ½ºÇÁ¶óÀÌÆ®
+				// ê³µê²© ìŠ¤í”„ë¼ì´íŠ¸
 				if (GetTickCount() - AttackCountTime > 200)
 				{
 					a_count++;
@@ -982,61 +982,61 @@ void Character::Update()
 					}
 					AttackCountTime = GetTickCount();
 				}
-				// »óÅÂ ÀüÈ¯
+				// ìƒíƒœ ì „í™˜
 				attack_state = true;
 			}
 
 			if (KeyUp(VK_DOWN))
 			{
-				// »óÅÂ ÀüÈ¯
+				// ìƒíƒœ ì „í™˜
 				attack_state = false;
 			}
 
-			// Á¡ÇÁ½Ã º¯¼ö Á¶ÀÛ
+			// ì í”„ì‹œ ë³€ìˆ˜ ì¡°ì‘
 			if (KeyUp(VK_UP))
 			{
 				Wkey_check = false;
 			}
 
-			// zÅ° ´Ù¿î Áß && Á¡ÇÁ°¡ °¡´ÉÇÒ ¶§ && ÀÌÀü¿¡ z Å°°¡ ´­¸° Àû ¾øÀ¸¸é
+			// zí‚¤ ë‹¤ìš´ ì¤‘ && ì í”„ê°€ ê°€ëŠ¥í•  ë•Œ && ì´ì „ì— z í‚¤ê°€ ëˆŒë¦° ì  ì—†ìœ¼ë©´
 			if (KeyDown(VK_UP) && jump_able && !Wkey_check)		
 			{
 				sound.m_Jump->Play(0, NULL);
 				JumpCountTime = GetTickCount();
 				j_count = 0;
 
-				// »óÅÂ ÀüÈ¯
-				// z Å°°¡ ´­·È´ø ÀûÀÌ ÀÖ´Ù
+				// ìƒíƒœ ì „í™˜
+				// z í‚¤ê°€ ëˆŒë ¸ë˜ ì ì´ ìˆë‹¤
 				Wkey_check = true;								
-				// ´õÀÌ»ó Á¡ÇÁ´Â ºÒ°¡´ÉÇÏ´Ù
+				// ë”ì´ìƒ ì í”„ëŠ” ë¶ˆê°€ëŠ¥í•˜ë‹¤
 				jump_able = false;								
-				// Á¡ÇÁ »óÅÂ·Î ÀüÈ¯
-				// ÃÊ±âÈ­
+				// ì í”„ ìƒíƒœë¡œ ì „í™˜
+				// ì´ˆê¸°í™”
 				jump_state = true;								
 																
 				jump_speed = -22;
 			}
 
-			// Á¡ÇÁ ½ºÇÁ¶óÀÌÆ®
-			// ÀÏÁ¤ ½Ã°£ Áö³ª¸é º¯È­
+			// ì í”„ ìŠ¤í”„ë¼ì´íŠ¸
+			// ì¼ì • ì‹œê°„ ì§€ë‚˜ë©´ ë³€í™”
 			if (GetTickCount() - JumpCountTime > 75 && jump_state)		
 			{
 				j_count = 1;
 			}
 
-			// ¿ì·Î ÀÌµ¿ ½Ã º¯¼ö Á¶ÀÛ
-			// Å°°¡ ¿Ã¶ó°¬À» ¶§
+			// ìš°ë¡œ ì´ë™ ì‹œ ë³€ìˆ˜ ì¡°ì‘
+			// í‚¤ê°€ ì˜¬ë¼ê°”ì„ ë•Œ
 			if (KeyUp(VK_RIGHT) && !attack_state)						
 			{
-				// »óÅÂ º¯È¯
-				// ¿ì·Î ÀÌµ¿ Å°°¡ ¾È ´­¸²
+				// ìƒíƒœ ë³€í™˜
+				// ìš°ë¡œ ì´ë™ í‚¤ê°€ ì•ˆ ëˆŒë¦¼
 				move_state_r = false;									
 			}
 
-			// Å°°¡ ´­¸®°í ¿òÁ÷ÀÏ ¼ö ÀÖÀ» ¶§
+			// í‚¤ê°€ ëˆŒë¦¬ê³  ì›€ì§ì¼ ìˆ˜ ìˆì„ ë•Œ
 			if (KeyDown(VK_RIGHT) && !attack_state)						
 			{
-				// ½ºÇÁ¶óÀÌÆ®
+				// ìŠ¤í”„ë¼ì´íŠ¸
 				if (GetTickCount() - RunCountTime > 100)
 				{
 					r_count++;
@@ -1046,11 +1046,11 @@ void Character::Update()
 					}
 					RunCountTime = GetTickCount();
 				}
-				// »óÅÂ º¯È¯
+				// ìƒíƒœ ë³€í™˜
 				move_state_r = true;					
 				pos = RIGHT;
 
-				// ÀÌµ¿·®
+				// ì´ë™ëŸ‰
 				int move = 4;
 				if (move_collision_r)
 				{
@@ -1058,7 +1058,7 @@ void Character::Update()
 					move_collision_r = false;
 				} 
 
-				// ÁÂ ¿ì ÀÌµ¿
+				// ì¢Œ ìš° ì´ë™
 				move_x += move;				
 				col.chx += move;
 				col.chX += move;
@@ -1075,18 +1075,18 @@ void Character::Update()
 				}
 			}
 
-			// ÁÂ·Î ÀÌµ¿ ½Ã º¯¼ö Á¶ÀÛ
-			// Å°°¡ ¿Ã¶ó°¬À» ¶§
+			// ì¢Œë¡œ ì´ë™ ì‹œ ë³€ìˆ˜ ì¡°ì‘
+			// í‚¤ê°€ ì˜¬ë¼ê°”ì„ ë•Œ
 			if (KeyUp(VK_LEFT) && !attack_state)						
 			{
-				// »óÅÂ º¯È¯
-				// ¿ì·Î ÀÌµ¿ Å°°¡ ¾È ´­¸²
+				// ìƒíƒœ ë³€í™˜
+				// ìš°ë¡œ ì´ë™ í‚¤ê°€ ì•ˆ ëˆŒë¦¼
 				move_state_l = false;									
 			}
 
 			if (KeyDown(VK_LEFT) && !attack_state)
 			{
-				// ½ºÇÁ¶óÀÌÆ®
+				// ìŠ¤í”„ë¼ì´íŠ¸
 				if (GetTickCount() - RunCountTime > 100)
 				{
 					r_count++;
@@ -1096,11 +1096,11 @@ void Character::Update()
 					}
 					RunCountTime = GetTickCount();
 				}
-				// »óÅÂ º¯È¯
+				// ìƒíƒœ ë³€í™˜
 				move_state_l = true;			
 				pos = LEFT;
 
-				// ÀÌµ¿·®
+				// ì´ë™ëŸ‰
 				int move = -4;
 				if (move_collision_l)
 				{
@@ -1123,47 +1123,47 @@ void Character::Update()
 				}
 			}
 		}
-		// Á¡ÇÁ ½Ã º¯¼ö Á¶ÀÛ
-		// ¸Ó¸® ¸ÂÀ¸¸é
+		// ì í”„ ì‹œ ë³€ìˆ˜ ì¡°ì‘
+		// ë¨¸ë¦¬ ë§ìœ¼ë©´
 		if (jump_collision_temp)						 
 		{
-			// »óÅÂ ÀüÈ¯
-			// ¶³¾îÁö´Â »óÅÂ·Î ÀüÈ¯
+			// ìƒíƒœ ì „í™˜
+			// ë–¨ì–´ì§€ëŠ” ìƒíƒœë¡œ ì „í™˜
 			jump_state = false;		
 
-			// ÀÓ½Ã´Â ºñÈ°¼ºÈ­
+			// ì„ì‹œëŠ” ë¹„í™œì„±í™”
 			jump_collision_temp = false;	
 
-			// ÀÓ½ÃÀ§Ä¡ Àû¿ë								
+			// ì„ì‹œìœ„ì¹˜ ì ìš©								
 			move_y_temp = move_y;
 			col_temp.chy = col.chy;
 			col_temp.chY = col.chY;
 
-			// ÃÊ±âÈ­
+			// ì´ˆê¸°í™”
 			extra_jump_y = 0;
 			jump_speed = 0;				
 		}
-		// ¸Ó¸® ¾È ¸Â°í Á¡ÇÁ Áß ÀÏ¶§
+		// ë¨¸ë¦¬ ì•ˆ ë§ê³  ì í”„ ì¤‘ ì¼ë•Œ
 		else if (jump_state)							
 		{
 			jump_speed += gravity;
-			// ÀÌÀü »óÅÂ ÀúÀå
+			// ì´ì „ ìƒíƒœ ì €ì¥
 			move_y = move_y_temp;
 			col.chy = col_temp.chy;
 			col.chY = col_temp.chY;
 
-			// ÀÓ½Ã·Î ÀÌµ¿
+			// ì„ì‹œë¡œ ì´ë™
 			move_y_temp += jump_speed;
 			col_temp.chy += jump_speed;
 			col_temp.chY += jump_speed;
 
-			// Á¡ÇÁ°¡ ÃÖ´ëÀÏ °æ¿ì
+			// ì í”„ê°€ ìµœëŒ€ì¼ ê²½ìš°
 			if (jump_speed >= 0)						
-			{// ¸Ó¸® ¸ÂÀº °ÍÀ¸·Î ÆÇÁ¤
+			{// ë¨¸ë¦¬ ë§ì€ ê²ƒìœ¼ë¡œ íŒì •
 				jump_collision_temp = true;				
 			}
 		}
-		// ÀÚµ¿ ÀÌµ¿ Áß º¯¼ö Á¶ÀÛ
+		// ìë™ ì´ë™ ì¤‘ ë³€ìˆ˜ ì¡°ì‘
 		if (automove_state)		
 		{
 			automove_state = false;
@@ -1194,31 +1194,31 @@ void Character::Update()
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ »óÅÂ¿¡ µû¸¥ ½ºÆ®¶óÀÌÇÁ Ãâ·Â
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìƒíƒœì— ë”°ë¥¸ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::Draw()
 {
-	// Á×¾úÀ» °æ¿ì ÅÍÁö´Â ½ºÆ®¶óÀÌÇÁ, °ÔÀÓ ¿À¹ö ½ºÆ®¶óÀÌÇÁ Ãâ·Â
+	// ì£½ì—ˆì„ ê²½ìš° í„°ì§€ëŠ” ìŠ¤íŠ¸ë¼ì´í”„, ê²Œì„ ì˜¤ë²„ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥
 	if (dead)
 	{
 		cha_dead[d_count].Render((mapchX * 40) - 59 + (move_x), (mapchY * 34) - 114 + (move_y), 0, 1.2, 1.2);
 		gameover.Render((mapchX * 40) - 59 + (move_x), (mapchY * 34) - 114 + (move_y)+(gameover_y), 0, 1, 1);
 	}
-	// ÅÍÁö´Â ½ºÆ®¶óÀÌÇÁ Ãâ·Â ÈÄ, °ÔÀÓ ¿À¹ö ½ºÆ®¶óÀÌÇÁ Ãâ·Â
+	// í„°ì§€ëŠ” ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥ í›„, ê²Œì„ ì˜¤ë²„ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥
 	else if (col_mon)
 	{
 		gameover.Render((mapchX * 40) - 59 + (move_x), (mapchY * 34) - 114 + (move_y)+(gameover_y), 0, 1, 1);
 	}
-	// Á×Áö ¾ÊÀº °æ¿ì
+	// ì£½ì§€ ì•Šì€ ê²½ìš°
 	else if (!col_mon)
 	{
-		// ¹æÇâ¿¡ µû¶ó ½ºÇÁ¶óÀÌÆ® ¹İÀü
+		// ë°©í–¥ì— ë”°ë¼ ìŠ¤í”„ë¼ì´íŠ¸ ë°˜ì „
 		if (pos == RIGHT)
 		{
-			// °¢Á¾ »óÅÂ¿¡ µû¶ó ´Ù¸¥ ½ºÇÁ¶óÀÌÆ®
+			// ê°ì¢… ìƒíƒœì— ë”°ë¼ ë‹¤ë¥¸ ìŠ¤í”„ë¼ì´íŠ¸
 			if (attack_state)
 			{
 				attack[a_count].Render((mapchX * 40) + 59 + (move_x), (mapchY * 34) - 114 + (move_y), 0, -scale, scale);
@@ -1272,48 +1272,48 @@ void Character::Draw()
 	}
 }
 
-// µğ¹ö±× ¹Ú½º 
+// ë””ë²„ê·¸ ë°•ìŠ¤ 
 void Character::DrawCollider()
 {
 	if (!Gmanager.m_bShowCollider)
 		return;
 
 	RECT r = { col.chx, col.chy, col.chX, col.chY };
-	// ÆùÆ® À§Ä¡ Á¶Á¤ 
+	// í°íŠ¸ ìœ„ì¹˜ ì¡°ì • 
 	const int offset = 15; 
 	
-	dv_font.DrawString("¦£ ", r.left - (offset * 3.5), r.top - (offset * 1.9), D3DCOLOR_ARGB(255, 255, 0, 255));
-	dv_font.DrawString(" ¦¤", r.right - (offset * 0.6), r.top - (offset * 1.9), D3DCOLOR_ARGB(255, 255, 0, 255));
-	dv_font.DrawString("¦¦ ", r.left - (offset * 3.5), r.bottom - (offset * 1.5), D3DCOLOR_ARGB(255, 255, 0, 255));
-	dv_font.DrawString(" ¦¥", r.right - (offset * 0.6), r.bottom - (offset * 1.5), D3DCOLOR_ARGB(255, 255, 0, 255));
+	dv_font.DrawString("â”Œ ", r.left - (offset * 3.5), r.top - (offset * 1.9), D3DCOLOR_ARGB(255, 255, 0, 255));
+	dv_font.DrawString(" â”", r.right - (offset * 0.6), r.top - (offset * 1.9), D3DCOLOR_ARGB(255, 255, 0, 255));
+	dv_font.DrawString("â”” ", r.left - (offset * 3.5), r.bottom - (offset * 1.5), D3DCOLOR_ARGB(255, 255, 0, 255));
+	dv_font.DrawString(" â”˜", r.right - (offset * 0.6), r.bottom - (offset * 1.5), D3DCOLOR_ARGB(255, 255, 0, 255));
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ »óÅÂ¿¡ µû¸¥ ½ºÆ®¶óÀÌÇÁ Ãâ·Â(¸Ê ÀÌµ¿Áß)
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìƒíƒœì— ë”°ë¥¸ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥(ë§µ ì´ë™ì¤‘)
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Character::Floor(int floorY)
 {
-	// Á×¾úÀ» °æ¿ì ÅÍÁö´Â ½ºÆ®¶óÀÌÇÁ, °ÔÀÓ ¿À¹ö ½ºÆ®¶óÀÌÇÁ Ãâ·Â
+	// ì£½ì—ˆì„ ê²½ìš° í„°ì§€ëŠ” ìŠ¤íŠ¸ë¼ì´í”„, ê²Œì„ ì˜¤ë²„ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥
 	if (dead)
 	{
 		cha_dead[d_count].Render((mapchX * 40) - 59 + (move_x), (mapchY * 34) - 114 + (move_y)+(floorY), 0, 1.2, 1.2);
 		gameover.Render((mapchX * 40) - 59 + (move_x), (mapchY * 34) - 114 + (move_y)+(gameover_y)+(floorY), 0, 1, 1);
 	}
-	// ÅÍÁö´Â ½ºÆ®¶óÀÌÇÁ Ãâ·Â ÈÄ, °ÔÀÓ ¿À¹ö ½ºÆ®¶óÀÌÇÁ Ãâ·Â
+	// í„°ì§€ëŠ” ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥ í›„, ê²Œì„ ì˜¤ë²„ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥
 	else if (col_mon)
 	{
 		gameover.Render((mapchX * 40) - 59 + (move_x), (mapchY * 34) - 114 + (move_y)+(gameover_y)+(floorY), 0, 1, 1);
 	}
-	// Á×Áö ¾ÊÀº °æ¿ì
+	// ì£½ì§€ ì•Šì€ ê²½ìš°
 	else if (!col_mon)
 	{
-		// ¹æÇâ¿¡ µû¶ó ½ºÇÁ¶óÀÌÆ® ¹İÀü
+		// ë°©í–¥ì— ë”°ë¼ ìŠ¤í”„ë¼ì´íŠ¸ ë°˜ì „
 		if (pos == RIGHT)
 		{
-			// °¢Á¾ »óÅÂ¿¡ µû¶ó ´Ù¸¥ ½ºÇÁ¶óÀÌÆ®
+			// ê°ì¢… ìƒíƒœì— ë”°ë¼ ë‹¤ë¥¸ ìŠ¤í”„ë¼ì´íŠ¸
 			if (attack_state)
 			{
 				attack[a_count].Render((mapchX * 40) + 59 + (move_x), (mapchY * 34) - 114 + (move_y)+(floorY), 0, -scale, scale);
@@ -1360,15 +1360,15 @@ void Character::Floor(int floorY)
 		}
 	}
 
-	// ¸Ê ÀÌµ¿ ¸¶Áö¸· ½Ã º¯¼ö Á¶Á¤
+	// ë§µ ì´ë™ ë§ˆì§€ë§‰ ì‹œ ë³€ìˆ˜ ì¡°ì •
 	if (floorY >= 204)
 	{
 		mapchY += 6;
 
-		col.chy += (6 * 34);			// »ó
-		col.chY += (6 * 34);			// ÇÏ
+		col.chy += (6 * 34);			// ìƒ
+		col.chY += (6 * 34);			// í•˜
 
-		col_temp.chy += (6 * 34);		// »ó
-		col_temp.chY += (6 * 34);		// ÇÏ
+		col_temp.chy += (6 * 34);		// ìƒ
+		col_temp.chY += (6 * 34);		// í•˜
 	}
 }

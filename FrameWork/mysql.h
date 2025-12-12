@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 struct Rank
@@ -21,16 +21,16 @@ public:
 	Mysql();
 	~Mysql();
 
-	// MySQL ±¸Á¶Ã¼ º¯¼ö (Logo Ã©ÅÍ¿¡¼­ 1 ´Ü°è Å×½ºÆ® Á¢¼Ó È®ÀÎÀ» À§ÇÔ...)
+	// MySQL êµ¬ì¡°ì²´ ë³€ìˆ˜ (Logo ì±•í„°ì—ì„œ 1 ë‹¨ê³„ í…ŒìŠ¤íŠ¸ ì ‘ì† í™•ì¸ì„ ìœ„í•¨...)
 	MYSQL mysql;
 
-	// MYSQL ¿¬°á ¹× ±¸µ¿ º¯¼ö
+	// MYSQL ì—°ê²° ë° êµ¬ë™ ë³€ìˆ˜
 	MYSQL		*connection = NULL, conn;
 	MYSQL_RES	*sql_result;
 	MYSQL_ROW	sql_row;
 	int query_start;
 
-	// µ¥ÀÌÅ¸ º£ÀÌ½º Ä®·³ ÀúÀå º¯¼ö
+	// ë°ì´íƒ€ ë² ì´ìŠ¤ ì¹¼ëŸ¼ ì €ì¥ ë³€ìˆ˜
 	char first[10];
 	char middle[10];
 	char last[10];
@@ -43,11 +43,11 @@ public:
 
 	char query[255];
 
-    // MySQL »óÅÂ º¯¼ö
+    // MySQL ìƒíƒœ ë³€ìˆ˜
 	char state[256];
 	bool mysql_Success;
 
-	// MySQL °á°ú È®ÀÎ º¯¼ö
+	// MySQL ê²°ê³¼ í™•ì¸ ë³€ìˆ˜
 	Rank ranking[8];
 
 	void Init();

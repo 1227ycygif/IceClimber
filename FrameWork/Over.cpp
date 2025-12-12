@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 Over::Over()
@@ -14,17 +14,17 @@ void Over::Init()
 	char FileName[256];
 	sprintf_s(FileName, "./resource/Img/over/Score_B.png");
 	background.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
-	// 1p, 2p Á¡¼öÃ¢
+	// 1p, 2p ì ìˆ˜ì°½
 	sprintf_s(FileName, "./resource/Img/over/Score_1P.png");
 	p1.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
 	sprintf_s(FileName, "./resource/Img/over/Score_2P.png");
 	p2.Create(FileName, false, D3DCOLOR_XRGB(0, 0, 0));
 }
 
-// ¡ß Àç½ÃÀÛ ½Ã ¸Ş´ºÈ­¸éÀ¸·Î ¾È ³ª°¨
+// â—† ì¬ì‹œì‘ ì‹œ ë©”ë‰´í™”ë©´ìœ¼ë¡œ ì•ˆ ë‚˜ê°
 void Over::Update(double frame)
 {
-	// ÀúÀå, Àç½ÃÀÛ..
+	// ì €ì¥, ì¬ì‹œì‘..
 	if (KeyDown('A'))
 	{
 		sql.save();
@@ -46,11 +46,11 @@ void Over::Draw()
 	p2.Render(700, 170, 0, 1, 1);
 	char aa[200];
 
-	// total Á¡¼ö °è»ê
+	// total ì ìˆ˜ ê³„ì‚°
 	playdata.p1_total_score = (playdata.p1_seal_count * 500) + (playdata.p1_block_count * 10);
 	playdata.p2_total_score = (playdata.p2_seal_count * 500) + (playdata.p2_block_count * 10);
 	
-	// Á¡¼ö Ãâ·Â
+	// ì ìˆ˜ ì¶œë ¥
 	sprintf_s(aa, "%d", playdata.p1_seal_count);
 	dv_font.DrawString(aa, 480, 355);
 	sprintf_s(aa, "%d", playdata.p1_block_count);

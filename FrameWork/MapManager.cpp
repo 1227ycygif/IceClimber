@@ -1,10 +1,10 @@
-#pragma once
+ï»¿#pragma once
 #include"Include.h"
 
 MapManager mapManager;
 /*
-±â´É :		»ý¼ºÀÚ
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìƒì„±ìž
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 MapManager::MapManager()
 {
@@ -12,8 +12,8 @@ MapManager::MapManager()
 }
 
 /*
-±â´É :		¼Ò¸êÀÚ
-Æ¯ÀÌ»çÇ× :	»ý¼ºµÈ ºí·Ï¸Å´ÏÀú, ¸ó½ºÅÍ, ÇÃ·¹ÀÌ¾î °´Ã¼ ¸ðµÎ ÇØÁ¦
+ê¸°ëŠ¥ :		ì†Œë©¸ìž
+íŠ¹ì´ì‚¬í•­ :	ìƒì„±ëœ ë¸”ë¡ë§¤ë‹ˆì €, ëª¬ìŠ¤í„°, í”Œë ˆì´ì–´ ê°ì²´ ëª¨ë‘ í•´ì œ
 */
 MapManager::~MapManager()
 {
@@ -27,10 +27,10 @@ MapManager::~MapManager()
 }
 
 /*
-±â´É :		ÃÊ±âÈ­
-¸Å°³º¯¼ö :	¾øÀ½
-¹ÝÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¸ó½ºÅÍ °´Ã¼ »ý¼º, ºí·Ï¸Å´ÏÀú °´Ã¼ »ý¼º ¹× ÃÊ±âÈ­, ÇÃ·¹ÀÌ¾î °´Ã¼ »ý¼º ¹× ÃÊ±âÈ­
+ê¸°ëŠ¥ :		ì´ˆê¸°í™”
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ëª¬ìŠ¤í„° ê°ì²´ ìƒì„±, ë¸”ë¡ë§¤ë‹ˆì € ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”, í”Œë ˆì´ì–´ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 */
 void MapManager::Init()
 {
@@ -54,14 +54,14 @@ void MapManager::Init()
 }
 
 /*
-±â´É :		¾÷µ¥ÀÌÆ®
-¸Å°³º¯¼ö :	¾øÀ½
-¹ÝÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¸ó½ºÅÍ °´Ã¼ ¾÷µ¥ÀÌÆ® È£Ãâ, ºí·Ï¸Å´ÏÀú °´Ã¼ ¾÷µ¥ÀÌÆ® È£Ãâ, ÇÃ·¹ÀÌ¾î °´Ã¼ ¾÷µ¥ÀÌÆ® È£Ãâ
+ê¸°ëŠ¥ :		ì—…ë°ì´íŠ¸
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ëª¬ìŠ¤í„° ê°ì²´ ì—…ë°ì´íŠ¸ í˜¸ì¶œ, ë¸”ë¡ë§¤ë‹ˆì € ê°ì²´ ì—…ë°ì´íŠ¸ í˜¸ì¶œ, í”Œë ˆì´ì–´ ê°ì²´ ì—…ë°ì´íŠ¸ í˜¸ì¶œ
 */
 void MapManager::Update()
 {
-	// ¸Ê ÀÌµ¿ ÁßÀÌ ¾Æ´Ò ¶§¸¸ ¾÷µ¥ÀÌÆ®(ÀÌµ¿ Áß Á¶ÀÛ ºÒ°¡)
+	// ë§µ ì´ë™ ì¤‘ì´ ì•„ë‹ ë•Œë§Œ ì—…ë°ì´íŠ¸(ì´ë™ ì¤‘ ì¡°ìž‘ ë¶ˆê°€)
 	if (!floor_move) 
 	{
 		for (int i = 0; i < 6; i++)
@@ -75,10 +75,10 @@ void MapManager::Update()
 }
 
 /*
-±â´É :		µå·Î¿ì
-¸Å°³º¯¼ö :	¾øÀ½
-¹ÝÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¸Ê ÀÌµ¿ Áß¿£ µå·Î¿ì¸»°í FloorÇÔ¼ö È£Ãâ
+ê¸°ëŠ¥ :		ë“œë¡œìš°
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ë§µ ì´ë™ ì¤‘ì—” ë“œë¡œìš°ë§ê³  Floorí•¨ìˆ˜ í˜¸ì¶œ
 */
 void MapManager::Draw()
 {
@@ -115,14 +115,14 @@ void MapManager::Draw()
 }
 
 /*
-±â´É :		Ãæµ¹
-¸Å°³º¯¼ö :	¾øÀ½
-¹ÝÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	°¢ °´Ã¼°£ÀÇ Ãæµ¹Ã³¸®
+ê¸°ëŠ¥ :		ì¶©ëŒ
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ê° ê°ì²´ê°„ì˜ ì¶©ëŒì²˜ë¦¬
 */
 void MapManager::Collision()
 {
-	//  ¸Ê ÀÌµ¿ Áß¿¡´Â Ãæµ¹ÇÏÁö ¾ÊÀ½ 
+	//  ë§µ ì´ë™ ì¤‘ì—ëŠ” ì¶©ëŒí•˜ì§€ ì•ŠìŒ 
 	if (!floor_move)		
 	{
 		Col ch_temp = cha->getCol_temp();
@@ -131,110 +131,110 @@ void MapManager::Collision()
 		Col ch2 = cha2->getCol();
 
 		//1p
-		// ¶³¾îÁö´Â Áß
+		// ë–¨ì–´ì§€ëŠ” ì¤‘
 		if (!cha->getJump_state())
 		{
 			int check = cha->Collision_V(ch2.chx, ch2.chX, ch2.chy, ch2.chY);
-			// 2pÀÇ À­ ºÎºÐ¿¡ Ãæµ¹
+			// 2pì˜ ìœ— ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == UP || check == 6)						
 			{
-				// »óÅÂ º¯È¯
+				// ìƒíƒœ ë³€í™˜
 				cha->setFloor_collision_temp(true);	
-				// ¿©ºÐ °è»ê
+				// ì—¬ë¶„ ê³„ì‚°
 				cha->setExtra_fall_y(abs(ch2.chy - ch.chY));	
 			}
 		}
-		// Á¡ÇÁ Áß	
+		// ì í”„ ì¤‘	
 		else								
 		{
-			// 2pÀÇ ¾Æ·§ ºÎºÐ¿¡ Ãæµ¹
+			// 2pì˜ ì•„ëž« ë¶€ë¶„ì— ì¶©ëŒ
 			if (cha->Collision_V(ch2.chx, ch2.chX, ch2.chy, ch2.chY) == DOWN)	
 			{
-				// »óÅÂ º¯È¯
+				// ìƒíƒœ ë³€í™˜
 				cha->setJump_collision_temp(true);				
-				// ¿©ºÐ °è»ê 
+				// ì—¬ë¶„ ê³„ì‚° 
 				cha->setExtra_jump_y(-abs(ch2.chY - ch.chy));	
 			}
 		}
 
-		// ¿ì·Î ÀÌµ¿ Áß
+		// ìš°ë¡œ ì´ë™ ì¤‘
 		if (cha->getMove_state_r())
 		{
 			int check = cha->Collision_H(ch2.chx - 14, ch2.chX, ch2.chy, ch2.chY);
 
-			// 2pÀÇ ¿ÞÂÊ ºÎºÐ¿¡ Ãæµ¹
+			// 2pì˜ ì™¼ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == LEFT || check == 6)									
 			{
-				// »óÅÂ º¯È¯
+				// ìƒíƒœ ë³€í™˜
 				cha->setMove_collision_r(true);	
 			}
 		}
 
-		// ÁÂ·Î ÀÌµ¿ Áß
+		// ì¢Œë¡œ ì´ë™ ì¤‘
 		if (cha->getMove_state_l())
 		{
 			int check = cha->Collision_H(ch2.chx, ch2.chX + 14, ch2.chy, ch2.chY);
 
-			// 2pÀÇ ¿À¸¥ÂÊ ºÎºÐ¿¡ Ãæµ¹
+			// 2pì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == RIGHT || check == 6)					
 			{
-				// »óÅÂ º¯È¯
+				// ìƒíƒœ ë³€í™˜
 				cha->setMove_collision_l(true);					
 			}
 		}
 
 		//2p
-		// ¶³¾îÁö´Â Áß
+		// ë–¨ì–´ì§€ëŠ” ì¤‘
 		if (!cha2->getJump_state())
 		{
 			int check = cha2->Collision_V(ch.chx, ch.chX, ch.chy - 10, ch.chY);
 
-			// 1pÀÇ À­ ºÎºÐ¿¡ Ãæµ¹
+			// 1pì˜ ìœ— ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == UP || check == 6)											
 			{
-				cha2->setFloor_collision_temp(true);				// »óÅÂ º¯È¯
-				cha2->setExtra_fall_y(abs(ch.chy - ch2.chY));		// ¿©ºÐ °è»ê
+				cha2->setFloor_collision_temp(true);				// ìƒíƒœ ë³€í™˜
+				cha2->setExtra_fall_y(abs(ch.chy - ch2.chY));		// ì—¬ë¶„ ê³„ì‚°
 			}
 		}
-		// Á¡ÇÁ Áß
+		// ì í”„ ì¤‘
 		else									
 		{
-			// 1pÀÇ ¾Æ·§ ºÎºÐ¿¡ Ãæµ¹
+			// 1pì˜ ì•„ëž« ë¶€ë¶„ì— ì¶©ëŒ
 			if (cha2->Collision_V(ch.chx, ch.chX, ch.chy, ch.chY + 10) == DOWN)		
 			{
-				cha2->setJump_collision_temp(true);					// »óÅÂ º¯È¯
-				cha2->setExtra_jump_y(-abs(ch.chY - ch2.chy));		// ¿©ºÐ °è»ê
+				cha2->setJump_collision_temp(true);					// ìƒíƒœ ë³€í™˜
+				cha2->setExtra_jump_y(-abs(ch.chY - ch2.chy));		// ì—¬ë¶„ ê³„ì‚°
 			}
 		}
 
-		// ¿ì·Î ÀÌµ¿ Áß
+		// ìš°ë¡œ ì´ë™ ì¤‘
 		if (cha2->getMove_state_r())
 		{
 			int check = cha2->Collision_H(ch.chx - 14, ch.chX, ch.chy, ch.chY);
 		
-			// 1pÀÇ ¿ÞÂÊ ºÎºÐ¿¡ Ãæµ¹
+			// 1pì˜ ì™¼ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == LEFT || check == 6)										
 			{
-				cha2->setMove_collision_r(true);					// »óÅÂ º¯È¯
+				cha2->setMove_collision_r(true);					// ìƒíƒœ ë³€í™˜
 			}
 		}
 
-		// ÁÂ·Î ÀÌµ¿ Áß
+		// ì¢Œë¡œ ì´ë™ ì¤‘
 		if (cha2->getMove_state_l())
 		{
 			int check = cha2->Collision_H(ch.chx, ch.chX + 14, ch.chy, ch.chY);
 
-			// 1pÀÇ ¿À¸¥ÂÊ ºÎºÐ¿¡ Ãæµ¹
+			// 1pì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == RIGHT || check == 6)			
 			{
-				cha2->setMove_collision_l(true);					// »óÅÂ º¯È¯
+				cha2->setMove_collision_l(true);					// ìƒíƒœ ë³€í™˜
 			}
 		}
 
-		// ¸ó½ºÅÍ¿Í ÇÃ·¹ÀÌ¾î °£ Ãæµ¹
+		// ëª¬ìŠ¤í„°ì™€ í”Œë ˆì´ì–´ ê°„ ì¶©ëŒ
 		for (int i = 0; i < 6; i++)
 		{
-			// ¡ÚÇ×»ó create, onoff, boom Ã¼Å©¸¸! (isOnMission, º°µµ ºÐ±â ¾øÀ½)
+			// â˜…í•­ìƒ create, onoff, boom ì²´í¬ë§Œ! (isOnMission, ë³„ë„ ë¶„ê¸° ì—†ìŒ)
 			if (seal[i]->getBoom() || !seal[i]->getCreate() || !seal[i]->getOnoff())
 				continue;
 
@@ -252,7 +252,7 @@ void MapManager::Collision()
 				break;
 			}
 
-			// °ø°Ý Ã³¸®µµ µ¿ÀÏ
+			// ê³µê²© ì²˜ë¦¬ë„ ë™ì¼
 			if (cha->getAttack_state())
 			{
 				if (seal[i]->Collision_attacked(cha->getCol().chx, cha->getCol().chX, cha->getCol().chy, cha->getCol().chY, cha->getPos()) == 1)
@@ -272,16 +272,16 @@ void MapManager::Collision()
 			}
 		}
 
-		// ºí·Ï°ú ¿ÀºêÁ§Æ®ÀÇ Ãæµ¹
+		// ë¸”ë¡ê³¼ ì˜¤ë¸Œì íŠ¸ì˜ ì¶©ëŒ
 		for (int i = 0; i < 6; i++)
 		{
-			// ¸Ê ÀÌµ¿ÀÌ ÀÏ¾î³¯ ¼ö ÀÖ´Â Ãþ¸¸ µû·Î Ã³¸®
+			// ë§µ ì´ë™ì´ ì¼ì–´ë‚  ìˆ˜ ìžˆëŠ” ì¸µë§Œ ë”°ë¡œ ì²˜ë¦¬
 			if (i == floor_move_now)							
 			{
-				// Ä³¸¯ÅÍ°¡ ÂøÁöÇÏ¸é
+				// ìºë¦­í„°ê°€ ì°©ì§€í•˜ë©´
 				if (blockMap[i]->Collision3(cha, cha2))			
 				{
-					// Ãþ¿¡ ÇÑ ¹øÀÌ¶óµµ ¹Ù´Ú ÂøÁöÇÏ¸é Ãþ ÀÌµ¿ °¡´É
+					// ì¸µì— í•œ ë²ˆì´ë¼ë„ ë°”ë‹¥ ì°©ì§€í•˜ë©´ ì¸µ ì´ë™ ê°€ëŠ¥
 					floor_move = true;							
 					floor_move_now = (floor_move_now + 1) % 6;
 					floor_skip_1 = (floor_skip_1 + 1) % 6;
@@ -290,21 +290,21 @@ void MapManager::Collision()
 			}
 			else
 			{
-				// ³ª¸ÓÁö ÃþÀº ±âº» Ãæµ¹
+				// ë‚˜ë¨¸ì§€ ì¸µì€ ê¸°ë³¸ ì¶©ëŒ
 				blockMap[i]->Collision(cha, cha2);		
-				// ¸ðµç Ãþ°ú ¸ó½ºÅÍÀÇ Ãæµ¹
+				// ëª¨ë“  ì¸µê³¼ ëª¬ìŠ¤í„°ì˜ ì¶©ëŒ
 				blockMap[i]->Collision_seal(seal[i]);			
 			}
 		}
 
-		// Ãþ ÀÌµ¿ÀÌ µÈ °æ¿ì ÇÑ ¹ø¸¸ ½ÇÇàµÊ
+		// ì¸µ ì´ë™ì´ ëœ ê²½ìš° í•œ ë²ˆë§Œ ì‹¤í–‰ë¨
 		if (floor_move)											
 		{
-			// ¸Ç ¹ØÃþÀÇ ¸ó½ºÅÍ¸¦ Áö¿ò
+			// ë§¨ ë°‘ì¸µì˜ ëª¬ìŠ¤í„°ë¥¼ ì§€ì›€
 			delete seal[(floor_skip_1 + 5) % 6];	
-			// »õ·Î °´Ã¼ »ý¼º
+			// ìƒˆë¡œ ê°ì²´ ìƒì„±
 			seal[(floor_skip_1 + 5) % 6] = new Monster;			
-			// ¸Ç ¹ØÃþÀ» ¸Ç À§·Î ¸®¼Â
+			// ë§¨ ë°‘ì¸µì„ ë§¨ ìœ„ë¡œ ë¦¬ì…‹
 			blockMap[(floor_skip_1 + 5) % 6]->Reset(seal[(floor_skip_1 + 5) % 6]); 
 		}
 	}

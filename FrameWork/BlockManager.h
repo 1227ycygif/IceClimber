@@ -1,31 +1,31 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h" 
-// ÅÛÇÃ¸´ ¹è¿­ »ç¿ë
+// í…œí”Œë¦¿ ë°°ì—´ ì‚¬ìš©
 #include "BoundCheckArray.h"  
 
-// Çì´õ ÆÄÀÏ¿¡¼­ Monster* »ç¿ë¸¸ ÇÒ °æ¿ì Forward ¼±¾ð!
+// í—¤ë” íŒŒì¼ì—ì„œ Monster* ì‚¬ìš©ë§Œ í•  ê²½ìš° Forward ì„ ì–¸!
 class Monster;    
 class Block;
 class Character;
 
 /*
-¿ëµµ :		¸Æ
-¸É¹ö º¯¼ö :	ºí·Ï Å¬·¡½º Æ÷ÀÎÅÍ ¹è¿­
-			Ãþ ³ôÀÌ
-			ºí·Ï ÀÎµ¦½º
+ìš©ë„ :		ë§¥
+ë§´ë²„ ë³€ìˆ˜ :	ë¸”ë¡ í´ëž˜ìŠ¤ í¬ì¸í„° ë°°ì—´
+			ì¸µ ë†’ì´
+			ë¸”ë¡ ì¸ë±ìŠ¤
 
-¸É¹ö ÇÔ¼ö :	¼Ò¸êÀÚ
+ë§´ë²„ í•¨ìˆ˜ :	ì†Œë©¸ìž
 
-			ÃÊ±âÈ­
-			¸®¼Â
-			¾÷µ¥ÀÌÆ®
-			µå·Î¿ì
+			ì´ˆê¸°í™”
+			ë¦¬ì…‹
+			ì—…ë°ì´íŠ¸
+			ë“œë¡œìš°
 
-			ºí·Ï°ú Ä³¸¯ÅÍ °£ Ãæµ¹
-			ºí·Ï°ú Ä³¸¯ÅÍ °£ Ãæµ¹(¸Ê ÀÌµ¿ ÃþÀÏ °æ¿ì)
-			ºí·Ï°ú ¸ó½ºÅÍ °£ Ãæµ¹
+			ë¸”ë¡ê³¼ ìºë¦­í„° ê°„ ì¶©ëŒ
+			ë¸”ë¡ê³¼ ìºë¦­í„° ê°„ ì¶©ëŒ(ë§µ ì´ë™ ì¸µì¼ ê²½ìš°)
+			ë¸”ë¡ê³¼ ëª¬ìŠ¤í„° ê°„ ì¶©ëŒ
 
-			Ãþ ÀÌµ¿
+			ì¸µ ì´ë™
 */
 class BlockManager
 {

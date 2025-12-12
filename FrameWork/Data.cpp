@@ -1,11 +1,11 @@
-#pragma once
+ï»¿#pragma once
 #include"Include.h"
 
 Data playdata;
 
 /*
-±â´É :		»ý¼ºÀÚ
-Æ¯ÀÌ»çÇ× :	°¢ º¯¼ö ÃÊ±âÈ­
+ê¸°ëŠ¥ :		ìƒì„±ìž
+íŠ¹ì´ì‚¬í•­ :	ê° ë³€ìˆ˜ ì´ˆê¸°í™”
 */
 Data::Data()
 {
@@ -27,7 +27,7 @@ Data::Data()
 }
 
 /*
-±â´É :		¼Ò¸êÀÚ
+ê¸°ëŠ¥ :		ì†Œë©¸ìž
 */
 Data::~Data()
 {
@@ -35,10 +35,10 @@ Data::~Data()
 }
 
 /*
-±â´É :		°ÔÀÓ µ¥ÀÌÅÍ ¸®¼Â
-¸Å°³º¯¼ö :	¾øÀ½
-¹ÝÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	°¢ ÇÃ·¹ÀÌ¾î Ä«¿îÆ® ÃÊ±âÈ­
+ê¸°ëŠ¥ :		ê²Œìž„ ë°ì´í„° ë¦¬ì…‹
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ê° í”Œë ˆì´ì–´ ì¹´ìš´íŠ¸ ì´ˆê¸°í™”
 */
 void Data::Reset()
 {

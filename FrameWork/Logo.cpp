@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 Logo::Logo()
@@ -8,23 +8,23 @@ Logo::Logo()
 Logo::~Logo()
 {
 }
-// ·Î°í ÀÌ¹ÌÁö alpha°ª 255 -> 0 À¸·Î ¹Ù²î¸é¼­ ·Îºñ·Î ÁøÀÔ
+// ë¡œê³  ì´ë¯¸ì§€ alphaê°’ 255 -> 0 ìœ¼ë¡œ ë°”ë€Œë©´ì„œ ë¡œë¹„ë¡œ ì§„ì…
 void Logo::Init()
 {
-	//g_Mng.n_Chap = GAME; // ¡ß °ÔÀÓ È­¸é ¹Ù·Î ½ÃÀÛ
+	//g_Mng.n_Chap = GAME; // â—† ê²Œì„ í™”ë©´ ë°”ë¡œ ì‹œì‘
 	alpha = 255;
 
 	loadimg.Create("./resource/Img/logo/logo.png", false, D3DCOLOR_XRGB(0, 0, 0));
 
-	//////µ¥ÀÌÅÍ º£ÀÌ½º »ç¿ë½Ã 
-	//// mysql ±¸Á¶Ã¼ º¯¼ö ÃÊ±âÈ­
+	//////ë°ì´í„° ë² ì´ìŠ¤ ì‚¬ìš©ì‹œ 
+	//// mysql êµ¬ì¡°ì²´ ë³€ìˆ˜ ì´ˆê¸°í™”
 	mysql_init(&sql.conn);
-	// ip, Á¢¼Ó id , pass, µ¥ÀÌÅ¸ º£ÀÌ½º¸í, Æ÷Æ®¹øÈ£ µîÀ¸·Î Á¢¼Ó
+	// ip, ì ‘ì† id , pass, ë°ì´íƒ€ ë² ì´ìŠ¤ëª…, í¬íŠ¸ë²ˆí˜¸ ë“±ìœ¼ë¡œ ì ‘ì†
 	sql.connection = mysql_real_connect(&sql.conn, DB_HOST,
 		DB_USER, DB_PASS,
 		DB_NAME, 3306,
 		(char *)NULL, 0);
-	// Á¢¼Ó¿¡ ½ÇÆĞ or ¼º°ø½Ã ½ÇÇà
+	// ì ‘ì†ì— ì‹¤íŒ¨ or ì„±ê³µì‹œ ì‹¤í–‰
 	if (sql.connection == NULL)
 	{
 		sprintf_s(sql.state, "Mysql connection error : %s", mysql_error(&sql.conn));
@@ -44,17 +44,17 @@ void Logo::Update(double frame)
 	alpha--;
 
 	if (alpha <= 0) {
-		g_Mng.n_Chap = MENU; // ¡ß ÁÖ¼®Ã³¸®ÇÏ¸é ¹Ù·Î °ÔÀÓÀ¸·Î °¨
+		g_Mng.n_Chap = MENU; // â—† ì£¼ì„ì²˜ë¦¬í•˜ë©´ ë°”ë¡œ ê²Œì„ìœ¼ë¡œ ê°
 		g_Mng.chap[g_Mng.n_Chap]->Init();
-		//g_Mng.n_Chap = GAME; // ¡ß ÁÖ¼®Ã³¸®ÇÏ¸é ¸Ş´ºÈ­¸é ³ª¿È
+		//g_Mng.n_Chap = GAME; // â—† ì£¼ì„ì²˜ë¦¬í•˜ë©´ ë©”ë‰´í™”ë©´ ë‚˜ì˜´
 		sound.m_Menubg->Play(0, DSBPLAY_LOOPING);
 	}
 }
 
 void Logo::Draw()
 {
-	loadimg.SetColor(255, 255, 255, alpha);  // »ö»ó º¯°æ
-	loadimg.Draw(0, 0);  // ÀÌ¹ÌÁöÃâ·Â
+	loadimg.SetColor(255, 255, 255, alpha);  // ìƒ‰ìƒ ë³€ê²½
+	loadimg.Draw(0, 0);  // ì´ë¯¸ì§€ì¶œë ¥
 }
 
 void Logo::OnMessage(MSG* msg)

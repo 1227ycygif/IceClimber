@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 class Collider
@@ -10,7 +10,7 @@ public:
 	Collider();
 	~Collider();
 
-	// µð¹ö±× ¹Ú½º ÀÚµ¿ ±×¸®±â
+	// ë””ë²„ê·¸ ë°•ìŠ¤ 
 	const RECT& GetRect() const { return m_rc; } 
 
 	void Init();

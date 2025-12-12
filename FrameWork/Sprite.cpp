@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 Sprite g_Load;
@@ -36,7 +36,7 @@ bool Sprite::Create(const char* filename, bool bUseTransparency, D3DCOLOR Transp
 	return TRUE;
 }
 
-// È­¸éÀÇ x, y ¿¡ Ãâ·ÂÇØ¶ó.
+// í™”ë©´ì˜ x, y ì— ì¶œë ¥í•´ë¼.
 void Sprite::Draw(float x, float y)		
 {
 	D3DXVECTOR3 pos;
@@ -49,9 +49,9 @@ void Sprite::Draw(float x, float y)
 	dv_font.Sprite->End() ;
 }
 
-// È¸Àü, È®´ë Ãâ·Â
-// sx -1 : ÁÂ¿ì ¹İÀü, sy -1 = »óÇÏ ¹İÀü
-// sx 0 : ¾ø¾îÁü, 1 : ±×´ë·Î, 2 : xÃàÀ¸·Î 2¹è È®´ë
+// íšŒì „, í™•ëŒ€ ì¶œë ¥
+// sx -1 : ì¢Œìš° ë°˜ì „, sy -1 = ìƒí•˜ ë°˜ì „
+// sx 0 : ì—†ì–´ì§, 1 : ê·¸ëŒ€ë¡œ, 2 : xì¶•ìœ¼ë¡œ 2ë°° í™•ëŒ€
 void Sprite::Render( float x , float y , float radian, float sx, float sy) 
 {																	   
 	RECT Rect ;														   

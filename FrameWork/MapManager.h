@@ -1,36 +1,36 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 #include"BoundCheckArray.h"
 /*
-¿ëµµ :		ÀüÃ¼ ¸ÊÀ» °ü¸®ÇÏ´Â Å¬·¡½º
-¸É¹ö º¯¼ö :	ÁÖ¼® ÂüÁ¶
+ìš©ë„ :		ì „ì²´ ë§µì„ ê´€ë¦¬í•˜ëŠ” í´ëž˜ìŠ¤
+ë§´ë²„ ë³€ìˆ˜ :	ì£¼ì„ ì°¸ì¡°
 
-¸É¹ö ÇÔ¼ö :	»ý¼ºÀÚ
-			¼Ò¸êÀÚ
+ë§´ë²„ í•¨ìˆ˜ :	ìƒì„±ìž
+			ì†Œë©¸ìž
 
-			ÃÊ±âÈ­
-			¾÷µ¥ÀÌÆ®
-			µå·Î¿ì
-			Ãæµ¹
+			ì´ˆê¸°í™”
+			ì—…ë°ì´íŠ¸
+			ë“œë¡œìš°
+			ì¶©ëŒ
 */
 class MapManager
 {
 private:
-	// ºí·Ï¸Å´ÏÀú Å¬·¡½º Æ÷ÀÎÅÍ ¹è¿­
+	// ë¸”ë¡ë§¤ë‹ˆì € í´ëž˜ìŠ¤ í¬ì¸í„° ë°°ì—´
 	BoundCheckArray<BlockManager*> blockMap;			
-	// Ä³¸¯ÅÍ Å¬·¡½º Æ÷ÀÎÅÍ ÇÃ·¹ÀÌ¾î1
+	// ìºë¦­í„° í´ëž˜ìŠ¤ í¬ì¸í„° í”Œë ˆì´ì–´1
 	Character* cha;										
-	// Ä³¸¯ÅÍ Å¬·¡½º Æ÷ÀÎÅÍ ÇÃ·¹ÀÌ¾î2
+	// ìºë¦­í„° í´ëž˜ìŠ¤ í¬ì¸í„° í”Œë ˆì´ì–´2
 	Character* cha2;									
-	// ¸ó½ºÅÍ Å¬·¡½º Æ÷ÀÎÅÍ ¹è¿­
+	// ëª¬ìŠ¤í„° í´ëž˜ìŠ¤ í¬ì¸í„° ë°°ì—´
 	BoundCheckArray<Monster*> seal;						
 
 public:
-	// ¸Ê ÀÌµ¿ Áß ÀÌµ¿·®
+	// ë§µ ì´ë™ ì¤‘ ì´ë™ëŸ‰
 	int floorY;											
-	// ¸Ê ÀÌµ¿ »óÅÂ true: ÀÌµ¿ Áß, false: ÀÌµ¿ ÇØÁ¦
+	// ë§µ ì´ë™ ìƒíƒœ true: ì´ë™ ì¤‘, false: ì´ë™ í•´ì œ
 	bool floor_move;									
-	// ¸Ê ÀÌµ¿ÀÌ ÀÏ¾î³¯ Ãþ, ÀÌ¹ø ¸Ê ÀÌµ¿½Ã ½ºÅµµÉ Ãþ(¾Æ·¡), ÀÌ¹ø ¸Ê ÀÌµ¿½Ã ½ºÅµµÉ Ãþ(¾Æ·¡)
+	// ë§µ ì´ë™ì´ ì¼ì–´ë‚  ì¸µ, ì´ë²ˆ ë§µ ì´ë™ì‹œ ìŠ¤í‚µë  ì¸µ(ì•„ëž˜), ì´ë²ˆ ë§µ ì´ë™ì‹œ ìŠ¤í‚µë  ì¸µ(ì•„ëž˜)
 	int floor_move_now, floor_skip_1, floor_skip_2;		
 
 	MapManager();

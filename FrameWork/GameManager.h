@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 struct SysTem
@@ -25,7 +25,7 @@ public:
 	bool m_GameStart;
 
 	bool m_Collision;
-	bool m_bShowCollider = true; // µğ¹ö±× Ãæµ¹ ¹Ú½º Ç¥½Ã ¿©ºÎ
+	bool m_bShowCollider = true; // ë””ë²„ê·¸ ì¶©ëŒ ë°•ìŠ¤ í‘œì‹œ ì—¬ë¶€
 
 	bool Respawn;
 

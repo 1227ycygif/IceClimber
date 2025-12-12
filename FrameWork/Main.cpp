@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 //#include <windows.h>
 //#include <mmsystem.h>
 #include "Include.h" 
@@ -7,9 +7,9 @@ const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
 const int MAX_FRAMESKIP = 5;
 int loops;
 float interpolation;
-// ¹öÆÛ Ãß°¡
+// ë²„í¼ ì¶”ê°€
 char buffer[128] = {0,0,0,0};
-char ch[3] = {0,0,0}; //D  strcat »ç¿ë¹ı Æ²¸² ÃÖ¼Ò ³ÎÀÌ µé¾î°¥¼ö ÀÖµµ·Ï ÇØÁà¾ßÇÔ
+char ch[3] = {0,0,0}; //D  strcat ì‚¬ìš©ë²• í‹€ë¦¼ ìµœì†Œ ë„ì´ ë“¤ì–´ê°ˆìˆ˜ ìˆë„ë¡ í•´ì¤˜ì•¼í•¨
 ////////////////////////////////////
 LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
@@ -33,19 +33,19 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	RegisterClassEx( &wc ) ;
 
 	/* ---------------------------------------------------
-	/////////////////// Á¤°¡¿îµ¥ Ãâ·Â ////////////////////
+	/////////////////// ì •ê°€ìš´ë° ì¶œë ¥ ////////////////////
 
-				ÇÁ·Î±×·¥À» ¸ğ´ÏÅÍÀÇ Á¤°¡¿îµ¥
-				Ãâ·ÂÇÏ°Ô ÇØ ÁÖ´Â ÄÚµåÀÔ´Ï´Ù.
+				í”„ë¡œê·¸ë¨ì„ ëª¨ë‹ˆí„°ì˜ ì •ê°€ìš´ë°
+				ì¶œë ¥í•˜ê²Œ í•´ ì£¼ëŠ” ì½”ë“œì…ë‹ˆë‹¤.
 
 	//////////////////////////////////////////////////////
-	----------------------¿ä-±â-¼­-ºÎ-ÅÍ-----------------*/
+	----------------------ìš”-ê¸°-ì„œ-ë¶€-í„°-----------------*/
 	RECT rt = {0, 0, SCREEN_WITH, SCREEN_HEIGHT};
 	int W = rt.right - rt.left;
 	int H = rt.bottom - rt.top;
 	int X = (GetSystemMetrics(SM_CXSCREEN)/2) - SCREEN_WITH/2;
 	int Y = ( (GetSystemMetrics(SM_CYSCREEN)/2) - SCREEN_HEIGHT/2 );
-	/*---------------------¿ä-±â-±î-Áö-------------------*/
+	/*---------------------ìš”-ê¸°-ê¹Œ-ì§€-------------------*/
 
 	g_hWnd = CreateWindowEx( NULL, wc.lpszClassName, 
 		"Game", 
@@ -69,7 +69,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 	///////////////////////////////////////////////////////////////////
 	ZeroMemory(&msg, sizeof(MSG));
 	//TRACE("REV ====== %s ========= \n\n", buffer);
-	/////////// Ã©ÅÍ ÃÊ±âÈ­ /////////////////
+	/////////// ì±•í„° ì´ˆê¸°í™” /////////////////
 	g_Mng.chap[LOGO] = new Logo;
 	g_Mng.chap[MENU] = new Menu;
 	g_Mng.chap[GAME] = new Game;
@@ -156,7 +156,7 @@ LRESULT CALLBACK WndProc( HWND g_hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 		break;
 
 
-	//case WM_COMM_RXCHAR:  //½Ã¸®¾ó¿¡¼­ ¹Ş´Â ¸Ş¼¼Áö´Â ¿©±â¸¦ 
+	//case WM_COMM_RXCHAR:  //ì‹œë¦¬ì–¼ì—ì„œ ë°›ëŠ” ë©”ì„¸ì§€ëŠ” ì—¬ê¸°ë¥¼ 
 	//	 ch[0] = wParam;
 	//	 strcat( buffer,ch);	
 	//     TRACE("REV ====== %s ========= \n\n", buffer);

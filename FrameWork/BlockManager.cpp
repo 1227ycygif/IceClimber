@@ -1,9 +1,9 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 /*
-±â´É :		¼Ò¸êÀÚ
-Æ¯ÀÌ»çÇ× :	»ı¼ºµÈ ºí·Ï °´Ã¼ ¸ğµÎ ÇØÁ¦
+ê¸°ëŠ¥ :		ì†Œë©¸ì
+íŠ¹ì´ì‚¬í•­ :	ìƒì„±ëœ ë¸”ë¡ ê°ì²´ ëª¨ë‘ í•´ì œ
 */
 BlockManager::~BlockManager()
 {
@@ -12,20 +12,20 @@ BlockManager::~BlockManager()
 }
 
 /*
-±â´É :		ÃÊ±âÈ­
-¸Å°³º¯¼ö :	Ãş ³ôÀÌ, ¸ó½ºÅÍ °´Ã¼ Æ÷ÀÎÅÍ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¸ó½ºÅÍ °´Ã¼°¡ ÃÊ±âÈ­µÊ, ºí·Ï °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+ê¸°ëŠ¥ :		ì´ˆê¸°í™”
+ë§¤ê°œë³€ìˆ˜ :	ì¸µ ë†’ì´, ëª¬ìŠ¤í„° ê°ì²´ í¬ì¸í„°
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ëª¬ìŠ¤í„° ê°ì²´ê°€ ì´ˆê¸°í™”ë¨, ë¸”ë¡ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 */
 void BlockManager::Init(int level, Monster* seal)
 {
 	index = 0;
 	this->level = level;
 
-	// 0ÃşÀÏ ¶§
+	// 0ì¸µì¼ ë•Œ
 	if (this->level == 0)
 	{
-		// ¸ó½ºÅÍ ÃÊ±âÈ­
+		// ëª¬ìŠ¤í„° ì´ˆê¸°í™”
 		seal->Init(1, 26 - (level * 6), 1, false);	
 		for (int j = 0; j < 6; j++)
 		{
@@ -33,14 +33,14 @@ void BlockManager::Init(int level, Monster* seal)
 			{
 				if (bottom[j][i] != 0)
 				{
-					// ºí·Ï °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+					// ë¸”ë¡ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 					blockArr[index] = new Block;
 					blockArr[index++]->Init(bottom[j][i], i, 26 - (6 - j) - (level * 6), 1);
 				}
 			}
 		}
 	}
-	// 1ÃşÀÏ ¶§
+	// 1ì¸µì¼ ë•Œ
 	else if (this->level == 1)
 	{
 		seal->Init(1, 26 - (level * 6), 1, false);
@@ -51,7 +51,7 @@ void BlockManager::Init(int level, Monster* seal)
 			{
 				if (floors[3][j][i] != 0)
 				{
-					// ºí·Ï °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+					// ë¸”ë¡ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 					blockArr[index] = new Block;
 					blockArr[index++]->Init(floors[3][j][i], i, 27 - (6 - j) - (level * 6), 1);
 				}
@@ -59,16 +59,16 @@ void BlockManager::Init(int level, Monster* seal)
 		}
 	}
 
-	// 2~5ÃşÀÏ ¶§
+	// 2~5ì¸µì¼ ë•Œ
 	else
 	{
-		// 0~7±îÁö ¸ÊÁß¿¡ ·£´ı »ı¼º
+		// 0~7ê¹Œì§€ ë§µì¤‘ì— ëœë¤ ìƒì„±
 		int select = rand() % 8;		
-		// ±âº» ¸ÊÀÏ °æ¿ì¿¡¸¸ ¸ó½ºÅÍ »ı¼º
+		// ê¸°ë³¸ ë§µì¼ ê²½ìš°ì—ë§Œ ëª¬ìŠ¤í„° ìƒì„±
 		if (select < 4)					
 		{
 			bool s = rand() % 2;
-			// ¸ó½ºÅÍ´Â ·£´ıÀ¸·Î »ı¼º
+			// ëª¬ìŠ¤í„°ëŠ” ëœë¤ìœ¼ë¡œ ìƒì„±
 			seal->Init(1, 26 - (level * 6), 1, s);	 
 		}
 		else
@@ -78,12 +78,12 @@ void BlockManager::Init(int level, Monster* seal)
 			
 		for (int j = 0; j < 6; j++)
 		{
-			// ±¸¸§ ºí·ÏÀÇ ½ºÇÁ¶óÀÌÆ® ¼ø¼­¸¦ Ã³¸®ÇÏ±â À§ÇØ °¡¿îµ¥ºÎÅÍ »ı¼º
+			// êµ¬ë¦„ ë¸”ë¡ì˜ ìŠ¤í”„ë¼ì´íŠ¸ ìˆœì„œë¥¼ ì²˜ë¦¬í•˜ê¸° ìœ„í•´ ê°€ìš´ë°ë¶€í„° ìƒì„±
 			for (int i = 6; i < 26; i++)	
 			{
 				if (floors[select][j][i] != 0)
 				{
-					// ºí·Ï °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+					// ë¸”ë¡ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 					blockArr[index] = new Block;
 					blockArr[index++]->Init(floors[select][j][i], i, 27 - (6 - j) - (level * 6), 1);
 				}
@@ -93,7 +93,7 @@ void BlockManager::Init(int level, Monster* seal)
 			{
 				if (floors[select][j][i] != 0)
 				{
-					// ºí·Ï °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+					// ë¸”ë¡ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 					blockArr[index] = new Block;
 					blockArr[index++]->Init(floors[select][j][i], i, 27 - (6 - j) - (level * 6), 1);
 				}
@@ -103,7 +103,7 @@ void BlockManager::Init(int level, Monster* seal)
 			{
 				if (floors[select][j][i] != 0)
 				{
-					// ºí·Ï °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+					// ë¸”ë¡ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 					blockArr[index] = new Block;
 					blockArr[index++]->Init(floors[select][j][i], i, 27 - (6 - j) - (level * 6), 1);
 				}
@@ -113,14 +113,14 @@ void BlockManager::Init(int level, Monster* seal)
 }
 
 /*
-±â´É :		¸Ê ¸®¼Â
-¸Å°³º¯¼ö :	¸ó½ºÅÍ °´Ã¼Æ÷ÀÎÅÍ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¸ó½ºÅÍ °´Ã¼°¡ ÃÊ±âÈ­µÊ, ºí·Ï °´Ã¼ »ı¼º ¹× ÃÊ±âÈ­
+ê¸°ëŠ¥ :		ë§µ ë¦¬ì…‹
+ë§¤ê°œë³€ìˆ˜ :	ëª¬ìŠ¤í„° ê°ì²´í¬ì¸í„°
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ëª¬ìŠ¤í„° ê°ì²´ê°€ ì´ˆê¸°í™”ë¨, ë¸”ë¡ ê°ì²´ ìƒì„± ë° ì´ˆê¸°í™”
 */
 void BlockManager::Reset(Monster* seal)
 {
-	// 1. ±âÁ¸ ºí·Ï ¿ÏÀü »èÁ¦
+	// 1. ê¸°ì¡´ ë¸”ë¡ ì™„ì „ ì‚­ì œ
 	for (int i = 0; i < index; ++i) 
 	{
 		if (blockArr[i]) {
@@ -129,11 +129,11 @@ void BlockManager::Reset(Monster* seal)
 		}
 	}
 
-	// 2. ÀÎµ¦½º ÃÊ±âÈ­
+	// 2. ì¸ë±ìŠ¤ ì´ˆê¸°í™”
 	index = 0;
 	this->level = 6;
 
-	// 3. ¸Ê ¼±ÅÃ ¹× ¸ó½ºÅÍ ÃÊ±âÈ­
+	// 3. ë§µ ì„ íƒ ë° ëª¬ìŠ¤í„° ì´ˆê¸°í™”
 	int select = rand() % 12;
 	if (select < 4)
 	{
@@ -145,7 +145,7 @@ void BlockManager::Reset(Monster* seal)
 		seal->Init(1, 26 - (level * 6), 1, false);
 	}
 		
-	// 4. ºí·Ï »õ·Î »ı¼º
+	// 4. ë¸”ë¡ ìƒˆë¡œ ìƒì„±
 	for (int j = 0; j < 6; j++)
 	{
 		for (int i = 6; i < 26; i++)
@@ -178,10 +178,10 @@ void BlockManager::Reset(Monster* seal)
 }
 
 /*
-±â´É :		¾÷µ¥ÀÌÆ®
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	»ı¼ºµÈ ºí·Ï °´Ã¼ ¾÷µ¥ÀÌÆ® È£Ãâ
+ê¸°ëŠ¥ :		ì—…ë°ì´íŠ¸
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ìƒì„±ëœ ë¸”ë¡ ê°ì²´ ì—…ë°ì´íŠ¸ í˜¸ì¶œ
 */
 void BlockManager::Update()
 {
@@ -192,10 +192,10 @@ void BlockManager::Update()
 }
 
 /*
-±â´É :		µå·Î¿ì
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	»ı¼ºµÈ ºí·Ï °´Ã¼ µå·Î¿ì È£Ãâ
+ê¸°ëŠ¥ :		ë“œë¡œìš°
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ìƒì„±ëœ ë¸”ë¡ ê°ì²´ ë“œë¡œìš° í˜¸ì¶œ
 */
 void BlockManager::Draw()
 {
@@ -210,10 +210,10 @@ void BlockManager::Draw()
 }
 
 /*
-±â´É :		¸Ê ÀÌµ¿
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	»ı¼ºµÈ ºí·Ï °´Ã¼ ¸Ê ÀÌµ¿ È£Ãâ
+ê¸°ëŠ¥ :		ë§µ ì´ë™
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ìƒì„±ëœ ë¸”ë¡ ê°ì²´ ë§µ ì´ë™ í˜¸ì¶œ
 */
 void BlockManager::Floor(int floorY)
 {
@@ -224,14 +224,14 @@ void BlockManager::Floor(int floorY)
 }
 
 /*
-±â´É :		ºí·Ï°ú ÇÃ·¹ÀÌ¾î °£ Ãæµ¹
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ê³¼ í”Œë ˆì´ì–´ ê°„ ì¶©ëŒ
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void BlockManager::Collision(Character* cha, Character* cha2)
 {
-	// Ãæµ¹ °ªÀ» ÀúÀå
+	// ì¶©ëŒ ê°’ì„ ì €ì¥
 	Col ch_temp = cha->getCol_temp();
 	Col ch = cha->getCol();
 	Col ch_temp2 = cha2->getCol_temp();
@@ -240,42 +240,42 @@ void BlockManager::Collision(Character* cha, Character* cha2)
 	// 1p
 	for (int i = 0; i < index; i++)
 	{
-		// ¶³¾îÁö´Â Áß
+		// ë–¨ì–´ì§€ëŠ” ì¤‘
 		if (!cha->getJump_state())
 		{
 			int check = blockArr[i]->Collision_V(ch_temp.chx, ch_temp.chX, ch_temp.chy, ch_temp.chY);
-			// ¹«¾ğ°¡ÀÇ À­ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ìœ— ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == UP || check == 6)										
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ±¸¸§ÀÌ³ª ½ºÇÇµå ºí·Ï¿¡ ÂøÁö ½Ã ÀÚµ¿ ÀÌµ¿ Àû¿ë
+				// êµ¬ë¦„ì´ë‚˜ ìŠ¤í”¼ë“œ ë¸”ë¡ì— ì°©ì§€ ì‹œ ìë™ ì´ë™ ì ìš©
 				if (kind == 3 || kind == 4 || kind == 5)						
 				{
 					cha->setAutomove_state(true);
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setFloor_collision_temp(true);								
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha->setExtra_fall_y(abs(blockArr[i]->getBlocky() - ch.chY));	
 			}
 
-			// ÀÌÀü ºí·Ïµé Áß ÀÚµ¿ ÀÌµ¿ ÀÖ¾úÀ¸¸é
+			// ì´ì „ ë¸”ë¡ë“¤ ì¤‘ ìë™ ì´ë™ ìˆì—ˆìœ¼ë©´
 			if (cha->getAutomove_state())										
 			{
-				// ¸ğµç ºí·ÏÀ» Ã³À½ºÎÅÍ Ã£À¸¸é¼­
+				// ëª¨ë“  ë¸”ë¡ì„ ì²˜ìŒë¶€í„° ì°¾ìœ¼ë©´ì„œ
 				for (int j = 0; j < index; j++)									
 				{
 					int check2 = blockArr[j]->Collision_H(ch.chx - 4, ch.chX, ch.chy + 1, ch.chY - 1);
 					
-					// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+					// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 					if (check2 == RIGHT || check2 == 6)
 					{
-						// ÀÚµ¿ ÀÌµ¿ ÀüÈ¯
+						// ìë™ ì´ë™ ì „í™˜
 						cha->setAutomove_state(false);
 					}
 				}
 				int check3 = cha->Collision_H(ch2.chx, ch2.chX + 14, ch2.chy + 1, ch2.chY - 1);
-				// ÇÃ·¹ÀÌ¾î2ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+				// í”Œë ˆì´ì–´2ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 				if (check3 == RIGHT || check3 == 6)
 				{
 					cha->setAutomove_state(false);
@@ -283,55 +283,55 @@ void BlockManager::Collision(Character* cha, Character* cha2)
 			}
 		}
 
-		// Á¡ÇÁ Áß	
+		// ì í”„ ì¤‘	
 		else								
 		{
-			// ¹«¾ğ°¡ÀÇ ¾Æ·§ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì•„ë« ë¶€ë¶„ì— ì¶©ëŒ
 			if (blockArr[i]->Collision_V(ch_temp.chx, ch_temp.chX, ch_temp.chy, ch_temp.chY) == DOWN)		
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ÀÏ¹İºí·Ï ½ºÇÇµåºí·ÏÀÏ °æ¿ì
+				// ì¼ë°˜ë¸”ë¡ ìŠ¤í”¼ë“œë¸”ë¡ì¼ ê²½ìš°
 				if (kind == 1 || kind == 3)	
 				{
-					// ÆÄ±« »ç¿îµå Ãâ·Â
+					// íŒŒê´´ ì‚¬ìš´ë“œ ì¶œë ¥
 					sound.m_HitIce->Play(0, NULL);															
-					// ÆÄ±«
+					// íŒŒê´´
 					blockArr[i]->Destroy(cha->getPlayer());													
 					playdata.p1_block_count++;
 				}
-				// º® ºí·ÏÀÏ °æ¿ì
+				// ë²½ ë¸”ë¡ì¼ ê²½ìš°
 				else if (kind == 2 || kind == 4 || kind == 5) 
 				{
-					// º® »ç¿îµå Ãâ·Â
+					// ë²½ ì‚¬ìš´ë“œ ì¶œë ¥
 					sound.m_HitHard->Play(0, NULL);															
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setJump_collision_temp(true);	
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha->setExtra_jump_y(-abs(blockArr[i]->getBlockY() - ch.chy));								
 			}
 		}
 
-		// ¿ì·Î ÀÌµ¿ Áß
+		// ìš°ë¡œ ì´ë™ ì¤‘
 		if (cha->getMove_state_r())
 		{
 			int check = blockArr[i]->Collision_H(ch.chx, ch.chX + 4, ch.chy + 1, ch.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿ŞÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì™¼ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == LEFT || check == 6)																
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setMove_collision_r(true);																
 			}
 		}
 
-		// ÁÂ·Î ÀÌµ¿Áß
+		// ì¢Œë¡œ ì´ë™ì¤‘
 		if (cha->getMove_state_l())
 		{
 			int check = blockArr[i]->Collision_H(ch.chx - 4, ch.chX, ch.chy + 1, ch.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == RIGHT || check == 6)	
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setMove_collision_l(true);																
 			}
 		}
@@ -340,33 +340,33 @@ void BlockManager::Collision(Character* cha, Character* cha2)
 	// 2p
 	for (int i = 0; i < index; i++)
 	{
-		// ¶³¾îÁö´Â Áß
+		// ë–¨ì–´ì§€ëŠ” ì¤‘
 		if (!cha2->getJump_state())
 		{
 			int check = blockArr[i]->Collision_V2(ch_temp2.chx, ch_temp2.chX, ch_temp2.chy, ch_temp2.chY);
-			// ¹«¾ğ°¡ÀÇ À­ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ìœ— ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == UP || check == 6)	
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ±¸¸§ÀÌ³ª ½ºÇÇµå ºí·Ï¿¡ ÂøÁö ½Ã ÀÚµ¿ ÀÌµ¿ Àû¿ë
+				// êµ¬ë¦„ì´ë‚˜ ìŠ¤í”¼ë“œ ë¸”ë¡ì— ì°©ì§€ ì‹œ ìë™ ì´ë™ ì ìš©
 				if (kind == 3 || kind == 4 || kind == 5)
 				{
 					cha2->setAutomove_state(true);																
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setFloor_collision_temp(true);						
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha2->setExtra_fall_y(abs(blockArr[i]->getBlocky() - ch2.chY));									
 			}
 
-			// ÀÌÀü ºí·Ïµé Áß ÀÚµ¿ ÀÌµ¿ ÀÖ¾úÀ¸¸é
+			// ì´ì „ ë¸”ë¡ë“¤ ì¤‘ ìë™ ì´ë™ ìˆì—ˆìœ¼ë©´
 			if (cha2->getAutomove_state())																		
 			{
-				// ¸ğµç ºí·ÏÀ» Ã³À½ºÎÅÍ Ã£À¸¸é¼­
+				// ëª¨ë“  ë¸”ë¡ì„ ì²˜ìŒë¶€í„° ì°¾ìœ¼ë©´ì„œ
 				for (int j = 0; j < index; j++)																	
 				{
 					int check2 = blockArr[j]->Collision_H2(ch2.chx - 4, ch2.chX, ch2.chy + 1, ch2.chY - 1);
-					// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+					// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 					if (check2 == RIGHT || check2 == 6)
 					{
 						cha2->setAutomove_state(false);
@@ -374,62 +374,62 @@ void BlockManager::Collision(Character* cha, Character* cha2)
 				}
 
 				int check3 = cha2->Collision_H(ch.chx, ch.chX + 14, ch.chy + 1, ch.chY - 1);
-				// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+				// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 				if (check3 == RIGHT || check3 == 6)
 				{
 					cha2->setAutomove_state(false);
 				}
 			}
 		}
-		// Á¡ÇÁ Áß	
+		// ì í”„ ì¤‘	
 		else								
 		{
-			// ¹«¾ğ°¡ÀÇ ¾Æ·§ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì•„ë« ë¶€ë¶„ì— ì¶©ëŒ
 			if (blockArr[i]->Collision_V2(ch_temp2.chx, ch_temp2.chX, ch_temp2.chy, ch_temp2.chY) == DOWN)		
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ÀÏ¹İ ºí·Ï, ½ºÇÇµå ºí·Ï
+				// ì¼ë°˜ ë¸”ë¡, ìŠ¤í”¼ë“œ ë¸”ë¡
 				if (kind == 1 || kind == 3)																		
 				{
-					// ÆÄ±« »ç¿îµå Ãâ·Â	
+					// íŒŒê´´ ì‚¬ìš´ë“œ ì¶œë ¥	
 					sound.m_HitIce->Play(0, NULL);	
-					// ÆÄ±«
+					// íŒŒê´´
 					blockArr[i]->Destroy(cha2->getPlayer());													
 					playdata.p2_block_count++;
 				}
-				// º® ºí·ÏÀÏ °æ¿ì
+				// ë²½ ë¸”ë¡ì¼ ê²½ìš°
 				else if (kind == 2 || kind == 4 || kind == 5) 
 				{
-					// º® »ç¿îµå Ãâ·Â
+					// ë²½ ì‚¬ìš´ë“œ ì¶œë ¥
 					sound.m_HitHard->Play(0, NULL);																
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setJump_collision_temp(true);	
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha2->setExtra_jump_y(-abs(blockArr[i]->getBlockY() - ch.chy));									
 			}
 		}
 
-		// ¿ì·Î ÀÌµ¿ Áß
+		// ìš°ë¡œ ì´ë™ ì¤‘
 		if (cha2->getMove_state_r())
 		{
 			int check = blockArr[i]->Collision_H2(ch2.chx, ch2.chX + 4, ch2.chy + 1, ch2.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿ŞÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì™¼ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == LEFT || check == 6)																	
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setMove_collision_r(true);																
 			}
 		}
 
-		// ÁÂ·Î ÀÌµ¿ Áß
+		// ì¢Œë¡œ ì´ë™ ì¤‘
 		if (cha2->getMove_state_l())
 		{
 			int check = blockArr[i]->Collision_H2(ch2.chx - 4, ch2.chX, ch2.chy + 1, ch2.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == RIGHT || check == 6)																	
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setMove_collision_l(true);																
 			}
 		}
@@ -437,10 +437,10 @@ void BlockManager::Collision(Character* cha, Character* cha2)
 }
 
 /*
-±â´É :		ºí·Ï°ú Ä³¸¯ÅÍ °£ Ãæµ¹(¸Ê ÀÌµ¿ ÃşÀÏ °æ¿ì)
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¸Ê ÀÌµ¿ »óÅÂ º¯¼ö
-Æ¯ÀÌ»çÇ× :	¶³¾îÁö´Â Áß Ãæµ¹ ½Ã ¸Ê ÀÌµ¿ »óÅÂ¸¦ ÀüÈ¯
+ê¸°ëŠ¥ :		ë¸”ë¡ê³¼ ìºë¦­í„° ê°„ ì¶©ëŒ(ë§µ ì´ë™ ì¸µì¼ ê²½ìš°)
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë§µ ì´ë™ ìƒíƒœ ë³€ìˆ˜
+íŠ¹ì´ì‚¬í•­ :	ë–¨ì–´ì§€ëŠ” ì¤‘ ì¶©ëŒ ì‹œ ë§µ ì´ë™ ìƒíƒœë¥¼ ì „í™˜
 */
 bool BlockManager::Collision3(Character * cha, Character * cha2)
 {
@@ -454,47 +454,47 @@ bool BlockManager::Collision3(Character * cha, Character * cha2)
 	// 1p
 	for (int i = 0; i < index; i++)
 	{
-		// ¶³¾îÁö´Â Áß
+		// ë–¨ì–´ì§€ëŠ” ì¤‘
 		if (!cha->getJump_state())
 		{
 			int check = blockArr[i]->Collision_V(ch_temp.chx, ch_temp.chX, ch_temp.chy, ch_temp.chY);
-			// ¹«¾ğ°¡ÀÇ À­ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ìœ— ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == UP || check == 6)										
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ±¸¸§ÀÌ³ª ½ºÇÇµå ºí·Ï¿¡ ÂøÁö ½Ã ÀÚµ¿ ÀÌµ¿ Àû¿ë
+				// êµ¬ë¦„ì´ë‚˜ ìŠ¤í”¼ë“œ ë¸”ë¡ì— ì°©ì§€ ì‹œ ìë™ ì´ë™ ì ìš©
 				if (kind == 3 || kind == 4 || kind == 5)						
 				{
 					cha->setAutomove_state(true);
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setFloor_collision_temp(true);								
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha->setExtra_fall_y(abs(blockArr[i]->getBlocky() - ch.chY));	
 			}
 
-			// ¶³¾îÁö´Â Áß¿¡ ÂøÁö ½Ã ¸Ê ÀÌµ¿ »óÅÂ ÀüÈ¯
+			// ë–¨ì–´ì§€ëŠ” ì¤‘ì— ì°©ì§€ ì‹œ ë§µ ì´ë™ ìƒíƒœ ì „í™˜
 			if (check == UP)													
 			{
 				floorcheck = true;
 			}
 
-			// ÀÌÀü ºí·Ïµé Áß ÀÚµ¿ ÀÌµ¿ ÀÖ¾úÀ¸¸é
+			// ì´ì „ ë¸”ë¡ë“¤ ì¤‘ ìë™ ì´ë™ ìˆì—ˆìœ¼ë©´
 			if (cha->getAutomove_state())										
 			{
-				// ¸ğµç ºí·ÏÀ» Ã³À½ºÎÅÍ Ã£À¸¸é¼­
+				// ëª¨ë“  ë¸”ë¡ì„ ì²˜ìŒë¶€í„° ì°¾ìœ¼ë©´ì„œ
 				for (int j = 0; j < index; j++)									
 				{
 					int check2 = blockArr[j]->Collision_H(ch.chx - 4, ch.chX, ch.chy + 1, ch.chY - 1);
-					// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+					// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 					if (check2 == RIGHT || check2 == 6)
 					{
-						// ÀÚµ¿ÀÌµ¿ ÀüÈ¯
+						// ìë™ì´ë™ ì „í™˜
 						cha->setAutomove_state(false);
 					}							
 				}
 				int check3 = cha->Collision_H(ch2.chx, ch2.chX + 14, ch2.chy + 1, ch2.chY - 1);
-				// ÇÃ·¹ÀÌ¾î2ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+				// í”Œë ˆì´ì–´2ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 				if (check3 == RIGHT || check3 == 6)
 				{
 					cha->setAutomove_state(false);
@@ -502,55 +502,55 @@ bool BlockManager::Collision3(Character * cha, Character * cha2)
 			}
 		}
 
-		// Á¡ÇÁ Áß	
+		// ì í”„ ì¤‘	
 		else
 		{
-			// ¹«¾ğ°¡ÀÇ ¾Æ·§ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì•„ë« ë¶€ë¶„ì— ì¶©ëŒ
 			if (blockArr[i]->Collision_V(ch_temp.chx, ch_temp.chX, ch_temp.chy, ch_temp.chY) == DOWN)		
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ÀÏ¹İ ºí·Ï, ½ºÇÇµå ºí·ÏÀÏ °æ¿ì
+				// ì¼ë°˜ ë¸”ë¡, ìŠ¤í”¼ë“œ ë¸”ë¡ì¼ ê²½ìš°
 				if (kind == 1 || kind == 3)																	
 				{
-					// ÆÄ±« »ç¿îµå Ãâ·Â
+					// íŒŒê´´ ì‚¬ìš´ë“œ ì¶œë ¥
 					sound.m_HitIce->Play(0, NULL);															
-					// ÆÄ±«
+					// íŒŒê´´
 					blockArr[i]->Destroy(cha->getPlayer());													
 					playdata.p1_block_count++;
 				}
-				// º® ºí·ÏÀÏ °æ¿ì
+				// ë²½ ë¸”ë¡ì¼ ê²½ìš°
 				else if (kind == 2 || kind == 4 || kind == 5) 
 				{
-					// º® »ç¿îµå Ãâ·Â
+					// ë²½ ì‚¬ìš´ë“œ ì¶œë ¥
 					sound.m_HitHard->Play(0, NULL);															
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setJump_collision_temp(true);															
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha->setExtra_jump_y(-abs(blockArr[i]->getBlockY() - ch.chy));								
 			}
 		}
 
-		// ¿ì·Î ÀÌµ¿ Áß
+		// ìš°ë¡œ ì´ë™ ì¤‘
 		if (cha->getMove_state_r())
 		{
 			int check = blockArr[i]->Collision_H(ch.chx, ch.chX + 4, ch.chy + 1, ch.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿ŞÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì™¼ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == LEFT || check == 6)																
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setMove_collision_r(true);																
 			}
 		}
 
-		// ÁÂ·Î ÀÌµ¿ Áß
+		// ì¢Œë¡œ ì´ë™ ì¤‘
 		if (cha->getMove_state_l())
 		{
 			int check = blockArr[i]->Collision_H(ch.chx - 4, ch.chX, ch.chy + 1, ch.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == RIGHT || check == 6)																
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha->setMove_collision_l(true);																
 			}
 		}
@@ -559,101 +559,101 @@ bool BlockManager::Collision3(Character * cha, Character * cha2)
 	// 2p
 	for (int i = 0; i < index; i++)
 	{
-		// ¶³¾îÁö´Â Áß
+		// ë–¨ì–´ì§€ëŠ” ì¤‘
 		if (!cha2->getJump_state())
 		{
 			int check = blockArr[i]->Collision_V2(ch_temp2.chx, ch_temp2.chX, ch_temp2.chy, ch_temp2.chY);
-			// ¹«¾ğ°¡ÀÇ À­ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ìœ— ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == UP || check == 6)																		
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ±¸¸§ÀÌ³ª ½ºÇÇµå ºí·Ï¿¡ ÂøÁö ½Ã ÀÚµ¿ ÀÌµ¿ Àû¿ë
+				// êµ¬ë¦„ì´ë‚˜ ìŠ¤í”¼ë“œ ë¸”ë¡ì— ì°©ì§€ ì‹œ ìë™ ì´ë™ ì ìš©
 				if (kind == 3 || kind == 4 || kind == 5)														
 				{
 					cha2->setAutomove_state(true);
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setFloor_collision_temp(true);															
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha2->setExtra_fall_y(abs(blockArr[i]->getBlocky() - ch2.chY));									
 			}
 
-			// ¶³¾îÁö´Â Áß¿¡ ÂøÁö ½Ã ¸Ê ÀÌµ¿ »óÅÂ ÀüÈ¯
+			// ë–¨ì–´ì§€ëŠ” ì¤‘ì— ì°©ì§€ ì‹œ ë§µ ì´ë™ ìƒíƒœ ì „í™˜
 			if (check == UP)																					
 			{
 				floorcheck = true;
 			}
 
-			// ÀÌÀü ºí·Ïµé Áß ÀÚµ¿ ÀÌµ¿ ÀÖ¾úÀ¸¸é
+			// ì´ì „ ë¸”ë¡ë“¤ ì¤‘ ìë™ ì´ë™ ìˆì—ˆìœ¼ë©´
 			if (cha2->getAutomove_state())																		
 			{
-				// ¸ğµç ºí·ÏÀ» Ã³À½ºÎÅÍ Ã£À¸¸é¼­
+				// ëª¨ë“  ë¸”ë¡ì„ ì²˜ìŒë¶€í„° ì°¾ìœ¼ë©´ì„œ
 				for (int j = 0; j < index; j++)																	
 				{
 					int check2 = blockArr[j]->Collision_H2(ch2.chx - 4, ch2.chX, ch2.chy + 1, ch2.chY - 1);
-					// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+					// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 					if (check2 == RIGHT || check2 == 6)
 					{
 						cha2->setAutomove_state(false);
 					}
 				}
 				int check3 = cha2->Collision_H(ch.chx, ch.chX + 14, ch.chy + 1, ch.chY - 1);
-				// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+				// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 				if (check3 == RIGHT || check3 == 6)
 				{
 					cha2->setAutomove_state(false);
 				}
 			}
 		}
-		// Á¡ÇÁ Áß
+		// ì í”„ ì¤‘
 		else 									
 		{
-			// ¹«¾ğ°¡ÀÇ ¾Æ·§ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì•„ë« ë¶€ë¶„ì— ì¶©ëŒ
 			if (blockArr[i]->Collision_V2(ch_temp2.chx, ch_temp2.chX, ch_temp2.chy, ch_temp2.chY) == DOWN)		
 			{
 				int kind = blockArr[i]->getBoxKind();
-				// ÀÏ¹İ ºí·Ï, ½ºÇÇµå ºí·Ï
+				// ì¼ë°˜ ë¸”ë¡, ìŠ¤í”¼ë“œ ë¸”ë¡
 				if (kind == 1 || kind == 3)																		
 				{
-					// ÆÄ±« »ç¿îµå Ãâ·Â
+					// íŒŒê´´ ì‚¬ìš´ë“œ ì¶œë ¥
 					sound.m_HitIce->Play(0, NULL);																	
-					// ÆÄ±«
+					// íŒŒê´´
 					blockArr[i]->Destroy(cha2->getPlayer());													
 					playdata.p2_block_count++;
 				}
-				// º® ºí·ÏÀÏ °æ¿ì
+				// ë²½ ë¸”ë¡ì¼ ê²½ìš°
 				else if (kind == 2 || kind == 4 || kind == 5) 
 				{													
-					// º® »ç¿îµå Ãâ·Â
+					// ë²½ ì‚¬ìš´ë“œ ì¶œë ¥
 					sound.m_HitHard->Play(0, NULL);																
 				}
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setJump_collision_temp(true);																
-				// ¿©ºĞ °ª °è»ê
+				// ì—¬ë¶„ ê°’ ê³„ì‚°
 				cha2->setExtra_jump_y(-abs(blockArr[i]->getBlockY() - ch.chy));									
 			}
 		}
 
-		// ¿ì·Î ÀÌµ¿ Áß
+		// ìš°ë¡œ ì´ë™ ì¤‘
 		if (cha2->getMove_state_r())
 		{
 			int check = blockArr[i]->Collision_H2(ch2.chx, ch2.chX + 4, ch2.chy + 1, ch2.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿ŞÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì™¼ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == LEFT || check == 6)																	
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setMove_collision_r(true);																
 			}
 		}
 
-		// ÁÂ·Î ÀÌµ¿ Áß
+		// ì¢Œë¡œ ì´ë™ ì¤‘
 		if (cha2->getMove_state_l())
 		{
 			int check = blockArr[i]->Collision_H2(ch2.chx - 4, ch2.chX, ch2.chy + 1, ch2.chY - 1);
-			// ¹«¾ğ°¡ÀÇ ¿À¸¥ÂÊ ºÎºĞ¿¡ Ãæµ¹
+			// ë¬´ì–¸ê°€ì˜ ì˜¤ë¥¸ìª½ ë¶€ë¶„ì— ì¶©ëŒ
 			if (check == RIGHT || check == 6)																	
 			{
-				// Ãæµ¹ ÀüÈ¯
+				// ì¶©ëŒ ì „í™˜
 				cha2->setMove_collision_l(true);																
 			}
 		}
@@ -662,10 +662,10 @@ bool BlockManager::Collision3(Character * cha, Character * cha2)
 }
 
 /*
-±â´É :		ºí·Ï°ú ¸ó½ºÅÍ°£ Ãæµ¹
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ê³¼ ëª¬ìŠ¤í„°ê°„ ì¶©ëŒ
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void BlockManager::Collision_seal(Monster* mon)
 {
@@ -674,7 +674,7 @@ void BlockManager::Collision_seal(Monster* mon)
 	for (int i = 0; i < index; i++) {
 		if (!blockArr[i]) continue;
 
-		// ±âÁ¸ onoff Ã¼Å© ¡æ IsSolidForMonster()·Î º¯°æ
+		// ê¸°ì¡´ onoff ì²´í¬ â†’ IsSolidForMonster()ë¡œ ë³€ê²½
 		if (blockArr[i]->IsSolidForMonster()) 
 		{
 			int check = mon->Collision_floor(
@@ -692,7 +692,7 @@ void BlockManager::Collision_seal(Monster* mon)
 		}
 	}
 
-	// ÅÏ Ãæµ¹Àº À¯Áö
+	// í„´ ì¶©ëŒì€ ìœ ì§€
 	for (int i = 0; i < index; i++) 
 	{
 		if (!blockArr[i])

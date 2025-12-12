@@ -1,4 +1,4 @@
-#ifndef __Menu_H__
+ï»¿#ifndef __Menu_H__
 #define __Menu_H__
 
 class Menu : public Chap
@@ -10,24 +10,24 @@ public:
 	Menu();
 	~Menu();
 
-	// ½ºÇÁ¶óÀÌÆ® Ä«¿îÆ®
+	// ìŠ¤í”„ë¼ì´íŠ¸ ì¹´ìš´íŠ¸
 	int count;			
-	// ¾ËÆÄºª ÀÌ¹ÌÁö ÀÎµ¦½º
+	// ì•ŒíŒŒë²³ ì´ë¯¸ì§€ ì¸ë±ìŠ¤
 	int index;			
-	// ÀÌ´Ï¼È Ä«¿îÆ®
+	// ì´ë‹ˆì…œ ì¹´ìš´íŠ¸
 	int cnt;			
-	// ¸Ş´º Ã¢
+	// ë©”ë‰´ ì°½
 	bool Mwind;			
-	// ¸Ş´º Ã¢ ¸Ş´º ¼±ÅÃ
+	// ë©”ë‰´ ì°½ ë©”ë‰´ ì„ íƒ
 	bool select;		
-	// ·©Å· Ã¢
+	// ë­í‚¹ ì°½
 	bool Rwind;			 
-	// 1p ÀÌ´Ï¼È ¼³Á¤ Ã¢ on/off
+	// 1p ì´ë‹ˆì…œ ì„¤ì • ì°½ on/off
 	bool nameset1;		
-	// 2p ÀÌ´Ï¼È ¼³Á¤ Ã¢ on/off
+	// 2p ì´ë‹ˆì…œ ì„¤ì • ì°½ on/off
 	bool nameset2;		
 	
-	// Ä³¸¯ÅÍ ÀÌ¹ÌÁö Ãâ·Â À§ÇÑ º¯¼ö
+	// ìºë¦­í„° ì´ë¯¸ì§€ ì¶œë ¥ ìœ„í•œ ë³€ìˆ˜
 	bool center;
 	int cen;
 	bool left;
@@ -49,7 +49,7 @@ public:
 	Sprite charac1run[2];
 	Sprite charac2run[2];
 
-	//µ¿½Ã Å° ÀÔ·Â À§ÇØ
+	//ë™ì‹œ í‚¤ ì…ë ¥ ìœ„í•´
 	DWORD KeyTime;
 	DWORD KeyTime2;
 	DWORD KeyTime3;

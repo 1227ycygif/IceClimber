@@ -1,4 +1,4 @@
-#include "Include.h"
+ï»¿#include "Include.h"
 
 Collider coll;
 
@@ -20,7 +20,7 @@ void Collider::Init()
 	m_rc.bottom = 720;
 }
 
-// µğ¹ö±× ¹Ú½º¸¦ À§ÇÑ ¾÷µ¥ÀÌÆ® ÇÔ¼ö 
+// ë””ë²„ê·¸ ë°•ìŠ¤ë¥¼ ìœ„í•œ ì—…ë°ì´íŠ¸ í•¨ìˆ˜ 
 void Collider::Update(float x, float y, float width, float height)
 {
 	m_rc.left = static_cast<LONG>(x);
@@ -29,26 +29,26 @@ void Collider::Update(float x, float y, float width, float height)
 	m_rc.bottom = static_cast<LONG>(y + height);
 }
 
-// ¹Ù´Ú
+// ë°”ë‹¥
 void Collider::Draw()
 {
 	if (Gmanager.m_GameStart == true && Gmanager.m_bShowCollider)
 	{
-		dv_font.DrawString("¦£ ", m_rc.left, m_rc.top, D3DCOLOR_ARGB(255, 0, 255, 0));
-		dv_font.DrawString(" ¦¤", m_rc.right, m_rc.top, D3DCOLOR_ARGB(255, 0, 255, 0));
-		dv_font.DrawString("¦¦ ", m_rc.left, m_rc.bottom, D3DCOLOR_ARGB(255, 0, 255, 0));
-		dv_font.DrawString(" ¦¥", m_rc.right, m_rc.bottom, D3DCOLOR_ARGB(255, 0, 255, 0));
+		dv_font.DrawString("â”Œ ", m_rc.left, m_rc.top, D3DCOLOR_ARGB(255, 0, 255, 0));
+		dv_font.DrawString(" â”", m_rc.right, m_rc.top, D3DCOLOR_ARGB(255, 0, 255, 0));
+		dv_font.DrawString("â”” ", m_rc.left, m_rc.bottom, D3DCOLOR_ARGB(255, 0, 255, 0));
+		dv_font.DrawString(" â”˜", m_rc.right, m_rc.bottom, D3DCOLOR_ARGB(255, 0, 255, 0));
 	}
 }
 
-// µğ¹ö±× Äİ¶óÀÌ´õ (x, y´Â ¿ÀÇÁ¼Â)
+// ë””ë²„ê·¸ ì½œë¼ì´ë” (x, yëŠ” ì˜¤í”„ì…‹)
 void Collider::BoxSow(RECT m_rc, long x, long y, D3DCOLOR color)
 {
-	if (Gmanager.m_GameStart == true /* && µğ¹ö±× ÀÏ¶§ Ã³¸® */)
+	if (Gmanager.m_GameStart == true /* && ë””ë²„ê·¸ ì¼ë•Œ ì²˜ë¦¬ */)
 	{
-		dv_font.DrawString("¦£ ", m_rc.left, m_rc.top, color);
-		dv_font.DrawString(" ¦¤", m_rc.right, m_rc.top, color);
-		dv_font.DrawString("¦¦ ", m_rc.left, m_rc.bottom, color);
-		dv_font.DrawString(" ¦¥", m_rc.right, m_rc.bottom, color);
+		dv_font.DrawString("â”Œ ", m_rc.left, m_rc.top, color);
+		dv_font.DrawString(" â”", m_rc.right, m_rc.top, color);
+		dv_font.DrawString("â”” ", m_rc.left, m_rc.bottom, color);
+		dv_font.DrawString(" â”˜", m_rc.right, m_rc.bottom, color);
 	}
 }

@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
 /*
-±â´É :	»ı¼ºÀÚ
+ê¸°ëŠ¥ :	ìƒì„±ì
 */
 Block::Block(void)
 {
@@ -11,7 +11,7 @@ Block::Block(void)
 }
 
 /*
-±â´É :	¼Ò¸êÀÚ
+ê¸°ëŠ¥ :	ì†Œë©¸ì
 */
 Block::~Block(void)
 {
@@ -19,42 +19,42 @@ Block::~Block(void)
 }
 
 /*
-±â´É :		ºí·Ï ÆÄ±«
-¸Å°³º¯¼ö :	ÆÄ±«ÇÑ ÇÃ·¹ÀÌ¾î
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ íŒŒê´´
+ë§¤ê°œë³€ìˆ˜ :	íŒŒê´´í•œ í”Œë ˆì´ì–´
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Block::Destroy(int player)
 {
 	onoff = false;
 	this->player = player;
 
-	// Æ÷¹°¼± ³«ÇÏ ÃÊ±âÈ­
-	// ÃÊ±â À§Ä¡ 
+	// í¬ë¬¼ì„  ë‚™í•˜ ì´ˆê¸°í™”
+	// ì´ˆê¸° ìœ„ì¹˜ 
 	fx = (float)(mapX * 40);
 	fy = (float)(mapY * 34);
 
-	// ·£´ı ¹æÇâÀ¸·Î ³¯¾Æ°¨
+	// ëœë¤ ë°©í–¥ìœ¼ë¡œ ë‚ ì•„ê°
 	// -200 ~ +100 px/sec
 	vx = (float)((rand() % 301) - 150);    
 
-	// À§·Î Æ¢¾î¿Ã¶ú´Ù°¡ ¶³¾îÁü
+	// ìœ„ë¡œ íŠ€ì–´ì˜¬ëë‹¤ê°€ ë–¨ì–´ì§
 	vy = -600.0f;
 
-	// Áß·Â °­È­ - ²ø¾î´ç±è 
+	// ì¤‘ë ¥ ê°•í™” - ëŒì–´ë‹¹ê¹€ 
 	// 1500 ~ 3000
 	gravity = 2000.0f;  
 
-	// ³«ÇÏ ¿©ºÎ : Âü 
+	// ë‚™í•˜ ì—¬ë¶€ : ì°¸ 
 	isFalling = true;
 	fallStartTime = GetTickCount();
 }
 
 /*
-±â´É :		ºí·Ï Àç»ı¼º
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ ì¬ìƒì„±
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Block::Resen()
 {
@@ -62,10 +62,10 @@ void Block::Resen()
 }
 
 /*
-±â´É :		ÃÊ±âÈ­
-¸Å°³º¯¼ö :	ºí·Ï Á¾·ù, ¸Ê xÁÂÇ¥, ¸Ê yÁÂÇ¥, ·»´õ¸µ ½ºÄÉÀÏ
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	°¢Á¾ º¯¼ö ÃÊ±âÈ­ ¹× ½ºÆ®¶óÀÌÇÁ ÀÌ¹ÌÁö ¿¬°á
+ê¸°ëŠ¥ :		ì´ˆê¸°í™”
+ë§¤ê°œë³€ìˆ˜ :	ë¸”ë¡ ì¢…ë¥˜, ë§µ xì¢Œí‘œ, ë§µ yì¢Œí‘œ, ë Œë”ë§ ìŠ¤ì¼€ì¼
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ê°ì¢… ë³€ìˆ˜ ì´ˆê¸°í™” ë° ìŠ¤íŠ¸ë¼ì´í”„ ì´ë¯¸ì§€ ì—°ê²°
 */
 void Block::Init(int boxKind, int mapX, int mapY, double scale)
 {
@@ -76,35 +76,35 @@ void Block::Init(int boxKind, int mapX, int mapY, double scale)
 	player = 0;
 	onoff = true;
 
-	// ÀÏ¹İ ºí·Ï
-	blockx = (mapX * 40);				// ÁÂ
-	blockX = (mapX * 40) + 40;			// ¿ì
-	blocky = (mapY * 34);				// »ó	
-	blockY = (mapY * 34) + 34;			// ÇÏ
+	// ì¼ë°˜ ë¸”ë¡
+	blockx = (mapX * 40);				// ì¢Œ
+	blockX = (mapX * 40) + 40;			// ìš°
+	blocky = (mapY * 34);				// ìƒ	
+	blockY = (mapY * 34) + 34;			// í•˜
 
-	// ±¸¸§1
+	// êµ¬ë¦„1
 	if (blockKind == 4)
 	{
-		blockx = (mapX * 40);			// ÁÂ
-		blockX = (mapX * 40) + 80;		// ¿ì
-		blocky = (mapY * 34);			// »ó	
-		blockY = (mapY * 34) + 34;		// ÇÏ
+		blockx = (mapX * 40);			// ì¢Œ
+		blockX = (mapX * 40) + 80;		// ìš°
+		blocky = (mapY * 34);			// ìƒ	
+		blockY = (mapY * 34) + 34;		// í•˜
 	}
-	// ±¸¸§2
+	// êµ¬ë¦„2
 	else if (blockKind == 5)
 	{
-		blockx = (mapX * 40);			// ÁÂ
-		blockX = (mapX * 40) + 120;		// ¿ì
-		blocky = (mapY * 34);			// »ó	
-		blockY = (mapY * 34) + 34;		// ÇÏ
+		blockx = (mapX * 40);			// ì¢Œ
+		blockX = (mapX * 40) + 120;		// ìš°
+		blocky = (mapY * 34);			// ìƒ	
+		blockY = (mapY * 34) + 34;		// í•˜
 	}
-	// ¸Ê ³¡ º®
+	// ë§µ ë ë²½
 	else if (blockKind == 8 || blockKind == 9)
 	{
-		blockx = (mapX * 40);			// ÁÂ
-		blockX = (mapX * 40) + (40 * 6);// ¿ì
-		blocky = (mapY * 34);			// »ó	
-		blockY = (mapY * 34) + (34 * 5);// ÇÏ
+		blockx = (mapX * 40);			// ì¢Œ
+		blockX = (mapX * 40) + (40 * 6);// ìš°
+		blocky = (mapY * 34);			// ìƒ	
+		blockY = (mapY * 34) + (34 * 5);// í•˜
 	}
 	col_v_Up = false;
 	col_v_Down = false;
@@ -175,25 +175,25 @@ void Block::Init(int boxKind, int mapX, int mapY, double scale)
 }
 
 /*
-±â´É :		ÇÃ·¹ÀÌ¾î1°ú »óÇÏ Ãæµ¹
-¸Å°³º¯¼ö :	ÇÃ·¹ÀÌ¾î1ÀÇ Ãæµ¹ ¹üÀ§
-¹İÈ¯ :		Ãæµ¹ÀÇ Á¾·ù / off°Å³ª ºñÃæµ¹ ºí·Ï - 5 / ºñÃæµ¹ - 8 / »óÇÏÁÂ¿ì¿¡ À§Ä¡ - 7 / °©ÀÛ½º·± Ãæµ¹ - 6 
-						/ ÁÂÃø¿¡¼­ Ãæµ¹ - 0 / ¿ìÃø¿¡¼­ Ãæµ¹ - 1 / À§¿¡¼­ Ãæµ¹ - 2 / ¾Æ·¡¿¡¼­ Ãæµ¹ - 3
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		í”Œë ˆì´ì–´1ê³¼ ìƒí•˜ ì¶©ëŒ
+ë§¤ê°œë³€ìˆ˜ :	í”Œë ˆì´ì–´1ì˜ ì¶©ëŒ ë²”ìœ„
+ë°˜í™˜ :		ì¶©ëŒì˜ ì¢…ë¥˜ / offê±°ë‚˜ ë¹„ì¶©ëŒ ë¸”ë¡ - 5 / ë¹„ì¶©ëŒ - 8 / ìƒí•˜ì¢Œìš°ì— ìœ„ì¹˜ - 7 / ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒ - 6 
+						/ ì¢Œì¸¡ì—ì„œ ì¶©ëŒ - 0 / ìš°ì¸¡ì—ì„œ ì¶©ëŒ - 1 / ìœ„ì—ì„œ ì¶©ëŒ - 2 / ì•„ë˜ì—ì„œ ì¶©ëŒ - 3
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 int Block::Collision_V(int chx, int chX, int chy, int chY)
 {
-	// º¹±¸ ÁßÀÏ ¶§´Â
+	// ë³µêµ¬ ì¤‘ì¼ ë•ŒëŠ”
 	if (restoring)
 	{
-		// Ãæµ¹ ¾øÀ½
+		// ì¶©ëŒ ì—†ìŒ
 		return 8;
 	}
 
-	// ºí·ÏÀÌ ¾È ±úÁø »óÅÂÀÏ °æ¿ì && Ãæµ¹À» °¡Áö´Â ºí·Ï
+	// ë¸”ë¡ì´ ì•ˆ ê¹¨ì§„ ìƒíƒœì¼ ê²½ìš° && ì¶©ëŒì„ ê°€ì§€ëŠ” ë¸”ë¡
 	if (onoff && blockKind != 6 && blockKind != 7 && blockKind != 20)											
 	{
-		// ºí·ÏÀÇ ¿ŞÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì™¼ìª½ ë°©í–¥ì¸ ê²½ìš°
 		if (chX < blockx && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))			
 		{
 			col_v_Left = true;
@@ -202,7 +202,7 @@ int Block::Collision_V(int chx, int chX, int chy, int chY)
 			col_v_Down = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¿À¸¥ÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì˜¤ë¥¸ìª½ ë°©í–¥ì¸ ê²½ìš°
 		else if (chx > blockX && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))	
 		{
 			col_v_Right = true;
@@ -211,7 +211,7 @@ int Block::Collision_V(int chx, int chX, int chy, int chY)
 			col_v_Down = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ À§ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ìœ„ ë°©í–¥ì¸ ê²½ìš°
 		else if (chY < blocky && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_v_Up = true;
@@ -220,7 +220,7 @@ int Block::Collision_V(int chx, int chX, int chy, int chY)
 			col_v_Down = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¾Æ·¡ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì•„ë˜ ë°©í–¥ì¸ ê²½ìš°
 		else if (chy > blockY && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_v_Down = true;
@@ -229,7 +229,7 @@ int Block::Collision_V(int chx, int chX, int chy, int chY)
 			col_v_Up = false;
 			return 7;
 		}
-		// ºí·Ï°ú Ãæµ¹ÇÑ °æ¿ì
+		// ë¸”ë¡ê³¼ ì¶©ëŒí•œ ê²½ìš°
 		else if (((chx >= blockx && chx <= blockX) || (chX >= blockx && chX <= blockX)) &&				
 			((chy >= blocky && chy <= blockY) || (chY >= blocky && chY <= blockY)))
 		{
@@ -255,11 +255,11 @@ int Block::Collision_V(int chx, int chX, int chy, int chY)
 			}
 			else
 			{
-				// °©ÀÛ½º·± Ãæµ¹ÀÏ ¶§
+				// ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒì¼ ë•Œ
 				return 6;
 			} 
 		}
-		// ¾Æ¹«°Íµµ ¾Æ´Ò ¶§
+		// ì•„ë¬´ê²ƒë„ ì•„ë‹ ë•Œ
 		else																							
 		{
 			col_v_Down = false;
@@ -269,30 +269,30 @@ int Block::Collision_V(int chx, int chX, int chy, int chY)
 			return 8;
 		}
 	}
-	// off °Å³ª Ãæµ¹ÀÌ ¾Æ´Ï¸é 5 ¸®ÅÏ
+	// off ê±°ë‚˜ ì¶©ëŒì´ ì•„ë‹ˆë©´ 5 ë¦¬í„´
 	return 5;																							
 }
 
 /*
-±â´É :		ÇÃ·¹ÀÌ¾î1°ú ÁÂ¿ì Ãæµ¹
-¸Å°³º¯¼ö :	ÇÃ·¹ÀÌ¾î1ÀÇ Ãæµ¹ ¹üÀ§
-¹İÈ¯ :		Ãæµ¹ÀÇ Á¾·ù / off°Å³ª ºñÃæµ¹ ºí·Ï - 5 / ºñÃæµ¹ - 8 / »óÇÏÁÂ¿ì¿¡ À§Ä¡ - 7 / °©ÀÛ½º·± Ãæµ¹ - 6 
-						/ ÁÂÃø¿¡¼­ Ãæµ¹ - 0 / ¿ìÃø¿¡¼­ Ãæµ¹ - 1 / À§¿¡¼­ Ãæµ¹ - 2 / ¾Æ·¡¿¡¼­ Ãæµ¹ - 3
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		í”Œë ˆì´ì–´1ê³¼ ì¢Œìš° ì¶©ëŒ
+ë§¤ê°œë³€ìˆ˜ :	í”Œë ˆì´ì–´1ì˜ ì¶©ëŒ ë²”ìœ„
+ë°˜í™˜ :		ì¶©ëŒì˜ ì¢…ë¥˜ / offê±°ë‚˜ ë¹„ì¶©ëŒ ë¸”ë¡ - 5 / ë¹„ì¶©ëŒ - 8 / ìƒí•˜ì¢Œìš°ì— ìœ„ì¹˜ - 7 / ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒ - 6 
+						/ ì¢Œì¸¡ì—ì„œ ì¶©ëŒ - 0 / ìš°ì¸¡ì—ì„œ ì¶©ëŒ - 1 / ìœ„ì—ì„œ ì¶©ëŒ - 2 / ì•„ë˜ì—ì„œ ì¶©ëŒ - 3
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 int Block::Collision_H(int chx, int chX, int chy, int chY)
 {
-	// º¹±¸ ÁßÀÏ ¶§´Â
+	// ë³µêµ¬ ì¤‘ì¼ ë•ŒëŠ”
 	if (restoring)
 	{
-		// Ãæµ¹ ¾øÀ½
+		// ì¶©ëŒ ì—†ìŒ
 		return 8;
 	}
 
-	// ºí·ÏÀÌ ¾È ±úÁø »óÅÂÀÏ °æ¿ì && Ãæµ¹À» °¡Áö´Â ºí·Ï
+	// ë¸”ë¡ì´ ì•ˆ ê¹¨ì§„ ìƒíƒœì¼ ê²½ìš° && ì¶©ëŒì„ ê°€ì§€ëŠ” ë¸”ë¡
 	if (onoff && blockKind != 6 && blockKind != 7 && blockKind != 20)											
 	{
-		// ºí·ÏÀÇ ¿ŞÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì™¼ìª½ ë°©í–¥ì¸ ê²½ìš°
 		if (chX < blockx && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))			
 		{
 			col_h_Left = true;
@@ -301,7 +301,7 @@ int Block::Collision_H(int chx, int chX, int chy, int chY)
 			col_h_Down = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¿À¸¥ÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì˜¤ë¥¸ìª½ ë°©í–¥ì¸ ê²½ìš°
 		else if (chx > blockX && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))	
 		{
 			col_h_Right = true;
@@ -310,7 +310,7 @@ int Block::Collision_H(int chx, int chX, int chy, int chY)
 			col_h_Down = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ À§ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ìœ„ ë°©í–¥ì¸ ê²½ìš°
 		else if (chY < blocky && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_h_Up = true;
@@ -319,7 +319,7 @@ int Block::Collision_H(int chx, int chX, int chy, int chY)
 			col_h_Down = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¾Æ·¡ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì•„ë˜ ë°©í–¥ì¸ ê²½ìš°
 		else if (chy > blockY && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_h_Down = true;
@@ -328,7 +328,7 @@ int Block::Collision_H(int chx, int chX, int chy, int chY)
 			col_h_Up = false;
 			return 7;
 		}
-		// ºí·Ï°ú Ãæµ¹ÇÑ °æ¿ì
+		// ë¸”ë¡ê³¼ ì¶©ëŒí•œ ê²½ìš°
 		else if (((chx >= blockx && chx <= blockX) || (chX >= blockx && chX <= blockX)) &&				
 			((chy >= blocky && chy <= blockY) || (chY >= blocky && chY <= blockY)))
 		{
@@ -354,11 +354,11 @@ int Block::Collision_H(int chx, int chX, int chy, int chY)
 			}
 			else
 			{
-				// °©ÀÛ½º·± Ãæµ¹ÀÏ ¶§
+				// ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒì¼ ë•Œ
 				return 6;
 			} 
 		}
-		// ¾Æ¹«°Íµµ ¾Æ´Ò ¶§
+		// ì•„ë¬´ê²ƒë„ ì•„ë‹ ë•Œ
 		else																							
 		{
 			col_h_Down = false;
@@ -368,30 +368,30 @@ int Block::Collision_H(int chx, int chX, int chy, int chY)
 			return 8;
 		}
 	}
-	// off °Å³ª Ãæµ¹ ¾Æ´Ï¸é 5 ¸®ÅÏ
+	// off ê±°ë‚˜ ì¶©ëŒ ì•„ë‹ˆë©´ 5 ë¦¬í„´
 	return 5;																							
 }
 
 /*
-±â´É :		ÇÃ·¹ÀÌ¾î2°ú »óÇÏ Ãæµ¹
-¸Å°³º¯¼ö :	ÇÃ·¹ÀÌ¾î2ÀÇ Ãæµ¹ ¹üÀ§
-¹İÈ¯ :		Ãæµ¹ÀÇ Á¾·ù / off°Å³ª ºñÃæµ¹ ºí·Ï - 5 / ºñÃæµ¹ - 8 / »óÇÏÁÂ¿ì¿¡ À§Ä¡ - 7 / °©ÀÛ½º·± Ãæµ¹ - 6 
-						/ ÁÂÃø¿¡¼­ Ãæµ¹ - 0 / ¿ìÃø¿¡¼­ Ãæµ¹ - 1 / À§¿¡¼­Ãæµ¹ - 2 / ¾Æ·¡¿¡¼­ Ãæµ¹ - 3
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		í”Œë ˆì´ì–´2ê³¼ ìƒí•˜ ì¶©ëŒ
+ë§¤ê°œë³€ìˆ˜ :	í”Œë ˆì´ì–´2ì˜ ì¶©ëŒ ë²”ìœ„
+ë°˜í™˜ :		ì¶©ëŒì˜ ì¢…ë¥˜ / offê±°ë‚˜ ë¹„ì¶©ëŒ ë¸”ë¡ - 5 / ë¹„ì¶©ëŒ - 8 / ìƒí•˜ì¢Œìš°ì— ìœ„ì¹˜ - 7 / ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒ - 6 
+						/ ì¢Œì¸¡ì—ì„œ ì¶©ëŒ - 0 / ìš°ì¸¡ì—ì„œ ì¶©ëŒ - 1 / ìœ„ì—ì„œì¶©ëŒ - 2 / ì•„ë˜ì—ì„œ ì¶©ëŒ - 3
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 int Block::Collision_V2(int chx, int chX, int chy, int chY)
 {
-	// º¹±¸ ÁßÀÏ ¶§´Â
+	// ë³µêµ¬ ì¤‘ì¼ ë•ŒëŠ”
 	if (restoring)
 	{
-		// Ãæµ¹ ¾øÀ½
+		// ì¶©ëŒ ì—†ìŒ
 		return 8;
 	}
 
-	// ºí·ÏÀÌ ¾È ±úÁø »óÅÂÀÏ °æ¿ì && Ãæµ¹À» °¡Áö´Â ºí·Ï
+	// ë¸”ë¡ì´ ì•ˆ ê¹¨ì§„ ìƒíƒœì¼ ê²½ìš° && ì¶©ëŒì„ ê°€ì§€ëŠ” ë¸”ë¡
 	if (onoff && blockKind != 6 && blockKind != 7 && blockKind != 20)											
 	{
-		// ºí·ÏÀÇ ¿ŞÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì™¼ìª½ ë°©í–¥ì¸ ê²½ìš°
 		if (chX < blockx && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))			
 		{
 			col_v_Left2 = true;
@@ -400,7 +400,7 @@ int Block::Collision_V2(int chx, int chX, int chy, int chY)
 			col_v_Down2 = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¿À¸¥ÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì˜¤ë¥¸ìª½ ë°©í–¥ì¸ ê²½ìš°
 		else if (chx > blockX && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))	
 		{
 			col_v_Right2 = true;
@@ -409,7 +409,7 @@ int Block::Collision_V2(int chx, int chX, int chy, int chY)
 			col_v_Down2 = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ À§ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ìœ„ ë°©í–¥ì¸ ê²½ìš°
 		else if (chY < blocky && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_v_Up2 = true;
@@ -418,7 +418,7 @@ int Block::Collision_V2(int chx, int chX, int chy, int chY)
 			col_v_Down2 = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¾Æ·¡ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì•„ë˜ ë°©í–¥ì¸ ê²½ìš°
 		else if (chy > blockY && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_v_Down2 = true;
@@ -427,7 +427,7 @@ int Block::Collision_V2(int chx, int chX, int chy, int chY)
 			col_v_Up2 = false;
 			return 7;
 		}
-		// ºí·Ï°ú Ãæµ¹ÇÑ °æ¿ì
+		// ë¸”ë¡ê³¼ ì¶©ëŒí•œ ê²½ìš°
 		else if (((chx >= blockx && chx <= blockX) || (chX >= blockx && chX <= blockX)) &&				
 			((chy >= blocky && chy <= blockY) || (chY >= blocky && chY <= blockY)))
 		{
@@ -453,11 +453,11 @@ int Block::Collision_V2(int chx, int chX, int chy, int chY)
 			}
 			else
 			{
-				// °©ÀÛ½º·± Ãæµ¹ÀÏ ¶§
+				// ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒì¼ ë•Œ
 				return 6;
 			} 
 		}
-		// ¾Æ¹«°Íµµ ¾Æ´Ò ¶§
+		// ì•„ë¬´ê²ƒë„ ì•„ë‹ ë•Œ
 		else 
 		{
 			col_v_Down2 = false;
@@ -467,30 +467,30 @@ int Block::Collision_V2(int chx, int chX, int chy, int chY)
 			return 8;
 		}
 	}
-	// off °Å³ª Ãæµ¹ ¾Æ´Ï¸é 5 ¸®ÅÏ
+	// off ê±°ë‚˜ ì¶©ëŒ ì•„ë‹ˆë©´ 5 ë¦¬í„´
 	return 5;																							
 }
 
 /*
-±â´É :		ÇÃ·¹ÀÌ¾î2°ú ÁÂ¿ì Ãæµ¹
-¸Å°³º¯¼ö :	ÇÃ·¹ÀÌ¾î2ÀÇ Ãæµ¹ ¹üÀ§
-¹İÈ¯ :		Ãæµ¹ÀÇ Á¾·ù / off°Å³ª ºñÃæµ¹ ºí·Ï - 5 / ºñÃæµ¹ - 8 / »óÇÏÁÂ¿ì¿¡ À§Ä¡ - 7 / °©ÀÛ½º·± Ãæµ¹ - 6 
-						/ ÁÂÃø¿¡¼­ Ãæµ¹ - 0 / ¿ìÃø¿¡¼­ Ãæµ¹ - 1 / À§¿¡¼­ Ãæµ¹ - 2 / ¾Æ·¡¿¡¼­ Ãæµ¹ - 3
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		í”Œë ˆì´ì–´2ê³¼ ì¢Œìš° ì¶©ëŒ
+ë§¤ê°œë³€ìˆ˜ :	í”Œë ˆì´ì–´2ì˜ ì¶©ëŒ ë²”ìœ„
+ë°˜í™˜ :		ì¶©ëŒì˜ ì¢…ë¥˜ / offê±°ë‚˜ ë¹„ì¶©ëŒ ë¸”ë¡ - 5 / ë¹„ì¶©ëŒ - 8 / ìƒí•˜ì¢Œìš°ì— ìœ„ì¹˜ - 7 / ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒ - 6 
+						/ ì¢Œì¸¡ì—ì„œ ì¶©ëŒ - 0 / ìš°ì¸¡ì—ì„œ ì¶©ëŒ - 1 / ìœ„ì—ì„œ ì¶©ëŒ - 2 / ì•„ë˜ì—ì„œ ì¶©ëŒ - 3
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 int Block::Collision_H2(int chx, int chX, int chy, int chY)
 {
-	// º¹±¸ ÁßÀÏ ¶§´Â
+	// ë³µêµ¬ ì¤‘ì¼ ë•ŒëŠ”
 	if (restoring)
 	{
-		// Ãæµ¹ ¾øÀ½
+		// ì¶©ëŒ ì—†ìŒ
 		return 8;
 	}
 
-	// ºí·ÏÀÌ ¾È ±úÁø »óÅÂÀÏ °æ¿ì && Ãæµ¹À» °¡Áö´Â ºí·Ï
+	// ë¸”ë¡ì´ ì•ˆ ê¹¨ì§„ ìƒíƒœì¼ ê²½ìš° && ì¶©ëŒì„ ê°€ì§€ëŠ” ë¸”ë¡
 	if (onoff && blockKind != 6 && blockKind != 7 && blockKind != 20)											
 	{
-		// ºí·ÏÀÇ ¿ŞÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì™¼ìª½ ë°©í–¥ì¸ ê²½ìš°
 		if (chX < blockx && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))			
 		{
 			col_h_Left2 = true;
@@ -499,7 +499,7 @@ int Block::Collision_H2(int chx, int chX, int chy, int chY)
 			col_h_Down2 = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¿À¸¥ÂÊ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì˜¤ë¥¸ìª½ ë°©í–¥ì¸ ê²½ìš°
 		else if (chx > blockX && ((chy > blocky && chy < blockY) || (chY > blocky && chY < blockY)))	
 		{
 			col_h_Right2 = true;
@@ -508,7 +508,7 @@ int Block::Collision_H2(int chx, int chX, int chy, int chY)
 			col_h_Down2 = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ À§ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ìœ„ ë°©í–¥ì¸ ê²½ìš°
 		else if (chY < blocky && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_h_Up2 = true;
@@ -517,7 +517,7 @@ int Block::Collision_H2(int chx, int chX, int chy, int chY)
 			col_h_Down2 = false;
 			return 7;
 		}
-		// ºí·ÏÀÇ ¾Æ·¡ ¹æÇâÀÎ °æ¿ì
+		// ë¸”ë¡ì˜ ì•„ë˜ ë°©í–¥ì¸ ê²½ìš°
 		else if (chy > blockY && ((chx > blockx && chx < blockX) || (chX > blockx && chX < blockX)))	
 		{
 			col_h_Down2 = true;
@@ -526,7 +526,7 @@ int Block::Collision_H2(int chx, int chX, int chy, int chY)
 			col_h_Up2 = false;
 			return 7;
 		}
-		// ºí·Ï°ú Ãæµ¹ÇÑ °æ¿ì
+		// ë¸”ë¡ê³¼ ì¶©ëŒí•œ ê²½ìš°
 		else if (((chx >= blockx && chx <= blockX) || (chX >= blockx && chX <= blockX)) &&				
 			((chy >= blocky && chy <= blockY) || (chY >= blocky && chY <= blockY)))
 		{
@@ -552,11 +552,11 @@ int Block::Collision_H2(int chx, int chX, int chy, int chY)
 			}
 			else
 			{
-				// °©ÀÛ½º·± Ãæµ¹ÀÏ ¶§
+				// ê°‘ì‘ìŠ¤ëŸ° ì¶©ëŒì¼ ë•Œ
 				return 6;
 			} 
 		}
-		// ¾Æ¹«°Íµµ ¾Æ´Ò ¶§
+		// ì•„ë¬´ê²ƒë„ ì•„ë‹ ë•Œ
 		else 
 		{
 			col_h_Down2 = false;
@@ -566,15 +566,15 @@ int Block::Collision_H2(int chx, int chX, int chy, int chY)
 			return 8;
 		}
 	}
-	// off °Å³ª Ãæµ¹ ¾Æ´Ï¸é 5 ¸®ÅÏ
+	// off ê±°ë‚˜ ì¶©ëŒ ì•„ë‹ˆë©´ 5 ë¦¬í„´
 	return 5;																							
 }
 
 /*
-±â´É :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ ÁÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ ÁÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ ì¢Œ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ ì¢Œ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Block::getBlockx()
 {
@@ -582,10 +582,10 @@ const int Block::getBlockx()
 }
 
 /*
-±â´É :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ ¿ì ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ ¿ì (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ ìš° ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ ìš° (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Block::getBlockX()
 {
@@ -593,10 +593,10 @@ const int Block::getBlockX()
 }
 
 /*
-±â´É :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ »ó ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ »ó (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ ìƒ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ ìƒ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Block::getBlocky()
 {
@@ -604,10 +604,10 @@ const int Block::getBlocky()
 }
 
 /*
-±â´É :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ ÇÏ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		ºí·ÏÀÇ Ãæµ¹ ¹üÀ§ ÇÏ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ í•˜ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë¸”ë¡ì˜ ì¶©ëŒ ë²”ìœ„ í•˜ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Block::getBlockY()
 {
@@ -615,10 +615,10 @@ const int Block::getBlockY()
 }
 
 /*
-±â´É :		ºí·ÏÀÇ Á¾·ù ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		ºí·ÏÀÇ Á¾·ù (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì˜ ì¢…ë¥˜ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë¸”ë¡ì˜ ì¢…ë¥˜ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Block::getBoxKind()
 {
@@ -626,10 +626,10 @@ const int Block::getBoxKind()
 }
 
 /*
-±â´É :		ºí·ÏÀÇ ÆÄ±«»óÅÂ ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		ºí·ÏÀÇ ÆÄ±«»óÅÂ (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì˜ íŒŒê´´ìƒíƒœ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë¸”ë¡ì˜ íŒŒê´´ìƒíƒœ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const bool Block::getOnoff()
 {
@@ -637,10 +637,10 @@ const bool Block::getOnoff()
 }
 
 /*
-±â´É :		ºí·ÏÀ» ÆÄ±«ÇÑ ÇÃ·¹ÀÌ¾î ¹İÈ¯
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		ºí·ÏÀ» ÆÄ±«ÇÑ ÇÃ·¹ÀÌ¾î (»ó¼öÈ­)
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì„ íŒŒê´´í•œ í”Œë ˆì´ì–´ ë°˜í™˜
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ë¸”ë¡ì„ íŒŒê´´í•œ í”Œë ˆì´ì–´ (ìƒìˆ˜í™”)
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 const int Block::getPlayer()
 {
@@ -648,10 +648,10 @@ const int Block::getPlayer()
 }
 
 /*
-±â´É :		ºí·ÏÀ» ÆÄ±«ÇÑ ÇÃ·¹ÀÌ¾î º¯È¯
-¸Å°³º¯¼ö :	ÇÃ·¹ÀÌ¾î
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ë¸”ë¡ì„ íŒŒê´´í•œ í”Œë ˆì´ì–´ ë³€í™˜
+ë§¤ê°œë³€ìˆ˜ :	í”Œë ˆì´ì–´
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Block::setPlayer(int player)
 {
@@ -659,29 +659,29 @@ void Block::setPlayer(int player)
 }
 
 /*
-±â´É :		ºí·ÏÀÇ »óÅÂ¿Í ½Ã°£¿¡ µû¸¥ ¸â¹öº¯¼ö Á¶ÀÛ
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	±¸¸§ ºí·ÏÀÇ ÀÌµ¿·®À» º¯È¯
+ê¸°ëŠ¥ :		ë¸”ë¡ì˜ ìƒíƒœì™€ ì‹œê°„ì— ë”°ë¥¸ ë©¤ë²„ë³€ìˆ˜ ì¡°ì‘
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	êµ¬ë¦„ ë¸”ë¡ì˜ ì´ë™ëŸ‰ì„ ë³€í™˜
 */
 void Block::Update()
 {
-	// ºí·ÏÀÌ on »óÅÂÀÏ ¶§¸¸
+	// ë¸”ë¡ì´ on ìƒíƒœì¼ ë•Œë§Œ
 	if (onoff == true)										
 	{
-		// ºí·ÏÀÌ ±¸¸§1, ±¸¸§2ÀÏ °æ¿ì
+		// ë¸”ë¡ì´ êµ¬ë¦„1, êµ¬ë¦„2ì¼ ê²½ìš°
 		if (blockKind == 4 || blockKind == 5)				
 		{
-			// ½Ã°£¸¶´Ù
+			// ì‹œê°„ë§ˆë‹¤
 			if (GetTickCount() - CloudMoveTime > 10)		
 			{
-				// À§Ä¡ ÀÌµ¿
+				// ìœ„ì¹˜ ì´ë™
 				dx -= 2;			
-				// Ãæµ¹ ÀÌµ¿
+				// ì¶©ëŒ ì´ë™
 				blockx -= 2;								
 				blockX -= 2;
 
-				// ¸ÊÀÇ Æ¯Á¤ ¹üÀ§ ¹ş¾î³ª¸é ¸®¼Â
+				// ë§µì˜ íŠ¹ì • ë²”ìœ„ ë²—ì–´ë‚˜ë©´ ë¦¬ì…‹
 				if (mapX * 40 + dx < 80)					
 				{
 					dx = (30 - mapX) * 40;
@@ -696,63 +696,63 @@ void Block::Update()
 			}
 		}
 
-		// onoff = true·Î ½ÇÁ¦ Ãæµ¹ °¡´ÉÇÏ°Ô
+		// onoff = trueë¡œ ì‹¤ì œ ì¶©ëŒ ê°€ëŠ¥í•˜ê²Œ
 		if (restoring && GetTickCount() - restoreStart > 300)
 		{
 			restoring = false;
 		}
 	}
 
-	// Æ÷¹°¼± ³«ÇÏ Ã³¸®
+	// í¬ë¬¼ì„  ë‚™í•˜ ì²˜ë¦¬
 	if (isFalling)
 	{
 		DWORD now = GetTickCount();
-		// ½Ã°£ Àç±â
+		// ì‹œê°„ ì¬ê¸°
 		float dt = (now - fallStartTime) / 1000.0f; 
 
-		// Áß·Â¿¡ ÀÇÇÑ ¼Óµµ Áõ°¡
+		// ì¤‘ë ¥ì— ì˜í•œ ì†ë„ ì¦ê°€
 		vy += gravity * dt;
 
-		// À§Ä¡ °è»ê - vx ÀÏÁ¤, vy ´©Àû  
+		// ìœ„ì¹˜ ê³„ì‚° - vx ì¼ì •, vy ëˆ„ì   
 		fx += vx * dt;
 		fy += vy * dt;
 
-		// È­¸é ¾Æ·¡·Î ¿ÏÀüÈ÷ ¶³¾îÁö¸é ³«ÇÏ Á¾·á
-		// È­¸é ¹Ù±ù ¾Æ·¡·Î ÃæºĞÈ÷ ¹ş¾î³ª¸é
+		// í™”ë©´ ì•„ë˜ë¡œ ì™„ì „íˆ ë–¨ì–´ì§€ë©´ ë‚™í•˜ ì¢…ë£Œ
+		// í™”ë©´ ë°”ê¹¥ ì•„ë˜ë¡œ ì¶©ë¶„íˆ ë²—ì–´ë‚˜ë©´
 		if (fy > 720) 
 		{
 			isFalling = false;
 		}
-		// ½Ã°£À» °è¼Ó °»½Å
+		// ì‹œê°„ì„ ê³„ì† ê°±ì‹ 
 		fallStartTime = now; 
-		// ³«ÇÏ ÁßÀÏ ¶© ´Ù¸¥ Ã³¸® »ı·«
+		// ë‚™í•˜ ì¤‘ì¼ ë• ë‹¤ë¥¸ ì²˜ë¦¬ ìƒëµ
 		return; 
 	}
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ »óÅÂ¿¡ µû¸¥ ½ºÆ®¶óÀÌÇÁ Ãâ·Â
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìƒíƒœì— ë”°ë¥¸ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Block::Draw()
 {
 	if (!onoff)
 	{
-		// ºí·Ï ²¨Á®ÀÖÀ¸¸é ±×¸®Áö ¾ÊÀ½
+		// ë¸”ë¡ êº¼ì ¸ìˆìœ¼ë©´ ê·¸ë¦¬ì§€ ì•ŠìŒ
 		return; 
 	}
 		
-	// ºí·ÏÀÌ on »óÅÂÀÏ ¶§¸¸
+	// ë¸”ë¡ì´ on ìƒíƒœì¼ ë•Œë§Œ
 	if (onoff == true)															
 	{
-		// ±¸¸§ ºí·ÏÀÌ ¾Æ´Ò °æ¿ì
+		// êµ¬ë¦„ ë¸”ë¡ì´ ì•„ë‹ ê²½ìš°
 		if (blockKind != 4 && blockKind != 5)									
 		{
 			img.Render(mapX * 40, mapY * 34, 0, scale, scale);
 		}
-		// ±¸¸§ ºí·ÏÀÏ °æ¿ì
+		// êµ¬ë¦„ ë¸”ë¡ì¼ ê²½ìš°
 		else if (blockKind == 4 || blockKind == 5)								
 		{
 			img.Render(mapX * 40 + dx, mapY * 34, 0, scale, scale);
@@ -766,7 +766,7 @@ void Block::Draw()
 	}
 }
 
-// ºí·Ï µğ¹ö±× ¹Ú½º 
+// ë¸”ë¡ ë””ë²„ê·¸ ë°•ìŠ¤ 
 void Block::DrawCollider()
 {
 	if (!Gmanager.m_bShowCollider)
@@ -775,13 +775,13 @@ void Block::DrawCollider()
 	}
 
 	RECT r = { blockx, blocky, blockX, blockY };
-	// ÆùÆ® À§Ä¡
+	// í°íŠ¸ ìœ„ì¹˜
 	const int offset = 6; 
 
-	dv_font.DrawString("¦£", r.left - (offset * 3.6), r.top - (offset * 3.6), D3DCOLOR_ARGB(255, 255, 128, 0));
-	dv_font.DrawString("¦¤ ", r.right - (offset * 3.6), r.top - (offset * 3.6), D3DCOLOR_ARGB(255, 255, 128, 0));
-	dv_font.DrawString("¦¦", r.left - (offset * 3.6), r.bottom - (offset * 4), D3DCOLOR_ARGB(255, 255, 128, 0));
-	dv_font.DrawString("¦¥", r.right - (offset * 3.6), r.bottom - (offset * 4), D3DCOLOR_ARGB(255, 255, 128, 0));
+	dv_font.DrawString("â”Œ", r.left - (offset * 3.6), r.top - (offset * 3.6), D3DCOLOR_ARGB(255, 255, 128, 0));
+	dv_font.DrawString("â” ", r.right - (offset * 3.6), r.top - (offset * 3.6), D3DCOLOR_ARGB(255, 255, 128, 0));
+	dv_font.DrawString("â””", r.left - (offset * 3.6), r.bottom - (offset * 4), D3DCOLOR_ARGB(255, 255, 128, 0));
+	dv_font.DrawString("â”˜", r.right - (offset * 3.6), r.bottom - (offset * 4), D3DCOLOR_ARGB(255, 255, 128, 0));
 }
 
 bool Block::IsSolidForMonster() 
@@ -790,46 +790,46 @@ bool Block::IsSolidForMonster()
 	{
 		return false;
 	}
-	// ROCK Á¦¿Ü
+	// ROCK ì œì™¸
 	return blockKind != 6 && blockKind != 7 && blockKind != 20; 
 }
 
 /*
-±â´É :		Ä³¸¯ÅÍÀÇ »óÅÂ¿¡ µû¸¥ ½ºÆ®¶óÀÌÇÁ Ãâ·Â(¸Ê ÀÌµ¿Áß)
-¸Å°³º¯¼ö :	¾øÀ½
-¹İÈ¯ :		¾øÀ½
-Æ¯ÀÌ»çÇ× :	¾øÀ½
+ê¸°ëŠ¥ :		ìºë¦­í„°ì˜ ìƒíƒœì— ë”°ë¥¸ ìŠ¤íŠ¸ë¼ì´í”„ ì¶œë ¥(ë§µ ì´ë™ì¤‘)
+ë§¤ê°œë³€ìˆ˜ :	ì—†ìŒ
+ë°˜í™˜ :		ì—†ìŒ
+íŠ¹ì´ì‚¬í•­ :	ì—†ìŒ
 */
 void Block::Floor(int floorY)
 {
-	// ºí·ÏÀÌ on »óÅÂÀÏ ¶§¸¸
+	// ë¸”ë¡ì´ on ìƒíƒœì¼ ë•Œë§Œ
 	if (onoff == true)															
 	{
-		// ±¸¸§ ºí·ÏÀÌ ¾Æ´Ò°æ¿ì
+		// êµ¬ë¦„ ë¸”ë¡ì´ ì•„ë‹ê²½ìš°
 		if (blockKind != 4 && blockKind != 5)									
 		{
 			img.Render(mapX * 40, mapY * 34 + (floorY), 0, scale, scale);
 		}
-		// ±¸¸§ ºí·ÏÀÏ °æ¿ì
+		// êµ¬ë¦„ ë¸”ë¡ì¼ ê²½ìš°
 		else if (blockKind == 4 || blockKind == 5)								
 		{
 			img.Render(mapX * 40 + dx, mapY * 34 + (floorY), 0, scale, scale);	
 		}
 	}
-	// ¸Ê ÀÌµ¿ ¸¶Áö¸· ½Ã º¯¼ö Á¶Á¤
+	// ë§µ ì´ë™ ë§ˆì§€ë§‰ ì‹œ ë³€ìˆ˜ ì¡°ì •
 	if (floorY >= 204)															
 	{
 		mapY += 6;
 
 		if (blockKind == 8 || blockKind == 9)
 		{
-			blocky += (6 * 34);		// »ó
-			blockY += (6 * 34);		// ÇÏ
+			blocky += (6 * 34);		// ìƒ
+			blockY += (6 * 34);		// í•˜
 		}
 		else
 		{
-			blocky += (6 * 34);		// »ó
-			blockY += (6 * 34);		// ÇÏ
+			blocky += (6 * 34);		// ìƒ
+			blockY += (6 * 34);		// í•˜
 		}
 	}
 }
@@ -839,23 +839,23 @@ void Block::SetRestoring(bool flag)
 	restoring = flag;
 	if (flag)
 	{
-		// flag = true ¡æ restoring = true ¡æ (º¹±¸ ½Ã°£)restoreStart = (ÇöÀç ½Ã°£)GetTickCount 
-		// º¹±¸°¡ ½ÃÀÛµÉ ¶§¸¸ Å¸ÀÌ¸Ó ½ÃÀÛ
+		// flag = true â†’ restoring = true â†’ (ë³µêµ¬ ì‹œê°„)restoreStart = (í˜„ì¬ ì‹œê°„)GetTickCount 
+		// ë³µêµ¬ê°€ ì‹œì‘ë  ë•Œë§Œ íƒ€ì´ë¨¸ ì‹œì‘
 		restoreStart = GetTickCount();
 	}
 }
 
 /*
-	±âº» Ãæµ¹Ã³¸®
-	= »ç°¢Çü Ãâµ¿ ÆÇÁ¤ Ã³¸®
-	ÇÃ·¹ÀÌ¾î±âÀÇ Ãæµ¹ ÆÇÁ¤ ÁÂÇ¥¸¦ (ML, MT) ~ (MR, MB), ÅºÀÇ Ãæµ¹ ÆÇÁ¤ ÁÂÇ¥¸¦ (BL, BT) ~ (BR, BB)¶ó°í ÇØº¸ÀÚ.
-	(ML, MT), (BL, BT)´Â °¢°¢ÀÇ »ç°¢ÇüÀÇ ¿ŞÂÊ À§ ÁÂÇ¥ÀÌ°í (MR. MB), (BR, BB)´Â »ç°¢ÇüÀÇ ¿À¸¥ÂÊ ¾Æ·¡ ÁÂÇ¥ÀÌ´Ù.
-	ÀÌ °æ¿ì, ÇÃ·¹ÀÌ¾î±â¿¡ ÅºÀÇ Ãæµ¹ Á¶°ÇÀº ´ÙÀ½°ú °°´Ù.
+	ê¸°ë³¸ ì¶©ëŒì²˜ë¦¬
+	= ì‚¬ê°í˜• ì¶œë™ íŒì • ì²˜ë¦¬
+	í”Œë ˆì´ì–´ê¸°ì˜ ì¶©ëŒ íŒì • ì¢Œí‘œë¥¼ (ML, MT) ~ (MR, MB), íƒ„ì˜ ì¶©ëŒ íŒì • ì¢Œí‘œë¥¼ (BL, BT) ~ (BR, BB)ë¼ê³  í•´ë³´ì.
+	(ML, MT), (BL, BT)ëŠ” ê°ê°ì˜ ì‚¬ê°í˜•ì˜ ì™¼ìª½ ìœ„ ì¢Œí‘œì´ê³  (MR. MB), (BR, BB)ëŠ” ì‚¬ê°í˜•ì˜ ì˜¤ë¥¸ìª½ ì•„ë˜ ì¢Œí‘œì´ë‹¤.
+	ì´ ê²½ìš°, í”Œë ˆì´ì–´ê¸°ì— íƒ„ì˜ ì¶©ëŒ ì¡°ê±´ì€ ë‹¤ìŒê³¼ ê°™ë‹¤.
 	* ML < BR && BL < MR && MT < BB && BT < MB
 
-	= ¿øÀ» ÀÌ¿ëÇÑ Ãæµ¹ ÆÇÁ¤ Ã³¸®
-	¿øÀ» ÀÌ¿ëÇÑ Ãæµ¹ ÆÇÁ¤ Ã³¸®´Â ´ÙÀ½°ú °°´Ù.
-	ÇÃ·¹ÀÌ¾î±âÀÇ Áß½ÉÁÂÇ¥¸¦ (MX, MY), ÅºÀÇ Áß½ÉÁÂÇ¥¸¦ (BX, BY)¶ó°í ÇÏ°í, ÇÃ·¹ÀÌ¾î±âÀÇ Ãæµ¹ ÆÇÁ¤ ¹İ°æÀ» MR,
-	ÅºÀÇ Ãæµ¹ ÆÇÁ¤ ¹İ°æÀ» BRÀÌ¶ó°í ÇÏÀÚ. ÀÌ¶§ ÇÃ·¹ÀÌ¾î±â¿Í ÅºÀÇ Ãæµ¹ Á¶°ÇÀº ¾Æ·¡¿Í °°´Ù.
+	= ì›ì„ ì´ìš©í•œ ì¶©ëŒ íŒì • ì²˜ë¦¬
+	ì›ì„ ì´ìš©í•œ ì¶©ëŒ íŒì • ì²˜ë¦¬ëŠ” ë‹¤ìŒê³¼ ê°™ë‹¤.
+	í”Œë ˆì´ì–´ê¸°ì˜ ì¤‘ì‹¬ì¢Œí‘œë¥¼ (MX, MY), íƒ„ì˜ ì¤‘ì‹¬ì¢Œí‘œë¥¼ (BX, BY)ë¼ê³  í•˜ê³ , í”Œë ˆì´ì–´ê¸°ì˜ ì¶©ëŒ íŒì • ë°˜ê²½ì„ MR,
+	íƒ„ì˜ ì¶©ëŒ íŒì • ë°˜ê²½ì„ BRì´ë¼ê³  í•˜ì. ì´ë•Œ í”Œë ˆì´ì–´ê¸°ì™€ íƒ„ì˜ ì¶©ëŒ ì¡°ê±´ì€ ì•„ë˜ì™€ ê°™ë‹¤.
 	* (MX-BX)*(MX-BX) + (MY-BY)*(MY-BY) < (MR+BR)*(MR+BR)
 */

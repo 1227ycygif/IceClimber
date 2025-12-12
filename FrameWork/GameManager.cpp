@@ -1,4 +1,4 @@
-#include "Include.h"
+ï»¿#include "Include.h"
 
 GameManager Gmanager;
 static DWORD ALPHATime = GetTickCount();
@@ -36,11 +36,11 @@ void GameManager::Init()
 	
 }
 
-// µð¹ö±× ¹Ú½º Å° ¼³Á¤ 
+// ë””ë²„ê·¸ ë°•ìŠ¤ í‚¤ ì„¤ì • 
 void GameManager::Update()
 {
 	static bool prevB = false;
-	// BÅ° ÇÑ ¹ø ´­·¶À» ¶§¸¸ ¹ÝÀÀ
+	// Bí‚¤ í•œ ë²ˆ ëˆŒë €ì„ ë•Œë§Œ ë°˜ì‘
 	bool nowB = (GetAsyncKeyState('B') & 0x8000); 
 	
 		if (nowB && !prevB)
@@ -65,27 +65,27 @@ void GameManager::Delete()
 
 }
 
-// ¿©±â´Â °ÔÀÓ»ó Ã³À½¿¡ ÇÑ ¹ø¸¸ ÃÊ±âÈ­µÇ´Â ºÎºÐ¸¸ ³Ö¾îÁÜ.
+// ì—¬ê¸°ëŠ” ê²Œìž„ìƒ ì²˜ìŒì— í•œ ë²ˆë§Œ ì´ˆê¸°í™”ë˜ëŠ” ë¶€ë¶„ë§Œ ë„£ì–´ì¤Œ.
 void GameManager::GameReset(void)  
 {
 
 }
 
 /*
-¡à GameManager::Draw ¿ªÇÒ ¡à 
-ÀüÃ¼ ÅëÇÕ Ãâ·Â Á¦¾î
+â–¡ GameManager::Draw ì—­í•  â–¡ 
+ì „ì²´ í†µí•© ì¶œë ¥ ì œì–´
 
-1. °ÔÀÓ ¾À¿¡ µû¶ó °¢±â ´Ù¸¥ Draw È£Ãâ 
-Å¸ÀÌÆ² / º» °ÔÀÓ / °ÔÀÓ¿À¹ö ¹× Å¬¸®¾î µî
+1. ê²Œìž„ ì”¬ì— ë”°ë¼ ê°ê¸° ë‹¤ë¥¸ Draw í˜¸ì¶œ 
+íƒ€ì´í‹€ / ë³¸ ê²Œìž„ / ê²Œìž„ì˜¤ë²„ ë° í´ë¦¬ì–´ ë“±
 
-2. °øÅë UI ¹× ÀüÃ¼ Overlay Ãâ·Â 
-- Á¡¼ö, ³²Àº ½Ã°£, ½ºÅ×ÀÌÁö, FPS, »ý¸í, ¹Ì´Ï¸Ê µî ½Ã°¢ Á¤º¸
+2. ê³µí†µ UI ë° ì „ì²´ Overlay ì¶œë ¥ 
+- ì ìˆ˜, ë‚¨ì€ ì‹œê°„, ìŠ¤í…Œì´ì§€, FPS, ìƒëª…, ë¯¸ë‹ˆë§µ ë“± ì‹œê° ì •ë³´
 
-3. µð¹ö±×¿ë Ãâ·Â / Å×½ºÆ®¿ë Ãâ·Â 
-- °¢Á¾ µð¹ö±× Á¤º¸: Ãæµ¹ ¹Ú½º, ÁÂÇ¥, °ÔÀÓ »óÅÂ, ÀÔ·Â Á¤º¸, Æ©Åä¸®¾ó, µµ¿ò¸» ¾È³», ÇÁ·¹ÀÓ Ä«¿îÅÍ µî
+3. ë””ë²„ê·¸ìš© ì¶œë ¥ / í…ŒìŠ¤íŠ¸ìš© ì¶œë ¥ 
+- ê°ì¢… ë””ë²„ê·¸ ì •ë³´: ì¶©ëŒ ë°•ìŠ¤, ì¢Œí‘œ, ê²Œìž„ ìƒíƒœ, ìž…ë ¥ ì •ë³´, íŠœí† ë¦¬ì–¼, ë„ì›€ë§ ì•ˆë‚´, í”„ë ˆìž„ ì¹´ìš´í„° ë“±
 
-4. ¾À Ã©ÅÍ ÀüÈ¯ È¿°ú
-- ÆäÀÌµå ÀÎ/¾Æ¿ô, ºí·¯, ÀüÈ¯ È¿°ú µî
+4. ì”¬ ì±•í„° ì „í™˜ íš¨ê³¼
+- íŽ˜ì´ë“œ ì¸/ì•„ì›ƒ, ë¸”ëŸ¬, ì „í™˜ íš¨ê³¼ ë“±
 
 */
 void GameManager::Draw()

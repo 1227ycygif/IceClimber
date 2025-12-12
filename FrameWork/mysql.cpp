@@ -1,4 +1,4 @@
-#include "Include.h"
+ï»¿#include "Include.h"
 #include "mysql.h"
 #define _CRT_NONSTDC_NO_DEPRECATE 
 Mysql sql;
@@ -21,7 +21,7 @@ void Mysql::Update(double frame)
 
 void Mysql::Draw()
 {
-	// µ¥ÀÌÅ¸ º£ÀÌ½º Ã³¸® »óÅÂ Ç¥½Ã
+	// ë°ì´íƒ€ ë² ì´ìŠ¤ ì²˜ë¦¬ ìƒíƒœ í‘œì‹œ
 	if (sql.mysql_Success)
 	{
 		dv_font.DrawString("Success", 550, 0);
@@ -35,7 +35,7 @@ void Mysql::Draw()
 
 void Mysql::save()
 {
-	// Å×ÀÌºí ÀúÀå °ª ÀÔ·Â
+	// í…Œì´ë¸” ì €ì¥ ê°’ ì…ë ¥
 	sprintf_s(first, "%d", playdata.p1_name[0]);
 	sprintf_s(middle, "%d", playdata.p1_name[1]);
 	sprintf_s(last, "%d", playdata.p1_name[2]);
@@ -46,61 +46,61 @@ void Mysql::save()
 	sprintf_s(last2, "%d", playdata.p2_name[2]);
 	sprintf_s(score2, "%d", playdata.p2_total_score);
 
-	// Àü´Ş ÇÒ Äõ¸®°ª ¼ÂÆÃ
+	// ì „ë‹¬ í•  ì¿¼ë¦¬ê°’ ì…‹íŒ…
 	sprintf_s(query, "insert into rank values "
 		"('%s','%s','%s','%s','%s','%s','%s','%s')", 
 		first, middle, last, score, first2, middle2, last2, score2);
 
-	// ¡ß ¿ø·¡ ÃÊ±â¿¡ ÀÛ¼ºÇß´ø ÄÚµåÃ³·³ º¯¼ö¸¸ Ãß°¡ÇØ¼­ Äõ¸®°ªÀ» Àü´ŞÇÏ°Ô µÇ¸é, 
-	//    ÇÑ ¹ø¿¡ 8°³ÀÇ ÄÃ·³ÀÌ µé¾î°¡´Â °Ô ¾Æ´Ï¶ó Äõ¸®¹®ÀÌ µÎ ¹ø ½ÇÇàµÇ¸é¼­ 4°³¾¿¸¸ µé¾î°¡°Ô µÊ
-	//    4°³ º¸³»°í ¶Ç 4°³ º¸³»°í. 
-	//    Ã¹ ÀúÀå¿¡ 1p °ÍÀÌ µé¾î°¡°í µÎ ¹øÂ° ÀúÀå¿¡ 2p °ÍÀÌ °°Àº À§Ä¡¿¡ µé¾î°¨
-	//    1p °ª »ç¶óÁü 2pµµ Å×ÀÌºí¿¡ Á¸ÀçÇÏÁö ¾ÊÀ½ 
-	// ¡Ú insert ¹®ÀÌ 8 ÄÃ·³¿¡ ¸ÂÃç 1¹ø ½ÇÇàµÇ¾î¾ß ÇÔ
-	// ¡Ú ½ÇÁ¦ Ãâ·Â ¶§´Â 8°³¸¦ ÇÑ ¹ø¿¡ ÀĞÀ¸·Á ÇÔ ¡æ DB ±¸Á¶¿Í ÄÚµå°¡ ºÒÀÏÄ¡ (4 ¡Á 8) 
+	// â—† ì›ë˜ ì´ˆê¸°ì— ì‘ì„±í–ˆë˜ ì½”ë“œì²˜ëŸ¼ ë³€ìˆ˜ë§Œ ì¶”ê°€í•´ì„œ ì¿¼ë¦¬ê°’ì„ ì „ë‹¬í•˜ê²Œ ë˜ë©´, 
+	//    í•œ ë²ˆì— 8ê°œì˜ ì»¬ëŸ¼ì´ ë“¤ì–´ê°€ëŠ” ê²Œ ì•„ë‹ˆë¼ ì¿¼ë¦¬ë¬¸ì´ ë‘ ë²ˆ ì‹¤í–‰ë˜ë©´ì„œ 4ê°œì”©ë§Œ ë“¤ì–´ê°€ê²Œ ë¨
+	//    4ê°œ ë³´ë‚´ê³  ë˜ 4ê°œ ë³´ë‚´ê³ . 
+	//    ì²« ì €ì¥ì— 1p ê²ƒì´ ë“¤ì–´ê°€ê³  ë‘ ë²ˆì§¸ ì €ì¥ì— 2p ê²ƒì´ ê°™ì€ ìœ„ì¹˜ì— ë“¤ì–´ê°
+	//    1p ê°’ ì‚¬ë¼ì§ 2pë„ í…Œì´ë¸”ì— ì¡´ì¬í•˜ì§€ ì•ŠìŒ 
+	// â˜… insert ë¬¸ì´ 8 ì»¬ëŸ¼ì— ë§ì¶° 1ë²ˆ ì‹¤í–‰ë˜ì–´ì•¼ í•¨
+	// â˜… ì‹¤ì œ ì¶œë ¥ ë•ŒëŠ” 8ê°œë¥¼ í•œ ë²ˆì— ì½ìœ¼ë ¤ í•¨ â†’ DB êµ¬ì¡°ì™€ ì½”ë“œê°€ ë¶ˆì¼ì¹˜ (4 â‰  8) 
 
-	// ´ÙÀ½ mysql_query() ÇÔ¼ö·Î MYSQL ±¸Á¶Ã¼¸¦ ÅëÇÑ Äõ¸®¹® Àü¼Û
+	// ë‹¤ìŒ mysql_query() í•¨ìˆ˜ë¡œ MYSQL êµ¬ì¡°ì²´ë¥¼ í†µí•œ ì¿¼ë¦¬ë¬¸ ì „ì†¡
 	query_start = mysql_query(connection, query);
 
-	//// Å×ÀÌºí ÀúÀå °ª ÀÔ·Â
+	//// í…Œì´ë¸” ì €ì¥ ê°’ ì…ë ¥
 	//sprintf_s(first, "%d", playdata.p2_name[0]);
 	//sprintf_s(middle, "%d", playdata.p2_name[1]);
 	//sprintf_s(last, "%d", playdata.p2_name[2]);
 	//sprintf_s(score, "%d", playdata.p2_total_score);
 
-	//// Àü´Ş ÇÒ Äõ¸®°ª ¼ÂÆÃ
+	//// ì „ë‹¬ í•  ì¿¼ë¦¬ê°’ ì…‹íŒ…
 	//sprintf_s(query, "insert into rank values "
 	//	"('%s','%s','%s','%s')", first2, middle2, last2, score2);
 
-	//// ´ÙÀ½ mysql_query() ÇÔ¼ö·Î MYSQL ±¸Á¶Ã¼¸¦ ÅëÇÑ Äõ¸®¹® Àü¼Û
+	//// ë‹¤ìŒ mysql_query() í•¨ìˆ˜ë¡œ MYSQL êµ¬ì¡°ì²´ë¥¼ í†µí•œ ì¿¼ë¦¬ë¬¸ ì „ì†¡
 	//query_start = mysql_query(connection, query);
 
-	// Àü¼Û ½ÇÆĞ½Ã
+	// ì „ì†¡ ì‹¤íŒ¨ì‹œ
 	if (query_start != 0) 
 	{
 		sprintf_s(state, "Mysql query error : %s", mysql_error(&conn));
 		sql.mysql_Success = false;
 	}
-	// ¼º°ø ½Ã
+	// ì„±ê³µ ì‹œ
 	else 
 	{
 		mysql_Success = true;
 	}
 }
 
-// ¡ß µ¥ÀÌÅÍº£ÀÌ½º ¿¬µ¿ Query
-// create database ICE; µ¥ÀÌÅÍº£ÀÌ½º ¾ÆÀÌ½º¸¦ ¸¸µé¾î¿ä 
-// use ICE; ¾ÆÀÌ½º¸¦ »ç¿ëÇØ¿ä 
-// create table login ( id varchar(10), pw varchar(10)); Å×ÀÌºí ·Î±×ÀÎÀ» ¸¸µé¾î¿ä 
+// â—† ë°ì´í„°ë² ì´ìŠ¤ ì—°ë™ Query
+// create database ICE; ë°ì´í„°ë² ì´ìŠ¤ ì•„ì´ìŠ¤ë¥¼ ë§Œë“¤ì–´ìš” 
+// use ICE; ì•„ì´ìŠ¤ë¥¼ ì‚¬ìš©í•´ìš” 
+// create table login ( id varchar(10), pw varchar(10)); í…Œì´ë¸” ë¡œê·¸ì¸ì„ ë§Œë“¤ì–´ìš” 
 // 
-// create table rank( Å×ÀÌºí ·©Å©¸¦ ¸¸µé¾î¿ä, ³»¿ë¹°Àº ÀÌ·¸°Ô ±¸¼ºÇØ¿ä
+// create table rank( í…Œì´ë¸” ë­í¬ë¥¼ ë§Œë“¤ì–´ìš”, ë‚´ìš©ë¬¼ì€ ì´ë ‡ê²Œ êµ¬ì„±í•´ìš”
 //   first varchar(10),
 //   middle varchar(10),
 //   last varchar(10),
 //   score int(11)
 // ); 
 //
-// desc rank; Å×ÀÌºí ¾È ³»¿ë¹°À» º¸¿©ÁÖ¼¼¿ä 
-// select * from rank; ·©Å©¿¡¼­ ¸ğµç °É ¼±ÅÃ 
+// desc rank; í…Œì´ë¸” ì•ˆ ë‚´ìš©ë¬¼ì„ ë³´ì—¬ì£¼ì„¸ìš” 
+// select * from rank; ë­í¬ì—ì„œ ëª¨ë“  ê±¸ ì„ íƒ 
 //
-// truncate table rank; Å×ÀÌºí ·©Å©¸¦ ÃÊ±âÈ­
+// truncate table rank; í…Œì´ë¸” ë­í¬ë¥¼ ì´ˆê¸°í™”

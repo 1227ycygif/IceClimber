@@ -1,16 +1,16 @@
-#pragma once
+ï»¿#pragma once
 
 /*
-¿ëµµ :		¹è¿­ Å¬·¡½º ÅÛÇÃ¸´
-¸É¹ö º¯¼ö :	T Å¸ÀÔ Æ÷ÀÎÅÍ
-			µ¿ÀûÇÒ´ç ±æÀÌ
-¸É¹ö ÇÔ¼ö :	»ý¼ºÀÚ
-			º¹»ç»ý¼ºÀÚ
-			¼Ò¸êÀÚ
-			´ëÀÔ¿¬»êÀÚ
-			[]¿¬»êÀÚ ¿À¹ö·Îµù
-			[]¿¬»êÀÚ const ¿À¹ö·Îµù
-			get-µ¿ÀûÇÒ´ç ±æÀÌ
+ìš©ë„ :		ë°°ì—´ í´ëž˜ìŠ¤ í…œí”Œë¦¿
+ë§´ë²„ ë³€ìˆ˜ :	T íƒ€ìž… í¬ì¸í„°
+			ë™ì í• ë‹¹ ê¸¸ì´
+ë§´ë²„ í•¨ìˆ˜ :	ìƒì„±ìž
+			ë³µì‚¬ìƒì„±ìž
+			ì†Œë©¸ìž
+			ëŒ€ìž…ì—°ì‚°ìž
+			[]ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©
+			[]ì—°ì‚°ìž const ì˜¤ë²„ë¡œë”©
+			get-ë™ì í• ë‹¹ ê¸¸ì´
 */
 
 template<typename T>
@@ -34,8 +34,8 @@ public:
 };
 
 /*
-±â´É :		»ý¼ºÀÚ
-Æ¯ÀÌ»çÇ× :	°´Ã¼ Æ÷ÀÎÅÍ¸¦ µ¿ÀûÇÒ´ç
+ê¸°ëŠ¥ :		ìƒì„±ìž
+íŠ¹ì´ì‚¬í•­ :	ê°ì²´ í¬ì¸í„°ë¥¼ ë™ì í• ë‹¹
 */
 template<typename T>
 inline BoundCheckArray<T>::BoundCheckArray(int len) : acclen(len)
@@ -44,22 +44,22 @@ inline BoundCheckArray<T>::BoundCheckArray(int len) : acclen(len)
 }
 
 /*
-±â´É :		¼Ò¸êÀÚ
-Æ¯ÀÌ»çÇ× :	°´Ã¼ Æ÷ÀÎÅÍ¸¦ ÇØÁ¦
+ê¸°ëŠ¥ :		ì†Œë©¸ìž
+íŠ¹ì´ì‚¬í•­ :	ê°ì²´ í¬ì¸í„°ë¥¼ í•´ì œ
 */
 template<typename T>
 inline BoundCheckArray<T>::~BoundCheckArray() { delete[] pAcc; }
 
 /*
-±â´É :		°´Ã¼Æ÷ÀÎÅÍ °´Ã¼¿¡ ´ëÇÑ []¿¬»êÀÚ ¿À¹ö·Îµù
-¸Å°³º¯¼ö :	[]¿¬»êÀÚ ÀÎµ¦½º°ª
-¹ÝÈ¯ :		°´Ã¼Æ÷ÀÎÅÍÀÇ ·¡ÆÛ·±½º
-Æ¯ÀÌ»çÇ× :	¸®ÅÏ °ªÀ¸·Î Á¶ÀÛ °¡´É
+ê¸°ëŠ¥ :		ê°ì²´í¬ì¸í„° ê°ì²´ì— ëŒ€í•œ []ì—°ì‚°ìž ì˜¤ë²„ë¡œë”©
+ë§¤ê°œë³€ìˆ˜ :	[]ì—°ì‚°ìž ì¸ë±ìŠ¤ê°’
+ë°˜í™˜ :		ê°ì²´í¬ì¸í„°ì˜ ëž˜í¼ëŸ°ìŠ¤
+íŠ¹ì´ì‚¬í•­ :	ë¦¬í„´ ê°’ìœ¼ë¡œ ì¡°ìž‘ ê°€ëŠ¥
 */
 template<typename T>
 inline T & BoundCheckArray<T>::operator[](int idx)
 {
-	// ¹üÀ§ ÃÊ°ú ½Ã
+	// ë²”ìœ„ ì´ˆê³¼ ì‹œ
 	if (idx < 0 || idx >= acclen)								
 	{
 		exit(1);
@@ -68,15 +68,15 @@ inline T & BoundCheckArray<T>::operator[](int idx)
 }
 
 /*
-±â´É :		°´Ã¼Æ÷ÀÎÅÍ °´Ã¼¿¡ ´ëÇÑ []¿¬»êÀÚ ¿À¹ö·Îµù (»ó¼öÈ­)
-¸Å°³º¯¼ö :	[]¿¬»êÀÚ ÀÎµ¦½º°ª
-¹ÝÈ¯ :		°èÁÂ °´Ã¼Æ÷ÀÎÅÍ
-Æ¯ÀÌ»çÇ× :	¸®ÅÏ°ªÀ¸·Î Á¶ÀÛ ºÒ°¡´É
+ê¸°ëŠ¥ :		ê°ì²´í¬ì¸í„° ê°ì²´ì— ëŒ€í•œ []ì—°ì‚°ìž ì˜¤ë²„ë¡œë”© (ìƒìˆ˜í™”)
+ë§¤ê°œë³€ìˆ˜ :	[]ì—°ì‚°ìž ì¸ë±ìŠ¤ê°’
+ë°˜í™˜ :		ê³„ì¢Œ ê°ì²´í¬ì¸í„°
+íŠ¹ì´ì‚¬í•­ :	ë¦¬í„´ê°’ìœ¼ë¡œ ì¡°ìž‘ ë¶ˆê°€ëŠ¥
 */
 template<typename T>
 inline T  BoundCheckArray<T>::operator[](int idx) const
 {
-	// ¹üÀ§ ÃÊ°ú ½Ã
+	// ë²”ìœ„ ì´ˆê³¼ ì‹œ
 	if (idx < 0 || idx >= acclen)								
 	{
 		exit(1);
@@ -85,10 +85,10 @@ inline T  BoundCheckArray<T>::operator[](int idx) const
 }
 
 /*
-±â´É :		 get - µ¿ÀûÇÒ´ç ±æÀÌ
-¸Å°³º¯¼ö :	 ¾øÀ½
-¹ÝÈ¯ :		 µ¿ÀûÇÒ´ç ±æÀÌ
-Æ¯ÀÌ»çÇ× :	 ¾øÀ½
+ê¸°ëŠ¥ :		 get - ë™ì í• ë‹¹ ê¸¸ì´
+ë§¤ê°œë³€ìˆ˜ :	 ì—†ìŒ
+ë°˜í™˜ :		 ë™ì í• ë‹¹ ê¸¸ì´
+íŠ¹ì´ì‚¬í•­ :	 ì—†ìŒ
 */
 template<typename T>
 inline int BoundCheckArray<T>::GetAcclen() const { return acclen; }

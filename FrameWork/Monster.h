@@ -1,99 +1,99 @@
-#pragma once
+ï»¿#pragma once
 #include "Include.h"
 
-// BlockManager*¸¸ ¾µ ¶§ forward ¼±¾ğ
+// BlockManager*ë§Œ ì“¸ ë•Œ forward ì„ ì–¸
 class BlockManager;  
-// ¸¸¾à BlockManagerÀÇ ÇÔ¼ö/¸â¹ö±îÁö ¾²¸é ¹İµå½Ã #include "BlockManager.h"·Î ¹Ù²Ü °Í
+// ë§Œì•½ BlockManagerì˜ í•¨ìˆ˜/ë©¤ë²„ê¹Œì§€ ì“°ë©´ ë°˜ë“œì‹œ #include "BlockManager.h"ë¡œ ë°”ê¿€ ê²ƒ
 
 /*
-¿ëµµ :		°ÔÀÓ ¾À³» Ä³¸¯ÅÍ Å¬·¡½º
-¸É¹ö º¯¼ö :	ÁÖ¼® ÂüÁ¶
-¸É¹ö ÇÔ¼ö :	»ı¼ºÀÚ
-			¼Ò¸êÀÚ
+ìš©ë„ :		ê²Œì„ ì”¬ë‚´ ìºë¦­í„° í´ë˜ìŠ¤
+ë§´ë²„ ë³€ìˆ˜ :	ì£¼ì„ ì°¸ì¡°
+ë§´ë²„ í•¨ìˆ˜ :	ìƒì„±ì
+			ì†Œë©¸ì
 
-			ÃÊ±âÈ­
-			¾÷µ¥ÀÌÆ®
-			µå·Î¿ì
-			¸®¼Â
+			ì´ˆê¸°í™”
+			ì—…ë°ì´íŠ¸
+			ë“œë¡œìš°
+			ë¦¬ì…‹
 
-			¸â¹öº¯¼ö get,set
+			ë©¤ë²„ë³€ìˆ˜ get,set
 
-			¸ó½ºÅÍÀÇ ¹æÇâ ÀüÈ¯ Ãæµ¹
-			¸ó½ºÅÍÀÇ ¹Ù´Ú ÆÄ±« Ãæµ¹
-			¸ó½ºÅÍ°¡ Ä³¸¯ÅÍ¿¡°Ô Ãæµ¹
+			ëª¬ìŠ¤í„°ì˜ ë°©í–¥ ì „í™˜ ì¶©ëŒ
+			ëª¬ìŠ¤í„°ì˜ ë°”ë‹¥ íŒŒê´´ ì¶©ëŒ
+			ëª¬ìŠ¤í„°ê°€ ìºë¦­í„°ì—ê²Œ ì¶©ëŒ
 
-			ÃşÀÌµ¿
+			ì¸µì´ë™
 */
 
 enum MonsterState
 {
-	// µ¿±¼ ´ë±â
+	// ë™êµ´ ëŒ€ê¸°
 	MON_IDLE, 
-	// Å½»ö
+	// íƒìƒ‰
 	MON_SEARCH, 
-	// µ¿±¼·Î º¹±Í
+	// ë™êµ´ë¡œ ë³µê·€
 	MON_RETURN, 
-	// °íµå¸§ µé°í ÀÌµ¿
+	// ê³ ë“œë¦„ ë“¤ê³  ì´ë™
 	MON_BRING, 
-	// ºí·Ï ¼³Ä¡
+	// ë¸”ë¡ ì„¤ì¹˜
 	MON_PLACE 
 
 };
 
 const int MAX_MONSTER = 6;
 
-// ±æÃ£±â ¾Ë°í¸®Áò
+// ê¸¸ì°¾ê¸° ì•Œê³ ë¦¬ì¦˜
 struct BFSNode 
 {
-	// x : mapX ÁÂÇ¥, prev : ¾îµğ¼­ ¿Ô´ÂÁö
+	// x : mapX ì¢Œí‘œ, prev : ì–´ë””ì„œ ì™”ëŠ”ì§€
 	int x, prev; 
 };
 
 class Monster
 {
-	// ÇØ´ç ¹Ú½º °´Ã¼ÀÇ Á¾·ù
+	// í•´ë‹¹ ë°•ìŠ¤ ê°ì²´ì˜ ì¢…ë¥˜
 	int	monKind;
-	// ¸ÊÀÇ xÁÂÇ¥
+	// ë§µì˜ xì¢Œí‘œ
 	int	mapX;	
-	// ¸ÊÀÇ yÁÂÇ¥
+	// ë§µì˜ yì¢Œí‘œ
 	int	mapY;	
-	// ·»´õ¸µ ½ºÄÉÀÏ
+	// ë Œë”ë§ ìŠ¤ì¼€ì¼
 	double	scale;	
-	// ÇâÇÏ´Â ¹æÇâ
+	// í–¥í•˜ëŠ” ë°©í–¥
 	int	pos;	
-	// ÁÂ ¿ì ÀÌµ¿
+	// ì¢Œ ìš° ì´ë™
 	int	move_x;	
-	// ¸Ê »ı¼º ½Ã »ı¼ºµÉ Áö ¾È µÉÁö
+	// ë§µ ìƒì„± ì‹œ ìƒì„±ë  ì§€ ì•ˆ ë ì§€
 	bool create;	
-	// Á×¾ú´Ï »ì¾Ò´Ï
+	// ì£½ì—ˆë‹ˆ ì‚´ì•˜ë‹ˆ
 	bool onoff;	
-	// ÅÍÁü
+	// í„°ì§
 	bool boom;	
 
-	// Ãæµ¹ ¹üÀ§ 
-	// blockx : ÁÂ, blockX : ¿ì, blocky : »ó , blockY : ÇÏ
+	// ì¶©ëŒ ë²”ìœ„ 
+	// blockx : ì¢Œ, blockX : ìš°, blocky : ìƒ , blockY : í•˜
 	int	monx, mony, monX, monY;		
 
 
-	// ¹æÇâÀüÈ¯
-	// ¾Õ ºÎºĞ Ãæµ¹, ¾Õ ¹Ù´Ú ºÎºĞ Ãæµ¹
+	// ë°©í–¥ì „í™˜
+	// ì• ë¶€ë¶„ ì¶©ëŒ, ì• ë°”ë‹¥ ë¶€ë¶„ ì¶©ëŒ
 	bool col_front_turn, col_down_turn;	
-	//¹Ù´Ú
-	// ¹Ù´Ú »ç¶óÁü ¼öÁ÷ Ãæµ¹ ¹æÇâ	
+	//ë°”ë‹¥
+	// ë°”ë‹¥ ì‚¬ë¼ì§ ìˆ˜ì§ ì¶©ëŒ ë°©í–¥	
 	bool col_floor;																			
 	// 1p
-	// 1ÇÃ·¹ÀÌ¾î ¸ÁÄ¡ ¼öÆò Ãæµ¹ ¹æÇâ
+	// 1í”Œë ˆì´ì–´ ë§ì¹˜ ìˆ˜í‰ ì¶©ëŒ ë°©í–¥
 	bool col_h_Up, col_h_Down, col_h_Left, col_h_Right;																						
 	// 2p
-	// 2ÇÃ·¹ÀÌ¾î ¸ÁÄ¡ ¼öÆò Ãæµ¹ ¹æÇâ
+	// 2í”Œë ˆì´ì–´ ë§ì¹˜ ìˆ˜í‰ ì¶©ëŒ ë°©í–¥
 	bool col_h_Up2, col_h_Down2, col_h_Left2, col_h_Right2;			
 
-	// ÀÚ±â ÃşÀÇ ºí·Ï¸Å´ÏÀú
+	// ìê¸° ì¸µì˜ ë¸”ë¡ë§¤ë‹ˆì €
 	BlockManager* blockMgr;
 	// MonsterState
 	int state;
 	bool hasIcicle;
-	//ºí·Ï »ı¼º ¸ñÇ¥ ÁÂÇ¥
+	//ë¸”ë¡ ìƒì„± ëª©í‘œ ì¢Œí‘œ
 	int targetX, targetY; 
 	
 	int monsterCount;
@@ -116,11 +116,11 @@ public:
 
 	~Monster(void);
 
-	// ¸ó½ºÅÍ ÀÌµ¿ ¹× ½ºÇÁ¶óÀÌÆ® ½Ã°£
+	// ëª¬ìŠ¤í„° ì´ë™ ë° ìŠ¤í”„ë¼ì´íŠ¸ ì‹œê°„
 	DWORD MonMoveTime, MonCountTime, AttCountTime, RezCountTime;				
-	// ¸ó½ºÅÍ ½ºÇÁ¶óÀÌÆ®
+	// ëª¬ìŠ¤í„° ìŠ¤í”„ë¼ì´íŠ¸
 	Sprite seal_walk[3],attackEffect[3], bird_fly[2], bird_attacked,icicle;	
-	// ¸ó½ºÅÍ ½ºÇÁ¶óÀÌÆ® ÀÎµ¦½º
+	// ëª¬ìŠ¤í„° ìŠ¤í”„ë¼ì´íŠ¸ ì¸ë±ìŠ¤
 	int m_count, a_count;														
 
 	void Init(int monKind, int mapY, double scale, bool start);
@@ -151,5 +151,5 @@ public:
 	int getLastPlacedY() const { return lastPlacedY; }
 
 	void Floor(int floorY);
-	void DrawCollider(); // µğ¹ö±× ¹Ú½º 
+	void DrawCollider(); // ë””ë²„ê·¸ ë°•ìŠ¤ 
 };
